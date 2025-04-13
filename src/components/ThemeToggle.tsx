@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const ThemeToggle = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -16,14 +17,15 @@ const ThemeToggle = () => {
   }, []);
 
   const toggleTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-      setIsDarkMode(false);
-    } else {
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    
+    if (newMode) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
-      setIsDarkMode(true);
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   };
 
@@ -32,17 +34,33 @@ const ThemeToggle = () => {
       variant="outline" 
       size="icon" 
       onClick={toggleTheme}
-      className="rounded-full w-10 h-10 transition-all duration-500 overflow-hidden relative shadow-md border border-sidebar-border"
+      className="rounded-full w-12 h-12 relative overflow-hidden group transition-all duration-500 shadow-soft hover:shadow-hover border-sidebar-border"
     >
-      <div className={`absolute inset-0 transition-all duration-500 ${isDarkMode ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-indigo-700 to-purple-900 opacity-50"></div>
-        <Moon className="h-5 w-5 text-yellow-300 relative z-10" />
-      </div>
-      
-      <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${isDarkMode ? 'opacity-0' : 'opacity-100'}`}>
-        <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-orange-300 to-yellow-200 opacity-50"></div>
-        <Sun className="h-5 w-5 text-yellow-600 relative z-10" />
-      </div>
+      <AnimatePresence initial={false}>
+        {isDarkMode ? (
+          <motion.div
+            key="dark"
+            initial={{ opacity: 0, rotate: -180 }}
+            animate={{ opacity: 1, rotate: 0 }}
+            exit={{ opacity: 0, rotate: 180 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <Moon className="w-6 h-6 text-forum-lavender dark:text-yellow-300" />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="light"
+            initial={{ opacity: 0, rotate: -180 }}
+            animate={{ opacity: 1, rotate: 0 }}
+            exit={{ opacity: 0, rotate: 180 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <Sun className="w-6 h-6 text-orange-500" />
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       <span className="sr-only">Toggle theme</span>
     </Button>
