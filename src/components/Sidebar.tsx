@@ -62,9 +62,9 @@ const Sidebar = () => {
       {/* Sidebar */}
       <aside 
         id="sidebar"
-        className={`fixed top-0 left-0 h-full z-40 md:sticky md:z-auto bg-sidebar border-r border-sidebar-border transform transition-transform duration-300 ease-in-out
+        className={`fixed top-0 left-0 h-full z-40 md:sticky md:z-auto bg-sidebar border-r border-sidebar-border transform transition-transform duration-300 ease-in-out w-60
                  ${isMobileMenuOpen ? 'translate-x-0 shadow-xl' : '-translate-x-full'} 
-                 md:translate-x-0 md:w-16 md:hover:w-64 group overflow-y-auto overflow-x-hidden`}
+                 md:translate-x-0 md:w-16 md:hover:w-60 group overflow-y-auto overflow-x-hidden`}
       >
         <div className="flex flex-col h-full p-4">
           {/* Logo Section */}
@@ -73,7 +73,7 @@ const Sidebar = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="hidden md:group-hover:inline-block text-xl font-bold text-forum-lavender whitespace-nowrap"
+              className="hidden md:group-hover:block text-xl font-bold text-forum-lavender whitespace-nowrap"
             >
               TextForum
             </motion.span>
@@ -99,13 +99,13 @@ const Sidebar = () => {
                 >
                   <Link
                     to={item.path}
-                    className={`flex items-center space-x-3 px-2 py-3 rounded-lg text-sidebar-foreground group/link
+                    className={`flex items-center px-2 py-3 rounded-lg text-sidebar-foreground group/link transition-colors
                       ${location.pathname === item.path 
                         ? 'bg-sidebar-primary text-sidebar-primary-foreground' 
                         : 'hover:bg-sidebar-accent hover:text-sidebar-primary'}`}
                   >
                     <item.icon className="w-5 h-5 min-w-5" />
-                    <span className="opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    <span className="ml-3 opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                       {item.label}
                     </span>
                   </Link>
@@ -118,7 +118,7 @@ const Sidebar = () => {
           <div className="mt-auto pt-4 border-t border-sidebar-border">
             <div className="flex flex-col items-center space-y-4">
               {/* Theme Toggle */}
-              <div className="w-full flex justify-center md:justify-start items-center group/theme">
+              <div className="w-full flex items-center px-2 py-2 rounded-lg text-sidebar-foreground group/theme">
                 <ThemeToggle />
                 <span className="ml-3 text-sm text-sidebar-foreground opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                   Toggle theme
@@ -127,10 +127,10 @@ const Sidebar = () => {
               
               {/* Logout Button */}
               <button
-                className="w-full flex items-center space-x-3 px-2 py-3 rounded-lg text-sidebar-foreground hover:text-destructive transition-colors group/btn"
+                className="w-full flex items-center px-2 py-3 rounded-lg text-sidebar-foreground hover:text-destructive transition-colors group/btn"
               >
                 <LogOut className="w-5 h-5 min-w-5" />
-                <span className="opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                <span className="ml-3 opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                   Logout
                 </span>
               </button>
