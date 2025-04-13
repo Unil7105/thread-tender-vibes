@@ -11,43 +11,8 @@ interface LayoutProps {
 }
 
 const Layout = ({ children, pageTitle }: LayoutProps) => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  // Listen for sidebar state changes
-  useEffect(() => {
-    try {
-      const savedState = localStorage.getItem('sidebarCollapsed');
-      if (savedState !== null) {
-        setIsCollapsed(JSON.parse(savedState));
-      }
-    } catch (error) {
-      console.error('Error retrieving sidebar state from localStorage:', error);
-    }
-    
-    const sidebar = document.getElementById('sidebar');
-    
-    if (!sidebar) return;
-    
-    // Create observer to watch for data-state attribute changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          const sidebarEl = mutation.target as HTMLElement;
-          const isCurrentlyCollapsed = sidebarEl.classList.contains('w-[72px]') || 
-                                  !sidebarEl.classList.contains('translate-x-0');
-          setIsCollapsed(isCurrentlyCollapsed);
-        }
-      });
-    });
-    
-    // Start observing
-    observer.observe(sidebar, { attributes: true });
-    
-    // Cleanup
-    return () => observer.disconnect();
-  }, []);
 
   // Listen for scroll to create sticky header effect
   useEffect(() => {
@@ -74,13 +39,7 @@ const Layout = ({ children, pageTitle }: LayoutProps) => {
       
       {/* Main content area with proper margin that adjusts based on sidebar state */}
       <main 
-        className={cn(
-          "flex-grow transition-all duration-300 ease-in-out w-full",
-          // Apply proper margin based on sidebar collapsed state
-          isCollapsed ? "md:ml-[72px]" : "md:ml-[240px]",
-          // No left margin on mobile (sidebar is overlay on mobile)
-          "ml-0"
-        )}
+        className="flex-grow transition-all duration-300 ease-in-out w-full"
       >
         {/* Sticky header */}
         <LayoutHeader 

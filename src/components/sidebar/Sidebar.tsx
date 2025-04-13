@@ -31,7 +31,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         toggleSidebar={toggleSidebar}
       />
 
-      {/* Desktop sidebar - fixed positioning */}
+      {/* Desktop sidebar - fixed positioning with proper z-index */}
       <aside 
         id="sidebar"
         className={`
@@ -41,6 +41,9 @@ const Sidebar: React.FC<SidebarProps> = ({
           ${isCollapsed ? 'w-[72px]' : 'w-[240px]'}
           hidden md:block shadow-sm
         `}
+        style={{
+          width: isCollapsed ? '72px' : '240px',
+        }}
       >
         <SidebarContent 
           isMobileMenuOpen={false}
@@ -49,6 +52,14 @@ const Sidebar: React.FC<SidebarProps> = ({
           toggleSidebar={toggleSidebar}
         />
       </aside>
+
+      {/* Add spacing div to push content when sidebar is visible on desktop */}
+      <div 
+        className={`
+          hidden md:block shrink-0 transition-all duration-300 ease-in-out
+          ${isCollapsed ? 'w-[72px]' : 'w-[240px]'}
+        `}
+      />
 
       {/* Mobile overlay when sidebar is open */}
       {isMobileMenuOpen && (
