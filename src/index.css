@@ -10,82 +10,82 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 210 40% 98%;
+    --foreground: 222 14% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 40% 98%;
+    --card-foreground: 222 14% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 40% 98%;
+    --popover-foreground: 222 14% 20%;
 
-    --primary: 210 100% 56%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 240 67% 94%;
+    --primary-foreground: 240 40% 40%;
 
-    --secondary: 16 100% 50%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 199 80% 80%;
+    --secondary-foreground: 0 0% 20%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 240 5% 60%;
 
-    --accent: 120 100% 53%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 0 0% 83%;
+    --accent-foreground: 0 0% 20%;
 
     --destructive: 0 70% 65%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 210 100% 56%;
+    --border: 240 10% 90%;
+    --input: 240 10% 90%;
+    --ring: 271 76% 65%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 0%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 210 100% 56%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 16 100% 50%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 14% 20%;
+    --sidebar-primary: 240 67% 94%;
+    --sidebar-primary-foreground: 240 40% 40%;
+    --sidebar-accent: 271 76% 65%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 214 32% 13%;
-    --sidebar-ring: 210 100% 56%;
+    --sidebar-border: 240 10% 90%;
+    --sidebar-ring: 271 76% 65%;
   }
 
   .dark {
-    --background: 0 0% 0%;
+    --background: 240 21% 15%;
     --foreground: 0 0% 98%;
 
-    --card: 0 0% 5%;
+    --card: 240 21% 13%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 0%;
+    --popover: 240 21% 15%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 210 100% 56%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 240 40% 40%;
+    --primary-foreground: 240 67% 94%;
 
-    --secondary: 16 100% 50%;
+    --secondary: 199 50% 50%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 240 21% 20%;
+    --muted-foreground: 240 5% 70%;
 
-    --accent: 120 100% 53%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 0 0% 25%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 210 100% 56%;
+    --border: 240 15% 25%;
+    --input: 240 15% 25%;
+    --ring: 271 76% 65%;
 
-    --sidebar-background: 0 0% 3%;
+    --sidebar-background: 240 21% 15%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 210 100% 56%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 16 100% 50%;
+    --sidebar-primary: 240 40% 40%;
+    --sidebar-primary-foreground: 240 67% 94%;
+    --sidebar-accent: 271 76% 65%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 15%;
-    --sidebar-ring: 210 100% 56%;
+    --sidebar-border: 240 15% 25%;
+    --sidebar-ring: 271 76% 65%;
   }
 }
 
@@ -140,70 +140,70 @@
   .cta-gradient {
     @apply bg-forum-yellow hover:bg-forum-yellow/90 
       dark:bg-forum-yellow dark:hover:bg-forum-yellow/90
-      text-black shadow-yellow-glow transition-all duration-300;
+      text-white shadow-yellow-glow transition-all duration-300;
   }
   
   .thread-tag {
     @apply inline-flex px-2 py-0.5 rounded-md text-xs font-medium
-      bg-forum-electric text-white dark:text-white
+      bg-forum-electric text-forum-dark dark:text-forum-dark
       transition-colors duration-200;
   }
   
   .category-card {
     @apply relative p-5 sm:p-6 rounded-lg border border-forum-electric/30 bg-card 
-      hover:bg-card/90 hover:border-forum-electric duration-300 shadow-soft
+      hover:bg-card/90 hover:border-forum-yellow/50 duration-300 shadow-soft
       hover:shadow-electric-glow transition-all
-      dark:bg-card dark:border-forum-electric/20 dark:hover:border-forum-electric/60;
+      dark:bg-card dark:border-forum-electric/20 dark:hover:border-forum-yellow/60;
   }
   
   .thread-card {
     @apply relative p-5 rounded-lg border border-border/60 bg-card/80
-      hover:bg-card/90 hover:border-forum-electric/50 duration-300 shadow-soft
+      hover:bg-card/90 hover:border-forum-yellow/50 duration-300 shadow-soft
       hover:shadow-electric-glow transition-all
-      dark:bg-card dark:border-border/40 dark:hover:border-forum-electric/60;
+      dark:bg-card dark:border-border/40 dark:hover:border-forum-yellow/60;
   }
   
   .reply-card {
     @apply relative p-4 sm:p-5 rounded-lg bg-white
       dark:bg-secondary/30 mt-4 
       border border-border/40 dark:border-border/30
-      hover:border-forum-electric/40 hover:shadow-electric-glow
+      hover:border-forum-yellow/40 hover:shadow-electric-glow
       transition-all duration-300;
   }
   
   .upvote-button {
     @apply flex items-center text-sm font-medium text-muted-foreground 
-      hover:text-forum-electric transition-colors duration-200
-      dark:hover:text-forum-electric;
+      hover:text-forum-yellow transition-colors duration-200
+      dark:hover:text-forum-yellow;
   }
   
   .floating-action-button {
     @apply fixed bottom-8 right-8 p-3 sm:p-3.5 rounded-full 
       bg-forum-yellow/95 hover:bg-forum-yellow
-      text-black shadow-soft hover:shadow-yellow-glow 
+      text-white shadow-soft hover:shadow-yellow-glow 
       transition-all duration-300 scale-100 hover:scale-105;
   }
   
   .nav-item {
     @apply flex items-center space-x-3 p-3 rounded-md text-sidebar-foreground
-      hover:bg-sidebar-accent/20 hover:text-forum-electric transition-all duration-200;
+      hover:bg-sidebar-accent/20 hover:text-forum-yellow transition-all duration-200;
   }
   
   .nav-item.active {
-    @apply bg-forum-electric/20 text-forum-electric
-      dark:bg-forum-electric/10 dark:text-forum-electric;
+    @apply bg-forum-yellow/20 text-forum-yellow
+      dark:bg-forum-yellow/10 dark:text-forum-yellow;
   }
   
   .emoji-reaction {
     @apply inline-flex items-center px-2 py-1 rounded-md bg-secondary 
-      hover:bg-forum-electric/20 hover:text-forum-electric text-sm transition-all duration-200 cursor-pointer
-      dark:bg-secondary dark:hover:bg-forum-electric/20;
+      hover:bg-forum-yellow/20 hover:text-forum-yellow text-sm transition-all duration-200 cursor-pointer
+      dark:bg-secondary dark:hover:bg-forum-yellow/20;
   }
 
   /* Mobile optimizations */
   .mobile-menu-toggle {
     @apply md:hidden fixed top-4 left-4 z-50 flex flex-col justify-center items-center 
-      w-10 h-10 bg-background/90 backdrop-blur-sm border border-forum-electric/40 rounded-md 
+      w-10 h-10 bg-background/90 backdrop-blur-sm border border-forum-yellow/40 rounded-md 
       shadow-electric-glow;
   }
 

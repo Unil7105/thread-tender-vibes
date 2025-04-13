@@ -36,9 +36,9 @@ const ThemeToggle = () => {
     >
       <div className="relative z-10 transition-transform duration-500 ease-in-out">
         {isDarkMode ? (
-          <Moon className="w-5 h-5 text-forum-lavender dark:text-forum-cyan" strokeWidth={2} />
+          <Moon className="w-5 h-5 text-forum-lavender dark:text-forum-indigo" strokeWidth={2} />
         ) : (
-          <Sun className="w-5 h-5 text-forum-lavender" strokeWidth={2} />
+          <Sun className="w-5 h-5 text-forum-coral" strokeWidth={2} />
         )}
       </div>
       <div className={`absolute inset-0 rounded-full transition-opacity duration-500 ${isDarkMode ? 'opacity-100' : 'opacity-0'}`}>

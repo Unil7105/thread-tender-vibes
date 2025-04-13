@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,23 +64,23 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         forum: {
-          electric: "#7E69AB",     // Primary - Secondary Purple
-          orange: "#9b87f5",       // Secondary - Primary Purple
-          neon: "#D946EF",         // Accent - Magenta Pink
-          black: "#1A1F2C",        // Background - Dark Purple
-          yellow: "#0EA5E9",       // CTA Highlight - Ocean Blue
+          electric: "#E6E6FA",     // Primary - Lavender
+          orange: "#87CEEB",       // Secondary - Sky Blue
+          neon: "#D3D3D3",         // Accent - Light Gray
+          black: "#FFFFFF",        // Background - White
+          yellow: "#9370DB",       // CTA Highlight - Medium Purple
           
-          lavender: "#7E69AB",
-          indigo: "#9b87f5",
-          skyblue: "#D946EF",
-          navy: "#1A1F2C",
-          coral: "#0EA5E9",
-          mint: "#7E69AB",
-          amber: "#9b87f5",
-          light: "#FFFFFF",
-          dark: "#1A1F2C",
-          magenta: "#D946EF",
-          cyan: "#0EA5E9",
+          lavender: "#E6E6FA",     // Lavender
+          indigo: "#87CEEB",       // Sky Blue
+          skyblue: "#87CEEB",      // Sky Blue
+          navy: "#F8F8FF",         // Ghost White (slightly off-white)
+          coral: "#9370DB",        // Medium Purple
+          mint: "#E0FFFF",         // Light Cyan
+          amber: "#FFE4E1",        // Misty Rose
+          light: "#FFFFFF",        // White
+          dark: "#696969",         // Dim Gray
+          magenta: "#DDA0DD",      // Plum
+          cyan: "#AFEEEE",         // Pale Turquoise
         },
       },
       borderRadius: {
@@ -143,15 +144,15 @@ export default {
         montserrat: ["Montserrat", "sans-serif"],
       },
       boxShadow: {
-        'soft': '0 4px 14px 0 rgba(30, 144, 255, 0.2)',
-        'hover': '0 6px 20px rgba(30, 144, 255, 0.25)',
-        'card': '0 10px 30px -5px rgba(30, 144, 255, 0.15)',
-        'focus': '0 0 0 3px rgba(30, 144, 255, 0.3)',
-        'electric-glow': '0 0 15px rgba(30, 144, 255, 0.6)',
-        'neon-glow': '0 0 10px rgba(57, 255, 20, 0.6), 0 0 20px rgba(57, 255, 20, 0.3)',
-        'orange-glow': '0 0 15px rgba(255, 69, 0, 0.4)',
-        'yellow-glow': '0 0 15px rgba(255, 255, 0, 0.4)',
-        'glass-highlight': '0 0 0 1px rgba(255, 255, 255, 0.1) inset, 0 0 30px rgba(30, 144, 255, 0.15)',
+        'soft': '0 4px 14px 0 rgba(147, 112, 219, 0.2)',
+        'hover': '0 6px 20px rgba(147, 112, 219, 0.25)',
+        'card': '0 10px 30px -5px rgba(147, 112, 219, 0.15)',
+        'focus': '0 0 0 3px rgba(147, 112, 219, 0.3)',
+        'electric-glow': '0 0 15px rgba(147, 112, 219, 0.6)',
+        'neon-glow': '0 0 10px rgba(230, 230, 250, 0.6), 0 0 20px rgba(230, 230, 250, 0.3)',
+        'orange-glow': '0 0 15px rgba(135, 206, 235, 0.4)',
+        'yellow-glow': '0 0 15px rgba(147, 112, 219, 0.4)',
+        'glass-highlight': '0 0 0 1px rgba(255, 255, 255, 0.1) inset, 0 0 30px rgba(147, 112, 219, 0.15)',
         'text-shadow': '0 1px 3px rgba(0, 0, 0, 0.3)',
       },
       backdropBlur: {
