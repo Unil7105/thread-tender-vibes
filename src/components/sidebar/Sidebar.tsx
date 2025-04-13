@@ -1,67 +1,25 @@
 
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
 import SidebarMobileToggle from './SidebarMobileToggle';
 import SidebarContent from './SidebarContent';
 import SidebarOverlay from './SidebarOverlay';
+import { useSidebarState } from './hooks/useSidebarState';
 
 interface SidebarProps {
   isMobileMenuOpen?: boolean;
   setIsMobileMenuOpen?: (value: boolean) => void;
 }
 
-const Sidebar = ({ isMobileMenuOpen: propsMobileMenuOpen, setIsMobileMenuOpen: propsSetMobileMenuOpen }: SidebarProps = {}) => {
-  const location = useLocation();
-  const [internalMobileMenuOpen, setInternalMobileMenuOpen] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(true);
-  
-  const isMobileMenuOpen = propsMobileMenuOpen !== undefined ? propsMobileMenuOpen : internalMobileMenuOpen;
-  const setIsMobileMenuOpen = propsSetMobileMenuOpen || setInternalMobileMenuOpen;
-  
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [location.pathname, setIsMobileMenuOpen]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerWidth < 768 && window.scrollY > 300 && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobileMenuOpen, setIsMobileMenuOpen]);
-
-  useEffect(() => {
-    try {
-      const savedState = localStorage.getItem('sidebarCollapsed');
-      if (savedState !== null) {
-        setIsCollapsed(JSON.parse(savedState));
-      }
-    } catch (error) {
-      console.error('Error retrieving sidebar state from localStorage:', error);
-    }
-  }, []);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 's' && (e.ctrlKey || e.metaKey)) {
-        e.preventDefault();
-        toggleSidebar();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isCollapsed]);
-
-  const toggleSidebar = () => {
-    const newState = !isCollapsed;
-    setIsCollapsed(newState);
-    
-    localStorage.setItem('sidebarCollapsed', JSON.stringify(newState));
-  };
+const Sidebar: React.FC<SidebarProps> = ({ 
+  isMobileMenuOpen: propsMobileMenuOpen, 
+  setIsMobileMenuOpen: propsSetMobileMenuOpen 
+} = {}) => {
+  const { 
+    isMobileMenuOpen,
+    setIsMobileMenuOpen,
+    isCollapsed,
+    toggleSidebar
+  } = useSidebarState(propsMobileMenuOpen, propsSetMobileMenuOpen);
 
   return (
     <>
