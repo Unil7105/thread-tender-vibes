@@ -1,4 +1,4 @@
-import { Home, Compass, MessageSquare, User, LogOut, Menu, X, Settings } from 'lucide-react';
+import { Home, Compass, MessageSquare, User, LogOut, Menu, ChevronLeft, Settings } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { useEffect, useState } from 'react';
@@ -38,10 +38,25 @@ const Sidebar = () => {
     };
   }, [isMobileMenuOpen]);
 
-  // Toggle sidebar collapsed state
+  // Toggle sidebar collapsed state with localStorage persistence
   const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
+    const newState = !isCollapsed;
+    setIsCollapsed(newState);
+    // Save preference to localStorage
+    localStorage.setItem('sidebarCollapsed', JSON.stringify(newState));
   };
+  
+  // Retrieve sidebar state from localStorage on component mount
+  useEffect(() => {
+    try {
+      const savedState = localStorage.getItem('sidebarCollapsed');
+      if (savedState !== null) {
+        setIsCollapsed(JSON.parse(savedState));
+      }
+    } catch (error) {
+      console.error('Error retrieving sidebar state from localStorage:', error);
+    }
+  }, []);
 
   const navItems = [
     { path: '/', icon: Home, label: 'Home' },
@@ -74,16 +89,16 @@ const Sidebar = () => {
         <Menu className="w-5 h-5 text-foreground" />
       </button>
 
-      {/* Desktop Toggle Button */}
-      <button
-        className="fixed bottom-4 left-4 z-50 hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground shadow-md hover:bg-primary/90 transition-all duration-200"
-        onClick={toggleSidebar}
-        aria-label="Toggle sidebar"
-      >
-        {isCollapsed 
-          ? <Menu className="w-4 h-4" /> 
-          : <X className="w-4 h-4" />}
-      </button>
+      {/* Desktop Sidebar Collapse Toggle Button */}
+      <div className="fixed bottom-4 left-4 z-50 hidden md:block">
+        <button
+          className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground shadow-md transition-all duration-200 hover:bg-primary/90"
+          onClick={toggleSidebar}
+          aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+        >
+          <ChevronLeft className={`w-5 h-5 transform transition-transform duration-200 ${isCollapsed ? 'rotate-180' : 'rotate-0'}`} />
+        </button>
+      </div>
 
       {/* Mobile Sidebar Background Overlay */}
       {isMobileMenuOpen && (
@@ -163,14 +178,15 @@ const Sidebar = () => {
                 document.documentElement.classList.toggle('dark', !isDark);
                 localStorage.setItem('theme', !isDark ? 'dark' : 'light');
               }}
-              className={`flex ${isCollapsed ? 'justify-center' : 'justify-start'} items-center w-full py-2 px-3 rounded-md text-sm text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground transition-colors`}
+              className={`flex ${isCollapsed ? 'justify-center' : 'justify-start'} items-center w-full py-2 px-3 rounded-md text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-200`}
+              aria-label="Toggle dark mode"
             >
               <div className="w-5 h-5 flex items-center justify-center shrink-0">
                 <ThemeToggle />
               </div>
               
               {!isCollapsed && (
-                <span className="ml-3 truncate">
+                <span className="ml-3 truncate transition-opacity duration-200">
                   Toggle theme
                 </span>
               )}
@@ -178,11 +194,12 @@ const Sidebar = () => {
             
             {/* Logout Button */}
             <button
-              className={`flex ${isCollapsed ? 'justify-center' : 'justify-start'} items-center w-full py-2 px-3 rounded-md text-sm text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-colors`}
+              className={`flex ${isCollapsed ? 'justify-center' : 'justify-start'} items-center w-full py-2 px-3 rounded-md text-sm text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all duration-200`}
+              aria-label="Logout"
             >
               <LogOut className="w-5 h-5 shrink-0" />
               {!isCollapsed && (
-                <span className="ml-3 truncate">
+                <span className="ml-3 truncate transition-opacity duration-200">
                   Logout
                 </span>
               )}
