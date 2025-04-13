@@ -160,24 +160,33 @@ const Sidebar = () => {
           <div className="mt-auto pt-4 border-t border-sidebar-border">
             <div className="flex flex-col items-center space-y-3">
               {/* Theme Toggle */}
-              <div className="w-full group relative">
-                <div
-                  className="flex items-center px-3 py-2.5 rounded-lg text-sidebar-foreground hover:text-white transition-colors relative cursor-pointer"
-                >
+              <button 
+                onClick={() => {
+                  // We'll call the theme toggle functionality directly here
+                  const isDark = document.documentElement.classList.contains('dark');
+                  document.documentElement.classList.toggle('dark', !isDark);
+                  localStorage.setItem('theme', !isDark ? 'dark' : 'light');
+                }}
+                className="w-full group relative"
+              >
+                <div className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sidebar-foreground hover:text-white transition-colors relative">
                   {/* Hover background */}
                   <span className="absolute inset-0 bg-sidebar-accent opacity-0 group-hover:opacity-100 rounded-lg transition-opacity" />
                   
-                  {/* Icon and label */}
-                  <span className="relative flex items-center">
-                    <ThemeToggle />
+                  {/* Icon container with fixed dimensions */}
+                  <div className="relative flex items-center">
+                    <div className="flex justify-center items-center w-8 h-8 rounded-full bg-gray-800">
+                      <ThemeToggle />
+                    </div>
+                    
                     {!isCollapsed && (
-                      <span className="ml-3 text-sm transition-all duration-300 whitespace-nowrap">
+                      <span className="ml-3 text-sm whitespace-nowrap">
                         Toggle theme
                       </span>
                     )}
-                  </span>
+                  </div>
                 </div>
-              </div>
+              </button>
               
               {/* Logout Button */}
               <div className="w-full group relative">
