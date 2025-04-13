@@ -32,4 +32,3 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
 };
 
 export default SidebarContent;
-

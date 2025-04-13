@@ -43,19 +43,19 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
                 className={`group flex items-center px-3 py-2.5 rounded-lg transition-colors relative
                   ${isActive 
                     ? 'text-white' 
-                    : 'text-sidebar-foreground hover:text-white'}`}
+                    : 'text-gray-700 hover:text-white'}`}
                 onClick={handleMobileMenuItemClick}
               >
                 {isActive && (
-                  <span className="absolute inset-0 bg-forum-lavender rounded-lg" />
+                  <span className="absolute inset-0 bg-[#9b87f5] rounded-lg" />
                 )}
                 
                 {!isActive && (
-                  <span className="absolute inset-0 bg-sidebar-accent opacity-0 group-hover:opacity-100 rounded-lg transition-opacity" />
+                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[#9b87f5]/80 rounded-lg transition-opacity" />
                 )}
                 
                 <span className="relative flex items-center">
-                  <item.icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-sidebar-foreground group-hover:text-white'}`} />
+                  <item.icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-gray-700 group-hover:text-white'}`} />
                   {!isCollapsed && (
                     <span className={`ml-3 transition-all duration-300 whitespace-nowrap ${isCollapsed ? 'w-0 opacity-0' : 'opacity-100'}`}>
                       {item.label}

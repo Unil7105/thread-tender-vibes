@@ -34,7 +34,7 @@ const Sidebar = () => {
       {/* Desktop Sidebar */}
       <aside 
         id="sidebar"
-        className={`hidden md:block fixed top-0 left-0 h-full z-40 md:sticky md:z-auto bg-sidebar border-r border-sidebar-border transition-all duration-300 ease-in-out
+        className={`hidden md:block fixed top-0 left-0 h-full z-40 md:sticky md:z-auto bg-[#f1effe] border-r border-sidebar-border transition-all duration-300 ease-in-out
                  md:translate-x-0 ${isCollapsed ? 'md:w-20' : 'md:w-64'} overflow-y-auto overflow-x-hidden`}
       >
         <SidebarContent 

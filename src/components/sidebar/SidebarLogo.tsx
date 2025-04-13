@@ -15,15 +15,15 @@ const SidebarLogo: React.FC<SidebarLogoProps> = ({ isCollapsed }) => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-forum-lavender text-white">
-          {isCollapsed ? 'Tf' : 'T'}
+        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#9b87f5] text-white font-semibold">
+          {isCollapsed ? 'T' : 'T'}
         </div>
         {!isCollapsed && (
           <motion.span 
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
-            className="ml-3 text-xl font-bold text-forum-lavender whitespace-nowrap"
+            className="ml-3 text-xl font-bold text-[#9b87f5] whitespace-nowrap"
           >
             TextForum
           </motion.span>

@@ -34,7 +34,7 @@ const SidebarMobileToggle: React.FC<SidebarMobileToggleProps> = ({
       </SheetTrigger>
       <SheetContent 
         side="left" 
-        className="p-0 w-[75vw] max-w-[300px] border-r border-sidebar-border bg-sidebar overflow-y-auto"
+        className="p-0 w-[75vw] max-w-[300px] border-r border-sidebar-border bg-[#f1effe] h-full overflow-y-auto"
       >
         <SidebarContent 
           isMobileMenuOpen={true}
