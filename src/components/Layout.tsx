@@ -95,7 +95,7 @@ const Layout = ({ children, pageTitle }: LayoutProps) => {
           </div>
         </div>
 
-        <div className="max-w-screen-sm mx-auto py-6 px-4 sm:px-5 relative">
+        <div className="max-w-screen-xl mx-auto py-6 px-4 sm:px-6 relative">
           <div className="relative z-10">
             {children}
           </div>

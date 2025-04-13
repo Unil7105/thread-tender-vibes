@@ -39,21 +39,23 @@ const Index = () => {
         <p className="text-muted-foreground">A cozy digital space for deep conversations</p>
       </div>
       
-      <section className="mb-8">
-        <div className="flex items-baseline justify-between mb-5">
-          <h2 className="text-xl font-bold">Categories</h2>
-          <a href="#" className="text-forum-lavender hover:underline text-sm">View all</a>
-        </div>
-        <CategoriesGrid />
-      </section>
-      
-      <section>
-        <div className="flex items-baseline justify-between mb-5">
-          <h2 className="text-xl font-bold">Recent Threads</h2>
-          <a href="#" className="text-forum-lavender hover:underline text-sm">View all</a>
-        </div>
-        <ThreadsList threads={threads} isLoading={isLoading} />
-      </section>
+      <div className="flex flex-col lg:flex-row gap-8 mt-16">
+        <section className="w-full lg:w-4/12 mb-8 lg:mb-0">
+          <div className="flex items-baseline justify-between mb-5">
+            <h2 className="text-xl font-bold">Categories</h2>
+            <a href="#" className="text-forum-lavender hover:underline text-sm">View all</a>
+          </div>
+          <CategoriesGrid />
+        </section>
+        
+        <section className="w-full lg:w-8/12">
+          <div className="flex items-baseline justify-between mb-5">
+            <h2 className="text-xl font-bold">Recent Threads</h2>
+            <a href="#" className="text-forum-lavender hover:underline text-sm">View all</a>
+          </div>
+          <ThreadsList threads={threads} isLoading={isLoading} />
+        </section>
+      </div>
       
       <FloatingActionButton 
         label="New Thread" 

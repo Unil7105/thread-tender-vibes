@@ -14,8 +14,9 @@ interface ThreadCardProps {
 const ThreadCard = ({ thread }: ThreadCardProps) => {
   return (
     <Link to={`/thread/${thread.id}`} className="block transform transition-all duration-300 hover:-translate-y-1">
-      <Card className="thread-card group bg-[#1F2937] bg-opacity-90 shadow-lg border border-[#374151] hover:border-[#4B5563] p-5 
-        transition-all duration-300 dark:shadow-glass-highlight">
+      <Card className="thread-card group bg-[#F9FAFB] shadow-sm border border-[#E5E7EB] hover:bg-white hover:shadow-lg p-5 
+        transition-all duration-300 ease-in-out min-h-[180px]
+        dark:bg-[#1F2937] dark:bg-opacity-90 dark:shadow-lg dark:border dark:border-[#374151] dark:hover:border-[#4B5563] dark:hover:bg-[#273043]">
         <div className="flex items-start gap-4">
           <div className="relative">
             <img
@@ -30,8 +31,8 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
             )}
           </div>
           <div className="min-w-0 flex-1 space-y-2.5">
-            <h3 className="font-bold text-lg text-white group-hover:text-forum-lavender 
-              transition-colors line-clamp-2 dark:shadow-text-shadow">
+            <h3 className="font-bold text-lg text-gray-900 group-hover:text-violet-600 
+              transition-colors line-clamp-2 dark:text-white dark:group-hover:text-forum-lavender">
               {thread.title}
             </h3>
             
@@ -44,7 +45,7 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
               </span>
             </div>
             
-            <p className="mt-1 line-clamp-2 text-sm text-gray-300 leading-relaxed">
+            <p className="mt-1 line-clamp-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
               {thread.content}
             </p>
             
@@ -52,26 +53,28 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
               {thread.tags.slice(0, 2).map((tag) => (
                 <Badge
                   key={tag}
-                  className="bg-[#374151] hover:bg-[#4B5563] text-xs text-gray-200 px-2 py-0.5 rounded-full
-                    hover:scale-105 transition-all duration-200 cursor-pointer"
+                  className="bg-[#F3F4F6] hover:bg-indigo-100 text-xs text-gray-700 px-2 py-0.5 rounded-full
+                    hover:scale-105 transition-all duration-200 cursor-pointer
+                    dark:bg-[#374151] dark:hover:bg-[#334155] dark:text-gray-200"
                 >
                   #{tag}
                 </Badge>
               ))}
               
               {thread.tags.length > 2 && (
-                <TooltipProvider>
+                <TooltipProvider delayDuration={150}>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Badge className="bg-[#374151] hover:bg-[#4B5563] text-xs text-gray-200 px-2 py-0.5 rounded-full
-                        hover:scale-105 transition-all duration-200 cursor-pointer">
+                      <Badge className="bg-[#F3F4F6] hover:bg-indigo-100 text-xs text-gray-700 px-2 py-0.5 rounded-full
+                        hover:scale-105 transition-all duration-200 cursor-pointer
+                        dark:bg-[#374151] dark:hover:bg-[#334155] dark:text-gray-200">
                         +{thread.tags.length - 2}
                       </Badge>
                     </TooltipTrigger>
-                    <TooltipContent className="bg-[#1A1F2C] border-forum-lavender/20">
+                    <TooltipContent className="bg-white border-gray-200 shadow-md dark:bg-[#1A1F2C] dark:border-forum-lavender/20">
                       <div className="flex flex-col gap-1">
                         {thread.tags.slice(2).map((tag) => (
-                          <span key={tag} className="text-xs text-gray-300">#{tag}</span>
+                          <span key={tag} className="text-xs text-gray-700 dark:text-gray-300">#{tag}</span>
                         ))}
                       </div>
                     </TooltipContent>
@@ -82,22 +85,22 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
           </div>
         </div>
         
-        <div className="flex items-center mt-5 pt-3 border-t dark:border-white/5">
+        <div className="flex items-center mt-5 pt-3 border-t border-gray-200 dark:border-white/5">
           <div className="flex items-center mr-4 group/upvote">
-            <button className="upvote-button flex items-center gap-1.5 hover:bg-[#374151]/50 p-1.5 rounded-md transition-colors">
+            <button className="upvote-button flex items-center gap-1.5 hover:bg-gray-100 dark:hover:bg-[#374151]/50 p-1.5 rounded-md transition-colors">
               <ChevronUp className="w-4 h-4 text-violet-400 group-hover/upvote:text-forum-lavender transition-all 
                 group-hover/upvote:scale-110 dark:group-hover/upvote:text-forum-cyan" />
-              <span className="text-sm text-gray-300 group-hover/upvote:text-white transition-colors">
+              <span className="text-sm text-gray-700 group-hover/upvote:text-gray-900 dark:text-gray-300 dark:group-hover/upvote:text-white transition-colors">
                 {thread.upvotes}
               </span>
             </button>
           </div>
           
-          <div className="flex items-center text-xs text-gray-400 group/replies">
-            <button className="flex items-center gap-1.5 hover:bg-[#374151]/50 p-1.5 rounded-md transition-colors">
+          <div className="flex items-center text-xs text-gray-600 group/replies dark:text-gray-400">
+            <button className="flex items-center gap-1.5 hover:bg-gray-100 dark:hover:bg-[#374151]/50 p-1.5 rounded-md transition-colors">
               <MessageSquare className="w-4 h-4 text-violet-400 group-hover/replies:text-forum-lavender 
                 transition-all group-hover/replies:scale-110" />
-              <span className="text-sm text-gray-300 group-hover/replies:text-white transition-colors">
+              <span className="text-sm text-gray-700 group-hover/replies:text-gray-900 dark:text-gray-300 dark:group-hover/replies:text-white transition-colors">
                 {thread.replyCount}
               </span>
             </button>
