@@ -33,7 +33,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
   };
 
   return (
-    <nav className="space-y-2 px-1">
+    <nav className="space-y-1 px-1">
       {navItems.map((item, index) => {
         const isActive = location.pathname === item.path;
         
@@ -61,25 +61,25 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
                     to={item.path}
                     className={`
                       group relative flex items-center 
-                      ${isCollapsed ? 'justify-center w-9 h-9 mx-auto' : 'w-full px-3 h-10'} 
+                      ${isCollapsed ? 'justify-center w-9 h-9 mx-auto' : 'w-full px-3 h-9'} 
                       rounded-lg transition-all duration-200
                       ${isActive 
                         ? 'bg-[#9b87f5]/10 text-[#9b87f5]' 
-                        : 'hover:bg-[#9b87f5]/10 text-gray-700 dark:text-gray-300 focus-visible:ring-2 focus-visible:ring-[#9b87f5] focus-visible:outline-none'}
+                        : 'hover:bg-[#9b87f5]/5 text-gray-700 dark:text-gray-400 focus-visible:ring-2 focus-visible:ring-[#9b87f5] focus-visible:outline-none opacity-75 hover:opacity-100'}
                     `}
                     onClick={handleMobileMenuItemClick}
                     aria-current={isActive ? 'page' : undefined}
                   >
                     <item.icon className={`
                       w-5 h-5 
-                      ${isActive ? 'text-[#9b87f5]' : 'text-gray-700 dark:text-gray-300 group-hover:text-[#9b87f5]'}
+                      ${isActive ? 'text-[#9b87f5]' : 'text-gray-700 dark:text-gray-400 group-hover:text-[#9b87f5]/80'}
                       transition-colors duration-200
                     `} />
                     
                     {!isCollapsed && (
                       <span className={`
                         ml-3 text-sm font-medium truncate 
-                        ${isActive ? 'text-[#9b87f5]' : 'text-gray-700 dark:text-gray-300 group-hover:text-[#9b87f5]'}
+                        ${isActive ? 'text-[#9b87f5]' : 'text-gray-700 dark:text-gray-400 group-hover:text-[#9b87f5]/80'}
                         transition-colors duration-200
                       `}>
                         {item.label}

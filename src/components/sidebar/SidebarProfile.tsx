@@ -32,20 +32,20 @@ const SidebarProfile: React.FC<SidebarProfileProps> = ({
       transition={{
         duration: 0.3
       }}
-      className="w-full pt-4 pb-4"
+      className="w-full pt-2 pb-2"
     >
       <Link 
         to="/profile" 
         className={`
           group flex items-center ${isCollapsed ? 'justify-center' : 'justify-start'} 
-          p-2 rounded-lg transition-colors hover:bg-sidebar-accent
+          p-1.5 rounded-lg transition-colors hover:bg-sidebar-accent
           dark:hover:bg-white/5 dark:hover:shadow-glass-highlight
         `}
       >
         <Avatar 
           className={`
             transition-all duration-300 
-            ${isCollapsed ? 'h-10 w-10' : 'h-10 w-10'} 
+            ${isCollapsed ? 'h-8 w-8' : 'h-8 w-8'} 
             border-2 border-forum-lavender/50
             dark:border-forum-magenta/60
             flex-shrink-0
@@ -61,13 +61,13 @@ const SidebarProfile: React.FC<SidebarProfileProps> = ({
             className="flex items-center justify-center" 
           />
           <AvatarFallback>
-            <User className="h-5 w-5 text-muted-foreground dark:text-white" />
+            <User className="h-4 w-4 text-muted-foreground dark:text-white" />
           </AvatarFallback>
         </Avatar>
         
         {!isCollapsed && (
-          <div className="ml-3 flex-grow overflow-hidden min-w-0">
-            <p className="font-medium text-sm truncate dark:text-white">{profile.name}</p>
+          <div className="ml-2 flex-grow overflow-hidden min-w-0">
+            <p className="font-medium text-xs truncate dark:text-white">{profile.name}</p>
             <p className="text-xs text-muted-foreground truncate dark:text-gray-400">{profile.role}</p>
           </div>
         )}

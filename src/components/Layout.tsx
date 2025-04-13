@@ -17,6 +17,15 @@ const Layout = ({ children, pageTitle }: LayoutProps) => {
 
   // Listen for sidebar state changes
   useEffect(() => {
+    try {
+      const savedState = localStorage.getItem('sidebarCollapsed');
+      if (savedState !== null) {
+        setIsCollapsed(JSON.parse(savedState));
+      }
+    } catch (error) {
+      console.error('Error retrieving sidebar state from localStorage:', error);
+    }
+    
     const sidebar = document.getElementById('sidebar');
     
     if (!sidebar) return;
@@ -26,7 +35,7 @@ const Layout = ({ children, pageTitle }: LayoutProps) => {
       mutations.forEach((mutation) => {
         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
           const sidebarEl = mutation.target as HTMLElement;
-          const isCurrentlyCollapsed = sidebarEl.classList.contains('w-16') || 
+          const isCurrentlyCollapsed = sidebarEl.classList.contains('w-[72px]') || 
                                   !sidebarEl.classList.contains('translate-x-0');
           setIsCollapsed(isCurrentlyCollapsed);
         }
@@ -57,18 +66,18 @@ const Layout = ({ children, pageTitle }: LayoutProps) => {
 
   return (
     <div className="flex min-h-screen bg-gradient-to-b from-background to-background/95 dark:from-[#0D1321] dark:to-[#161b29]">
-      {/* Sidebar container */}
-      <div className="flex-shrink-0">
-        <Sidebar 
-          isMobileMenuOpen={isMobileMenuOpen} 
-          setIsMobileMenuOpen={setIsMobileMenuOpen} 
-        />
-      </div>
+      {/* Sidebar */}
+      <Sidebar 
+        isMobileMenuOpen={isMobileMenuOpen} 
+        setIsMobileMenuOpen={setIsMobileMenuOpen} 
+      />
       
       {/* Main content area - flexible width with transition */}
       <main 
-        className={`flex-grow overflow-x-hidden transition-all duration-300 ease-in-out
-                   ${isCollapsed ? 'ml-0 md:ml-16' : 'ml-0 md:ml-64'}`}
+        className={cn(
+          "flex-grow overflow-x-hidden transition-all duration-300 ease-in-out",
+          isCollapsed ? "md:pl-[72px]" : "md:pl-[240px]",
+        )}
       >
         {/* Sticky header */}
         <div 
@@ -78,7 +87,7 @@ const Layout = ({ children, pageTitle }: LayoutProps) => {
                     ${isScrolled ? 'shadow-md dark:shadow-neon-glow/10' : ''}`}
         >
           <div className="flex items-center gap-3">
-            {/* Redesigned Mobile menu button with improved styling */}
+            {/* Mobile menu button with improved styling */}
             <Button
               variant="ghost"
               size="icon"
