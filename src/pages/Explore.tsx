@@ -1,21 +1,19 @@
+
 import Layout from '@/components/Layout';
 import ThreadsList from '@/components/ThreadsList';
-import { threads } from '@/data/mockData';
-import { Compass } from 'lucide-react';
+import { threads, categories } from '@/data/mockData';
+import { Compass, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { Button } from '@/components/ui/button';
 
 const Explore = () => {
   const [activeFilter, setActiveFilter] = useState<string>("all");
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   
-  const categories = [
+  const categoryItems = [
     { id: "all", label: "All" },
-    { id: "technology", label: "Technology" },
-    { id: "arts", label: "Arts & Creativity" },
-    { id: "books", label: "Books & Literature" },
-    { id: "health", label: "Health & Wellness" },
-    { id: "food", label: "Food & Cooking" },
-    { id: "science", label: "Science" },
+    ...categories.map(category => ({ id: category.id, label: category.name }))
   ];
   
   const filteredThreads = activeFilter === "all" 
@@ -24,6 +22,20 @@ const Explore = () => {
         thread.category.id === activeFilter || 
         thread.tags.includes(activeFilter)
       );
+  
+  const handleScroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 200;
+      const newScrollLeft = direction === 'left' 
+        ? scrollContainerRef.current.scrollLeft - scrollAmount 
+        : scrollContainerRef.current.scrollLeft + scrollAmount;
+      
+      scrollContainerRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      });
+    }
+  };
   
   return (
     <Layout>
@@ -47,22 +59,53 @@ const Explore = () => {
         </div>
       </div>
       
-      <div className="mb-10">
-        <ToggleGroup type="single" value={activeFilter} onValueChange={(value) => value && setActiveFilter(value)}>
-          {categories.map((category) => (
-            <ToggleGroupItem 
-              key={category.id} 
-              value={category.id}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
-                activeFilter === category.id 
-                  ? "bg-forum-lavender text-white shadow-md" 
-                  : "bg-forum-lavender/10 text-forum-lavender hover:bg-forum-lavender/20 dark:bg-forum-lavender/20"
-              }`}
+      <div className="relative mb-10">
+        <div className="flex items-center mb-4">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="absolute left-0 z-10 bg-forum-lavender/10 hover:bg-forum-lavender/20 text-forum-lavender"
+            onClick={() => handleScroll('left')}
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </Button>
+          
+          <div 
+            ref={scrollContainerRef}
+            className="flex items-center overflow-x-auto scroll-smooth scrollbar-hide py-2 px-10 max-w-full"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            <ToggleGroup 
+              type="single" 
+              value={activeFilter} 
+              onValueChange={(value) => value && setActiveFilter(value)}
+              className="inline-flex flex-nowrap min-w-max"
             >
-              {category.label}
-            </ToggleGroupItem>
-          ))}
-        </ToggleGroup>
+              {categoryItems.map((category) => (
+                <ToggleGroupItem 
+                  key={category.id} 
+                  value={category.id}
+                  className={`rounded-full px-6 py-3 text-sm font-medium transition-all mx-1 whitespace-nowrap ${
+                    activeFilter === category.id 
+                      ? "bg-forum-lavender text-white shadow-md" 
+                      : "bg-forum-lavender/10 text-forum-lavender hover:bg-forum-lavender/20 dark:bg-forum-lavender/20"
+                  }`}
+                >
+                  {category.label}
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
+          </div>
+          
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="absolute right-0 z-10 bg-forum-lavender/10 hover:bg-forum-lavender/20 text-forum-lavender"
+            onClick={() => handleScroll('right')}
+          >
+            <ChevronRight className="h-5 w-5" />
+          </Button>
+        </div>
       </div>
       
       <section>
@@ -77,6 +120,12 @@ const Explore = () => {
         </div>
         <ThreadsList threads={filteredThreads} />
       </section>
+      
+      <style jsx global>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </Layout>
   );
 };
