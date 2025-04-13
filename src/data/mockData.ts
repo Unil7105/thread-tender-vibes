@@ -214,6 +214,42 @@ export const threads: Thread[] = [
           },
         ],
       },
+      {
+        id: 'reply3',
+        content: 'Don\'t overthink it. Pick any popular language and start building things. The specific language matters less than developing problem-solving skills and understanding programming concepts.',
+        author: users[9],
+        createdAt: '2025-04-10T14:22:00Z',
+        upvotes: 19,
+        downvotes: 0,
+        reactions: {
+          '💯': 12,
+          '🧠': 8,
+        },
+      },
+      {
+        id: 'reply4',
+        content: 'For mobile apps specifically, consider Swift (iOS) or Kotlin (Android). But if you want to cover both platforms with one language, JavaScript with React Native is a solid choice.',
+        author: users[5],
+        createdAt: '2025-04-10T16:45:00Z',
+        upvotes: 7,
+        downvotes: 0,
+        reactions: {
+          '👍': 3,
+          '🔥': 2,
+        },
+      },
+      {
+        id: 'reply5',
+        content: 'I started with HTML/CSS/JavaScript and found it very rewarding because you can see results immediately in the browser. Great for motivation!',
+        author: users[8],
+        createdAt: '2025-04-10T19:12:00Z',
+        upvotes: 10,
+        downvotes: 0,
+        reactions: {
+          '❤️': 4,
+          '✨': 6,
+        },
+      }
     ],
   },
   {
@@ -229,8 +265,85 @@ export const threads: Thread[] = [
     updatedAt: '2025-04-09T14:22:00Z',
     upvotes: 31,
     downvotes: 2,
-    replyCount: 5,
+    replyCount: 9,
     tags: ['AI', 'career', 'future'],
+    replies: [
+      {
+        id: 'reply_t2_1',
+        content: 'I believe AI will be more of an augmentation tool than a replacement. It\'s already helping with code completion and refactoring, but the creative problem-solving aspects of programming still need human intelligence.',
+        author: users[0],
+        createdAt: '2025-04-09T15:10:00Z',
+        upvotes: 20,
+        downvotes: 0,
+        reactions: {
+          '👍': 8,
+          '💡': 12,
+        },
+      },
+      {
+        id: 'reply_t2_2',
+        content: 'AI is already changing how I work. I use it for boilerplate code, debugging, and learning new concepts. But I still need to understand what I\'m implementing and make critical architecture decisions.',
+        author: users[4],
+        createdAt: '2025-04-09T16:30:00Z',
+        upvotes: 15,
+        downvotes: 0,
+        reactions: {
+          '💯': 7,
+          '🤖': 4,
+        },
+      },
+      {
+        id: 'reply_t2_3',
+        content: 'Junior developers should be concerned. A lot of entry-level tasks that used to be learning opportunities are being automated away. The bar for entry is rising.',
+        author: users[8],
+        createdAt: '2025-04-09T17:45:00Z',
+        upvotes: 8,
+        downvotes: 5,
+        reactions: {
+          '🤔': 12,
+        },
+        replies: [
+          {
+            id: 'reply_t2_3_1',
+            content: 'I disagree. AI tools are creating new types of entry-level positions focused on prompt engineering and AI integration. Junior devs just need to adapt their skillset.',
+            author: users[3],
+            createdAt: '2025-04-09T18:20:00Z',
+            upvotes: 14,
+            downvotes: 1,
+            reactions: {
+              '👏': 5,
+              '💡': 4,
+            },
+            parentId: 'reply_t2_3',
+          },
+          {
+            id: 'reply_t2_3_2',
+            content: 'As a junior dev myself, I\'ve found AI tools incredibly helpful for learning. They explain concepts and help me understand code patterns that would take longer to learn otherwise.',
+            author: users[7],
+            createdAt: '2025-04-09T19:05:00Z',
+            upvotes: 9,
+            downvotes: 0,
+            reactions: {
+              '❤️': 3,
+              '💯': 6,
+            },
+            parentId: 'reply_t2_3',
+          }
+        ]
+      },
+      {
+        id: 'reply_t2_4',
+        content: 'We\'ll see more emphasis on domain expertise. AI can generate code, but you still need people who understand the business problems they\'re solving and can validate the AI\'s output.',
+        author: users[11],
+        createdAt: '2025-04-09T20:15:00Z',
+        upvotes: 17,
+        downvotes: 0,
+        reactions: {
+          '💯': 9,
+          '🧠': 7,
+        },
+      }
+    ]
   },
   
   // Arts & Creativity threads (id: 2)
@@ -247,8 +360,72 @@ export const threads: Thread[] = [
     updatedAt: '2025-04-11T09:15:00Z',
     upvotes: 18,
     downvotes: 1,
-    replyCount: 6,
+    replyCount: 8,
     tags: ['digital art', 'traditional art', 'comparison'],
+    replies: [
+      {
+        id: 'reply_a1_1',
+        content: 'The biggest pro of digital art is the undo button! Also, it\'s much easier to experiment with different color schemes and effects without having to start over.',
+        author: users[5],
+        createdAt: '2025-04-11T10:30:00Z',
+        upvotes: 12,
+        downvotes: 0,
+        reactions: {
+          '👍': 8,
+          '✨': 5,
+        },
+      },
+      {
+        id: 'reply_a1_2',
+        content: 'Traditional art has a tactile quality that digital can\'t match. The feel of the brush on canvas, the unpredictable way paints blend together... there\'s a certain magic to it.',
+        author: users[2],
+        createdAt: '2025-04-11T11:15:00Z',
+        upvotes: 14,
+        downvotes: 0,
+        reactions: {
+          '❤️': 9,
+          '🎨': 7,
+        },
+        replies: [
+          {
+            id: 'reply_a1_2_1',
+            content: 'I agree! Digital art is convenient, but sometimes I miss the happy accidents and organic textures you get with traditional mediums.',
+            author: users[9],
+            createdAt: '2025-04-11T12:40:00Z',
+            upvotes: 7,
+            downvotes: 0,
+            reactions: {
+              '💯': 4,
+            },
+            parentId: 'reply_a1_2',
+          }
+        ]
+      },
+      {
+        id: 'reply_a1_3',
+        content: 'Digital art is more forgiving for beginners. You can work in layers, easily resize and modify elements, and the learning curve isn\'t as steep as mastering traditional techniques.',
+        author: users[3],
+        createdAt: '2025-04-11T13:25:00Z',
+        upvotes: 10,
+        downvotes: 1,
+        reactions: {
+          '👍': 6,
+          '💡': 5,
+        },
+      },
+      {
+        id: 'reply_a1_4',
+        content: 'Cost is a factor too. Traditional art requires constant supply replenishment, while digital has a higher upfront cost (tablet, software) but lower ongoing expenses.',
+        author: users[7],
+        createdAt: '2025-04-11T15:10:00Z',
+        upvotes: 9,
+        downvotes: 0,
+        reactions: {
+          '💰': 7,
+          '👍': 3,
+        },
+      }
+    ]
   },
   {
     id: 'a2',
@@ -265,6 +442,82 @@ export const threads: Thread[] = [
     downvotes: 0,
     replyCount: 12,
     tags: ['inspiration', 'creative process', 'routines'],
+    replies: [
+      {
+        id: 'reply_a2_1',
+        content: 'Nature walks are my biggest inspiration. There\'s something about being surrounded by patterns and colors that weren\'t designed by humans that sparks fresh ideas.',
+        author: users[11],
+        createdAt: '2025-04-08T17:15:00Z',
+        upvotes: 15,
+        downvotes: 0,
+        reactions: {
+          '🌿': 10,
+          '💚': 8,
+        },
+      },
+      {
+        id: 'reply_a2_2',
+        content: 'I keep a dream journal. Our unconscious minds create the most fascinating imagery and narratives, and I find tapping into that helps me break away from conventional thinking.',
+        author: users[9],
+        createdAt: '2025-04-08T18:30:00Z',
+        upvotes: 12,
+        downvotes: 1,
+        reactions: {
+          '💭': 9,
+          '✨': 7,
+        },
+      },
+      {
+        id: 'reply_a2_3',
+        content: 'Museums and galleries! Seeing how other artists approach their work often gives me new perspectives. I also like to sketch in cafes and observe people.',
+        author: users[1],
+        createdAt: '2025-04-08T19:45:00Z',
+        upvotes: 14,
+        downvotes: 0,
+        reactions: {
+          '🏛️': 8,
+          '☕': 6,
+        },
+      },
+      {
+        id: 'reply_a2_4',
+        content: 'Music is essential to my creative process. Different genres put me in different moods and mindsets, which directly influences what I create.',
+        author: users[0],
+        createdAt: '2025-04-08T20:15:00Z',
+        upvotes: 18,
+        downvotes: 0,
+        reactions: {
+          '🎵': 12,
+          '🎧': 9,
+        },
+        replies: [
+          {
+            id: 'reply_a2_4_1',
+            content: 'Same here! Do you have specific playlists for different types of creative work? I find ambient music great for focused design work but something more energetic for brainstorming.',
+            author: users[8],
+            createdAt: '2025-04-08T21:00:00Z',
+            upvotes: 6,
+            downvotes: 0,
+            reactions: {
+              '👍': 4,
+            },
+            parentId: 'reply_a2_4',
+          }
+        ]
+      },
+      {
+        id: 'reply_a2_5',
+        content: 'Constraints paradoxically boost my creativity. Setting arbitrary limitations (like using only three colors or creating within a specific theme) forces me to think more creatively.',
+        author: users[4],
+        createdAt: '2025-04-08T22:30:00Z',
+        upvotes: 20,
+        downvotes: 0,
+        reactions: {
+          '💡': 14,
+          '🧠': 11,
+        },
+      }
+    ]
   },
   
   // Books & Literature threads (id: 3)
@@ -283,6 +536,82 @@ export const threads: Thread[] = [
     downvotes: 1,
     replyCount: 12,
     tags: ['books', 'magical realism', 'literature'],
+    replies: [
+      {
+        id: 'reply_2_1',
+        content: '"The House of the Spirits" by Isabel Allende would be a natural next step. It has a similar multi-generational family saga with magical elements woven throughout.',
+        author: users[1],
+        createdAt: '2025-04-09T16:10:00Z',
+        upvotes: 21,
+        downvotes: 0,
+        reactions: {
+          '📚': 15,
+          '✨': 12,
+        },
+      },
+      {
+        id: 'reply_2_2',
+        content: 'Try "Midnight\'s Children" by Salman Rushdie. It\'s a beautiful blend of history, politics, and magical realism set in India during independence.',
+        author: users[3],
+        createdAt: '2025-04-09T17:25:00Z',
+        upvotes: 18,
+        downvotes: 0,
+        reactions: {
+          '👍': 10,
+          '🪄': 7,
+        },
+        replies: [
+          {
+            id: 'reply_2_2_1',
+            content: 'Rushdie\'s language is more dense than Márquez, but absolutely worth the effort. His work "The Satanic Verses" is also brilliant if you enjoy Midnight\'s Children.',
+            author: users[10],
+            createdAt: '2025-04-09T18:15:00Z',
+            upvotes: 9,
+            downvotes: 0,
+            reactions: {
+              '💯': 6,
+            },
+            parentId: 'reply_2_2',
+          }
+        ]
+      },
+      {
+        id: 'reply_2_3',
+        content: 'For something a bit different but still in the magical realism vein, "The Wind-Up Bird Chronicle" by Haruki Murakami blends the mundane with the surreal in fascinating ways.',
+        author: users[7],
+        createdAt: '2025-04-09T19:05:00Z',
+        upvotes: 15,
+        downvotes: 0,
+        reactions: {
+          '🐦': 8,
+          '🇯🇵': 6,
+        },
+      },
+      {
+        id: 'reply_2_4',
+        content: '"Like Water for Chocolate" by Laura Esquivel is a wonderful magical realism novel that incorporates food and cooking with emotion and magic.',
+        author: users[2],
+        createdAt: '2025-04-09T20:30:00Z',
+        upvotes: 14,
+        downvotes: 0,
+        reactions: {
+          '🍽️': 9,
+          '❤️': 7,
+        },
+      },
+      {
+        id: 'reply_2_5',
+        content: 'If you\'re open to contemporary authors, "The Night Circus" by Erin Morgenstern has beautiful magical realism elements in a historical setting.',
+        author: users[9],
+        createdAt: '2025-04-09T21:40:00Z',
+        upvotes: 12,
+        downvotes: 1,
+        reactions: {
+          '🎪': 8,
+          '✨': 5,
+        },
+      }
+    ]
   },
   {
     id: 'b2',
@@ -299,6 +628,83 @@ export const threads: Thread[] = [
     downvotes: 3,
     replyCount: 16,
     tags: ['ebooks', 'physical books', 'reading habits'],
+    replies: [
+      {
+        id: 'reply_b2_1',
+        content: 'I\'ll always prefer physical books. There\'s something irreplaceable about the tactile experience – the feel of turning pages, the smell of paper, being able to see your progress physically.',
+        author: users[0],
+        createdAt: '2025-04-07T12:15:00Z',
+        upvotes: 28,
+        downvotes: 1,
+        reactions: {
+          '📚': 18,
+          '❤️': 14,
+        },
+      },
+      {
+        id: 'reply_b2_2',
+        content: 'I\'ve switched almost entirely to e-books. The convenience of carrying my entire library in one device and being able to read in the dark are game-changers for me.',
+        author: users[5],
+        createdAt: '2025-04-07T13:40:00Z',
+        upvotes: 19,
+        downvotes: 2,
+        reactions: {
+          '💡': 10,
+          '👍': 8,
+        },
+        replies: [
+          {
+            id: 'reply_b2_2_1',
+            content: 'Same here. Also, instant dictionary lookup and adjustable font sizes have made reading much more accessible for me as someone with minor visual impairments.',
+            author: users[10],
+            createdAt: '2025-04-07T14:25:00Z',
+            upvotes: 15,
+            downvotes: 0,
+            reactions: {
+              '💯': 7,
+              '👏': 5,
+            },
+            parentId: 'reply_b2_2',
+          }
+        ]
+      },
+      {
+        id: 'reply_b2_3',
+        content: 'I use different formats for different purposes. Physical books for deep reading at home, e-books for travel, and audiobooks for commuting. Each has its place!',
+        author: users[2],
+        createdAt: '2025-04-07T15:05:00Z',
+        upvotes: 32,
+        downvotes: 0,
+        reactions: {
+          '🧠': 20,
+          '👌': 15,
+        },
+      },
+      {
+        id: 'reply_b2_4',
+        content: 'Physical books have proven remarkably resilient throughout history. They don\'t need batteries, won\'t become obsolete with changing technology, and can last centuries with proper care.',
+        author: users[8],
+        createdAt: '2025-04-07T16:30:00Z',
+        upvotes: 24,
+        downvotes: 0,
+        reactions: {
+          '🪦': 12,
+          '⏳': 9,
+        },
+      },
+      {
+        id: 'reply_b2_5',
+        content: 'The environmental impact is worth considering. E-readers have an upfront carbon footprint from manufacturing, but if you read hundreds of books on one device, you may use fewer resources in the long run.',
+        author: users[11],
+        createdAt: '2025-04-07T17:45:00Z',
+        upvotes: 17,
+        downvotes: 2,
+        reactions: {
+          '🌿': 11,
+          '🌎': 8,
+        },
+      }
+    ]
   },
   
   // Health & Wellness threads (id: 4)
@@ -317,277 +723,31 @@ export const threads: Thread[] = [
     downvotes: 2,
     replyCount: 15,
     tags: ['remote work', 'mental health', 'productivity'],
-  },
-  {
-    id: 'h2',
-    title: 'Meditation techniques for beginners with busy schedules',
-    content: 'I\'ve been trying to start a meditation practice but finding it hard to fit into my busy day. Any recommendations for short but effective techniques?',
-    author: users[6],
-    category: {
-      id: '4',
-      name: 'Health & Wellness',
-    },
-    createdAt: '2025-04-06T08:30:00Z',
-    updatedAt: '2025-04-06T08:30:00Z',
-    upvotes: 33,
-    downvotes: 0,
-    replyCount: 9,
-    tags: ['meditation', 'beginners', 'busy lifestyle'],
-  },
-  
-  // Food & Cooking threads (id: 5)
-  {
-    id: 'f1',
-    title: 'Easy but impressive dinner party recipes?',
-    content: 'I\'m hosting a dinner party for 6 people this weekend and want to make something that seems fancy but isn\'t too complicated. Any suggestions?',
-    author: users[7],
-    category: {
-      id: '5',
-      name: 'Food & Cooking',
-    },
-    createdAt: '2025-04-10T17:20:00Z',
-    updatedAt: '2025-04-10T17:20:00Z',
-    upvotes: 21,
-    downvotes: 0,
-    replyCount: 8,
-    tags: ['recipes', 'dinner party', 'cooking'],
-  },
-  {
-    id: 'f2',
-    title: 'Favorite international cuisines to cook at home?',
-    content: 'I\'ve been exploring different cuisines in my home cooking and would love to hear which international foods others enjoy making. What cuisines do you find approachable for home cooking?',
-    author: users[2],
-    category: {
-      id: '5',
-      name: 'Food & Cooking',
-    },
-    createdAt: '2025-04-08T13:40:00Z',
-    updatedAt: '2025-04-08T13:40:00Z',
-    upvotes: 29,
-    downvotes: 1,
-    replyCount: 11,
-    tags: ['international cuisine', 'home cooking', 'recipes'],
-  },
-  
-  // Science threads (id: 6)
-  {
-    id: 's1',
-    title: 'Recent scientific discoveries that blew your mind',
-    content: 'What are some recent scientific breakthroughs or discoveries that you found particularly fascinating or surprising?',
-    author: users[9],
-    category: {
-      id: '6',
-      name: 'Science',
-    },
-    createdAt: '2025-04-09T10:15:00Z',
-    updatedAt: '2025-04-09T10:15:00Z',
-    upvotes: 36,
-    downvotes: 0,
-    replyCount: 7,
-    tags: ['discoveries', 'breakthrough', 'research'],
-  },
-  {
-    id: 's2',
-    title: 'How to explain complex scientific concepts to children?',
-    content: 'My 8-year-old is very curious about science, especially astronomy and physics. Any tips on how to explain complex concepts in a way that\'s accurate but understandable?',
-    author: users[3],
-    category: {
-      id: '6',
-      name: 'Science',
-    },
-    createdAt: '2025-04-07T16:25:00Z',
-    updatedAt: '2025-04-07T16:25:00Z',
-    upvotes: 24,
-    downvotes: 1,
-    replyCount: 9,
-    tags: ['education', 'children', 'science communication'],
-  },
-  
-  // Travel & Adventure threads (id: 7)
-  {
-    id: '4',
-    title: 'Best Travel Destinations for Solo Backpackers in 2025',
-    content: 'I\'m planning a solo backpacking trip this year and looking for recommendations. What are some must-visit destinations that are safe, budget-friendly, and offer unique experiences?',
-    author: users[6],
-    category: {
-      id: '7',
-      name: 'Travel & Adventure',
-    },
-    createdAt: '2025-04-12T14:30:00Z',
-    updatedAt: '2025-04-12T14:30:00Z',
-    upvotes: 42,
-    downvotes: 1,
-    replyCount: 9,
-    tags: ['travel', 'backpacking', 'solo travel'],
-  },
-  {
-    id: 'tr2',
-    title: 'Sustainable travel practices: How do you reduce your environmental impact?',
-    content: 'I love traveling but am increasingly concerned about the environmental impact. What practices have you adopted to make your travels more sustainable?',
-    author: users[0],
-    category: {
-      id: '7',
-      name: 'Travel & Adventure',
-    },
-    createdAt: '2025-04-05T09:50:00Z',
-    updatedAt: '2025-04-05T09:50:00Z',
-    upvotes: 31,
-    downvotes: 2,
-    replyCount: 14,
-    tags: ['sustainable travel', 'eco-friendly', 'environment'],
-  },
-  
-  // Music & Concerts threads (id: 8)
-  {
-    id: '6',
-    title: 'Exploring Emerging Music Genres and Subcultures',
-    content: 'What are some fascinating emerging music genres or subcultures that are gaining traction? Share your insights and discoveries about underground music scenes.',
-    author: users[8],
-    category: {
-      id: '8',
-      name: 'Music & Concerts',
-    },
-    createdAt: '2025-04-10T16:45:00Z',
-    updatedAt: '2025-04-10T16:45:00Z',
-    upvotes: 33,
-    downvotes: 1,
-    replyCount: 7,
-    tags: ['music', 'genres', 'culture'],
-  },
-  {
-    id: 'm2',
-    title: 'How has streaming changed your music listening habits?',
-    content: 'With streaming platforms dominating music consumption, I\'m curious how it\'s changed the way people discover and listen to music. Has it broadened your horizons or created echo chambers?',
-    author: users[4],
-    category: {
-      id: '8',
-      name: 'Music & Concerts',
-    },
-    createdAt: '2025-04-06T12:30:00Z',
-    updatedAt: '2025-04-06T12:30:00Z',
-    upvotes: 26,
-    downvotes: 1,
-    replyCount: 11,
-    tags: ['streaming', 'music consumption', 'discovery'],
-  },
-  
-  // Gaming threads (id: 9)
-  {
-    id: '5',
-    title: 'Indie Game Developers: Challenges and Success Stories',
-    content: 'For those who have ventured into independent game development, what were the biggest challenges you faced? How did you overcome them, and what advice would you give to aspiring indie developers?',
-    author: users[7],
-    category: {
-      id: '9',
-      name: 'Gaming',
-    },
-    createdAt: '2025-04-11T11:15:00Z',
-    updatedAt: '2025-04-11T11:15:00Z',
-    upvotes: 56,
-    downvotes: 2,
-    replyCount: 14,
-    tags: ['game development', 'indie games', 'programming'],
-  },
-  {
-    id: 'g2',
-    title: 'Do narrative-driven games provide more meaningful experiences than competitive ones?',
-    content: 'I\'ve always preferred story-rich single-player games over competitive multiplayer. I\'m curious about others\' perspectives on which type of gaming experience feels more meaningful or rewarding.',
-    author: users[1],
-    category: {
-      id: '9',
-      name: 'Gaming',
-    },
-    createdAt: '2025-04-07T19:15:00Z',
-    updatedAt: '2025-04-07T19:15:00Z',
-    upvotes: 39,
-    downvotes: 5,
-    replyCount: 17,
-    tags: ['narrative games', 'competitive gaming', 'game design'],
-  },
-  {
-    id: 'climate_tech_innovation',
-    title: 'Innovative Climate Technologies Reshaping Our Future',
-    content: 'As global warming continues to be a pressing issue, what breakthrough technologies do you believe have the most potential to mitigate climate change? From carbon capture to renewable energy solutions, let\'s discuss the innovations that could make a real difference.',
-    author: users[11],
-    category: {
-      id: '6',
-      name: 'Science',
-    },
-    createdAt: '2025-04-15T10:30:00Z',
-    updatedAt: '2025-04-15T10:30:00Z',
-    upvotes: 65,
-    downvotes: 3,
-    replyCount: 22,
-    tags: ['climate-tech', 'sustainability', 'innovation', 'renewable-energy', 'carbon-capture'],
     replies: [
       {
-        id: 'reply_climate_1',
-        content: 'Direct Air Capture (DAC) technologies are promising. Companies like Climeworks are already deploying scalable carbon removal solutions that could be game-changers.',
-        author: users[0],
-        createdAt: '2025-04-15T11:45:00Z',
-        upvotes: 18,
-        downvotes: 1,
-        reactions: {
-          '🌍': 12,
-          '💡': 6
-        }
-      },
-      {
-        id: 'reply_climate_2',
-        content: 'I\'m particularly excited about advances in fusion energy. While still experimental, technologies like those being developed at ITER could provide virtually unlimited, clean energy.',
-        author: users[2],
-        createdAt: '2025-04-15T12:15:00Z',
-        upvotes: 22,
+        id: 'reply_3_1',
+        content: 'Creating a dedicated workspace that you can physically leave at the end of the day has been crucial for me. It helps create that psychological separation between "work mode" and "home mode."',
+        author: users[1],
+        createdAt: '2025-04-11T10:30:00Z',
+        upvotes: 31,
         downvotes: 0,
         reactions: {
-          '⚛️': 15,
-          '🚀': 7
+          '💯': 22,
+          '👍': 18,
+        },
+      },
+      {
+        id: 'reply_3_2',
+        content: 'I stick to strict working hours and use calendar blocking for both work tasks AND personal time. When 5:30 hits, I close my laptop and don\'t check emails until the next day.',
+        author: users[9],
+        createdAt: '2025-04-11T11:15:00Z',
+        upvotes: 27,
+        downvotes: 1,
+        reactions: {
+          '⌚': 15,
+          '🧠': 10,
         },
         replies: [
           {
-            id: 'reply_climate_2_1',
-            content: 'Fusion is promising, but we also need to invest heavily in current renewable technologies like solar and wind to bridge the gap.',
-            author: users[9],
-            createdAt: '2025-04-15T13:30:00Z',
-            upvotes: 10,
-            downvotes: 0,
-            reactions: {
-              '👍': 8
-            },
-            parentId: 'reply_climate_2'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'future_of_remote_work',
-    title: 'The Evolution of Remote Work: Challenges and Opportunities',
-    content: 'As we move further into 2025, remote work continues to transform. What are the most significant challenges and opportunities you see in distributed teams? How are companies adapting their strategies?',
-    author: users[5],
-    category: {
-      id: '4',
-      name: 'Health & Wellness',
-    },
-    createdAt: '2025-04-14T14:20:00Z',
-    updatedAt: '2025-04-14T14:20:00Z',
-    upvotes: 52,
-    downvotes: 2,
-    replyCount: 18,
-    tags: ['remote-work', 'digital-nomads', 'work-life-balance', 'technology', 'future-of-work'],
-    replies: [
-      {
-        id: 'reply_remote_1',
-        content: 'Asynchronous communication and strong documentation have been key to our team\'s success. Tools like Notion and Slack have been game-changers.',
-        author: users[1],
-        createdAt: '2025-04-14T15:10:00Z',
-        upvotes: 15,
-        downvotes: 0,
-        reactions: {
-          '💻': 10,
-          '🌐': 5
-        }
-      }
-    ]
-  }
-];
+            id: 'reply_3_2_1',
+            content: 'This is so important! I also use different browser profiles for work and personal use to keep them separated, and have notifications turned off outside working hours.',
