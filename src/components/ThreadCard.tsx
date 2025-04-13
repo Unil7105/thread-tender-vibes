@@ -162,7 +162,7 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
                 initial="initial"
                 whileHover="hover"
               >
-                <ChevronUp className="w-4 h-4 text-forum-lavender" />
+                <ChevronUp className="w-4 h-4 text-[#8B5CF6]" /> {/* Updated upvote icon color */}
                 <span className="text-sm font-medium text-[#4b5563] dark:text-gray-300">
                   {thread.upvotes}
                 </span>
@@ -178,7 +178,7 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
                   whileHover={{ rotate: [0, -5, 5, -3, 3, 0] }}
                   transition={{ duration: 0.5 }}
                 >
-                  <MessageSquare className="w-4 h-4 text-forum-lavender" />
+                  <MessageSquare className="w-4 h-4 text-[#0FA0CE]" /> {/* Updated reply icon color */}
                 </motion.div>
                 <span className="text-sm font-medium text-[#4b5563] dark:text-gray-300">
                   {thread.replyCount}
@@ -188,7 +188,7 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
             
             {/* Reading time */}
             <div className="flex items-center gap-1.5 text-xs font-medium text-[#6b7280] dark:text-gray-400 bg-[#f9f9fb] dark:bg-[#111827]/30 px-2.5 py-1.5 rounded-lg">
-              <Clock className="w-3.5 h-3.5 text-forum-lavender/80" />
+              <Clock className="w-3.5 h-3.5 text-[#8B5CF6]/80" />
               {Math.ceil(thread.content.length / 800)} min read
             </div>
           </div>
