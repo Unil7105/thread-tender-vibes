@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ChevronLeft, ChevronRight, PanelLeft, PanelRight } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 
 interface SidebarCollapseButtonProps {
   isCollapsed: boolean;
@@ -13,17 +13,11 @@ const SidebarCollapseButton: React.FC<SidebarCollapseButtonProps> = ({
 }) => {
   return (
     <button
-      className="fixed z-50 md:flex items-center justify-center w-8 h-8 rounded-md bg-primary text-primary-foreground shadow-md hover:bg-primary/90 transition-all duration-300"
-      style={{
-        bottom: '20px',
-        left: isCollapsed ? '14px' : '240px',
-      }}
+      className="absolute top-6 right-3 z-50 flex items-center justify-center w-6 h-6 rounded-full bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white transition-all duration-300"
       onClick={toggleSidebar}
-      aria-label="Toggle sidebar"
+      aria-label="Collapse sidebar"
     >
-      {isCollapsed 
-        ? <PanelRight className="w-4 h-4" /> 
-        : <PanelLeft className="w-4 h-4" />}
+      <ChevronLeft className="w-4 h-4" />
     </button>
   );
 };

@@ -2,5 +2,5 @@
 import { Sidebar } from './Sidebar';
 import SidebarProfile from './SidebarProfile';
 
-export { Sidebar };
+export default Sidebar;
 export { SidebarProfile };

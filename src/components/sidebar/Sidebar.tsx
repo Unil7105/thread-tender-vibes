@@ -54,10 +54,12 @@ const Sidebar = () => {
         handleMobileMenuToggle={handleMobileMenuToggle} 
       />
 
-      <SidebarCollapseButton 
-        isCollapsed={isCollapsed} 
-        toggleSidebar={toggleSidebar} 
-      />
+      {!isCollapsed && (
+        <SidebarCollapseButton 
+          isCollapsed={isCollapsed} 
+          toggleSidebar={toggleSidebar} 
+        />
+      )}
 
       {isMobileMenuOpen && (
         <SidebarOverlay onClick={() => setIsMobileMenuOpen(false)} />
@@ -67,6 +69,7 @@ const Sidebar = () => {
         isMobileMenuOpen={isMobileMenuOpen}
         isCollapsed={isCollapsed}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
+        toggleSidebar={toggleSidebar}
       />
     </>
   );

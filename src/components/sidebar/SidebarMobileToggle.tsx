@@ -13,14 +13,14 @@ const SidebarMobileToggle: React.FC<SidebarMobileToggleProps> = ({
   return (
     <button 
       id="mobile-toggle"
-      className="fixed top-4 left-4 z-50 md:hidden p-2 rounded-lg bg-sidebar shadow-md border border-sidebar-border"
+      className="fixed top-4 left-4 z-50 md:hidden p-2 rounded-lg bg-gray-800 shadow-md border border-gray-700"
       onClick={handleMobileMenuToggle}
       aria-label="Toggle menu"
     >
       <div className="w-5 h-5 flex flex-col justify-between">
-        <span className={`block h-0.5 w-full bg-sidebar-foreground rounded transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-        <span className={`block h-0.5 w-full bg-sidebar-foreground rounded transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-        <span className={`block h-0.5 w-full bg-sidebar-foreground rounded transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+        <span className={`block h-0.5 w-full bg-gray-300 rounded transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+        <span className={`block h-0.5 w-full bg-gray-300 rounded transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+        <span className={`block h-0.5 w-full bg-gray-300 rounded transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
       </div>
     </button>
   );
