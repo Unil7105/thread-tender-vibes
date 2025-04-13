@@ -63,14 +63,6 @@ const Layout = ({ children, pageTitle }: LayoutProps) => {
         <Sidebar />
       </div>
       
-      {/* Mobile menu overlay - only visible when menu is open */}
-      {isMobileMenuOpen && (
-        <div 
-          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
-      )}
-      
       {/* Main content area - flexible width with transition */}
       <main 
         className={`flex-grow overflow-x-hidden transition-all duration-300 ease-in-out

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import SidebarMobileToggle from './SidebarMobileToggle';
 import SidebarContent from './SidebarContent';
+import SidebarOverlay from './SidebarOverlay';
 
 const Sidebar = () => {
   const location = useLocation();
@@ -36,6 +37,7 @@ const Sidebar = () => {
 
   return (
     <>
+      {/* Mobile Sidebar Toggle Component */}
       <SidebarMobileToggle 
         isMobileMenuOpen={isMobileMenuOpen} 
         isCollapsed={isCollapsed}
@@ -61,26 +63,6 @@ const Sidebar = () => {
           toggleSidebar={toggleSidebar}
         />
       </aside>
-
-      {/* Mobile Sidebar - Only visible when menu is open */}
-      {isMobileMenuOpen && (
-        <aside 
-          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          <div 
-            className="absolute top-0 left-0 h-full w-64 bg-[#f7f5ff] dark:bg-[#252332] border-r border-[#e0d8ff] dark:border-[#3a3351] shadow-xl"
-            onClick={e => e.stopPropagation()}
-          >
-            <SidebarContent 
-              isMobileMenuOpen={true}
-              isCollapsed={false}
-              setIsMobileMenuOpen={setIsMobileMenuOpen}
-              toggleSidebar={toggleSidebar}
-            />
-          </div>
-        </aside>
-      )}
     </>
   );
 };
