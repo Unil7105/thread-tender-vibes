@@ -4,12 +4,14 @@ import ThreadsList from '@/components/ThreadsList';
 import { threads, categories } from '@/data/mockData';
 import { Compass, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
 const Explore = () => {
   const [activeFilter, setActiveFilter] = useState<string>("all");
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
   
   const categoryItems = [
     { id: "all", label: "All" },
@@ -25,17 +27,59 @@ const Explore = () => {
   
   const handleScroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
-      const scrollAmount = 200;
+      const container = scrollContainerRef.current;
+      const scrollAmount = container.clientWidth / 2;
       const newScrollLeft = direction === 'left' 
-        ? scrollContainerRef.current.scrollLeft - scrollAmount 
-        : scrollContainerRef.current.scrollLeft + scrollAmount;
+        ? container.scrollLeft - scrollAmount 
+        : container.scrollLeft + scrollAmount;
       
-      scrollContainerRef.current.scrollTo({
+      container.scrollTo({
         left: newScrollLeft,
         behavior: 'smooth'
       });
     }
   };
+
+  const updateArrowVisibility = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      setShowLeftArrow(container.scrollLeft > 20);
+      setShowRightArrow(
+        container.scrollLeft < container.scrollWidth - container.clientWidth - 20
+      );
+    }
+  };
+  
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', updateArrowVisibility);
+      // Initial check
+      updateArrowVisibility();
+      
+      // Center active category on mount and when it changes
+      const activeElement = scrollContainer.querySelector(`[data-value="${activeFilter}"]`);
+      if (activeElement) {
+        setTimeout(() => {
+          const containerWidth = scrollContainer.clientWidth;
+          const elementOffset = (activeElement as HTMLElement).offsetLeft;
+          const elementWidth = (activeElement as HTMLElement).clientWidth;
+          const centerPosition = elementOffset - (containerWidth / 2) + (elementWidth / 2);
+          
+          scrollContainer.scrollTo({
+            left: centerPosition,
+            behavior: 'smooth'
+          });
+        }, 100);
+      }
+    }
+    
+    return () => {
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('scroll', updateArrowVisibility);
+      }
+    };
+  }, [activeFilter]);
   
   return (
     <Layout>
@@ -61,30 +105,33 @@ const Explore = () => {
       
       <div className="relative mb-10">
         <div className="flex items-center mb-4">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="absolute left-0 z-10 bg-forum-navy/80 hover:bg-forum-navy text-white rounded-full shadow-md dark:bg-forum-navy/90 dark:hover:bg-forum-navy/70"
-            onClick={() => handleScroll('left')}
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </Button>
+          {showLeftArrow && (
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="absolute left-0 z-10 bg-forum-navy/80 hover:bg-forum-navy text-white rounded-full shadow-md dark:bg-forum-navy/90 dark:hover:bg-forum-navy/70"
+              onClick={() => handleScroll('left')}
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </Button>
+          )}
           
           <div 
             ref={scrollContainerRef}
-            className="flex items-center overflow-x-auto scroll-smooth py-4 px-10 max-w-full scrollbar-hide bg-forum-navy/90 dark:bg-forum-navy/70 rounded-full shadow-inner"
+            className="flex items-center overflow-x-auto scroll-smooth py-4 px-10 max-w-full scrollbar-hide bg-forum-navy/90 dark:bg-forum-navy/70 rounded-full shadow-inner mx-auto"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <ToggleGroup 
               type="single" 
               value={activeFilter} 
               onValueChange={(value) => value && setActiveFilter(value)}
-              className="inline-flex flex-nowrap min-w-max gap-2 px-2"
+              className="inline-flex flex-nowrap min-w-max gap-2 px-2 mx-auto"
             >
               {categoryItems.map((category) => (
                 <ToggleGroupItem 
                   key={category.id} 
                   value={category.id}
+                  data-value={category.id}
                   className={`rounded-full px-8 py-3 text-sm font-medium transition-all mx-1 whitespace-nowrap ${
                     activeFilter === category.id 
                       ? "bg-forum-lavender text-white shadow-md" 
@@ -97,14 +144,16 @@ const Explore = () => {
             </ToggleGroup>
           </div>
           
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="absolute right-0 z-10 bg-forum-navy/80 hover:bg-forum-navy text-white rounded-full shadow-md dark:bg-forum-navy/90 dark:hover:bg-forum-navy/70"
-            onClick={() => handleScroll('right')}
-          >
-            <ChevronRight className="h-5 w-5" />
-          </Button>
+          {showRightArrow && (
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="absolute right-0 z-10 bg-forum-navy/80 hover:bg-forum-navy text-white rounded-full shadow-md dark:bg-forum-navy/90 dark:hover:bg-forum-navy/70"
+              onClick={() => handleScroll('right')}
+            >
+              <ChevronRight className="h-5 w-5" />
+            </Button>
+          )}
         </div>
       </div>
       
