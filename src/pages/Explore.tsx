@@ -72,7 +72,7 @@ const Explore = () => {
           
           <div 
             ref={scrollContainerRef}
-            className="flex items-center overflow-x-auto scroll-smooth scrollbar-hide py-2 px-10 max-w-full"
+            className="flex items-center overflow-x-auto scroll-smooth py-2 px-10 max-w-full scrollbar-hide"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <ToggleGroup 
@@ -120,12 +120,6 @@ const Explore = () => {
         </div>
         <ThreadsList threads={filteredThreads} />
       </section>
-      
-      <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </Layout>
   );
 };
