@@ -27,8 +27,8 @@ const ThreadDetail = () => {
   
   return (
     <Layout>
-      <div className="mb-8">
-        <div className="mb-2 flex items-center space-x-2">
+      <div className="mb-8 px-2 sm:px-0 max-w-full">
+        <div className="mb-2 flex flex-wrap items-center gap-2">
           <span className="thread-tag bg-forum-lavender text-white">
             {thread.category.name}
           </span>
@@ -42,23 +42,23 @@ const ThreadDetail = () => {
           ))}
         </div>
         
-        <h1 className="text-3xl md:text-4xl font-bold mb-4">{thread.title}</h1>
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 break-words">{thread.title}</h1>
         
         <div className="flex items-center mb-6">
           <img
             src={thread.author.avatar}
             alt={thread.author.name}
-            className="w-10 h-10 rounded-full border-2 border-forum-lavender/30"
+            className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-forum-lavender/30"
           />
           <div className="ml-3">
-            <div className="font-medium">{thread.author.name}</div>
-            <div className="text-sm text-muted-foreground">
+            <div className="font-medium text-sm md:text-base">{thread.author.name}</div>
+            <div className="text-xs md:text-sm text-muted-foreground">
               {formatDistanceToNow(new Date(thread.createdAt), { addSuffix: true })}
             </div>
           </div>
         </div>
         
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose dark:prose-invert max-w-none text-sm md:text-base break-words">
           <p>{thread.content}</p>
         </div>
         
@@ -68,15 +68,15 @@ const ThreadDetail = () => {
             <span>{thread.upvotes}</span>
           </button>
           
-          <div className="flex items-center text-sm text-muted-foreground">
+          <div className="flex items-center text-xs md:text-sm text-muted-foreground">
             <MessageSquare className="w-4 h-4 mr-1" />
             <span>{thread.replyCount} replies</span>
           </div>
         </div>
       </div>
       
-      <div className="border-t pt-8">
-        <h2 className="text-xl font-bold mb-6">Replies</h2>
+      <div className="border-t pt-6 px-2 sm:px-0">
+        <h2 className="text-lg md:text-xl font-bold mb-6">Replies</h2>
         
         {thread.replies && thread.replies.length > 0 ? (
           <div className="space-y-4">
@@ -93,7 +93,7 @@ const ThreadDetail = () => {
       
       <FloatingActionButton 
         label="Reply to Thread" 
-        icon={<MessageSquare className="w-6 h-6" />}
+        icon={<MessageSquare className="w-5 h-5 md:w-6 md:h-6" />}
         onClick={() => alert("Reply to this thread")} 
       />
     </Layout>

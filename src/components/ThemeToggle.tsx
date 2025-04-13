@@ -34,7 +34,7 @@ const ThemeToggle = () => {
       variant="outline" 
       size="icon" 
       onClick={toggleTheme}
-      className="rounded-full w-12 h-12 relative overflow-hidden group transition-all duration-500 shadow-soft hover:shadow-hover border-sidebar-border"
+      className="rounded-full w-10 h-10 md:w-12 md:h-12 relative overflow-hidden group transition-all duration-500 shadow-soft hover:shadow-hover border-sidebar-border"
     >
       <AnimatePresence initial={false}>
         {isDarkMode ? (
@@ -46,7 +46,7 @@ const ThemeToggle = () => {
             transition={{ duration: 0.3 }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <Moon className="w-6 h-6 text-forum-lavender dark:text-yellow-300" />
+            <Moon className="w-5 h-5 md:w-6 md:h-6 text-forum-lavender dark:text-yellow-300" />
           </motion.div>
         ) : (
           <motion.div
@@ -57,7 +57,7 @@ const ThemeToggle = () => {
             transition={{ duration: 0.3 }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <Sun className="w-6 h-6 text-orange-500" />
+            <Sun className="w-5 h-5 md:w-6 md:h-6 text-orange-500" />
           </motion.div>
         )}
       </AnimatePresence>
