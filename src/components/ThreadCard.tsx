@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { MessageSquare, ChevronUp, Clock } from 'lucide-react';
 import { Thread } from '@/data/mockData';
@@ -17,7 +16,6 @@ interface ThreadCardProps {
 const ThreadCard = ({ thread }: ThreadCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   
-  // Animation variants
   const cardVariants: Variants = {
     initial: { y: 0, boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.05)" },
     hover: { 
@@ -56,14 +54,12 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
           transition-all duration-300 ease-in-out min-h-[180px]
           dark:bg-[#1e1e2f] dark:border-[#374151]/30 dark:hover:border-forum-lavender/30">
           
-          {/* Title section */}
           <h3 className="font-poppins font-bold text-xl text-[#1e293b] group-hover:text-forum-lavender 
               transition-colors line-clamp-2 tracking-tight mb-3
               dark:text-white dark:group-hover:text-forum-lavender">
             {thread.title}
           </h3>
           
-          {/* Author information */}
           <div className="flex items-center mb-4 mt-2">
             <motion.div
               initial={{ scale: 1 }}
@@ -95,14 +91,15 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
             </motion.div>
             
             <div className="ml-2.5 flex flex-col">
-              <span className="text-sm font-medium text-forum-lavender">{thread.author.name}</span>
+              <span className="text-sm font-medium text-[#1e293b] dark:text-forum-lavender">
+                {thread.author.name}
+              </span>
               <span className="text-xs text-[#6b7280] dark:text-gray-400 flex items-center">
                 {formatDistanceToNow(new Date(thread.createdAt), { addSuffix: true })}
               </span>
             </div>
           </div>
           
-          {/* Content preview with fade effect */}
           <div className="relative">
             <p className="text-[#4b5563] dark:text-gray-300 text-sm leading-relaxed line-clamp-2 mb-4">
               {thread.content}
@@ -110,7 +107,6 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
             <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-white dark:from-[#1e1e2f] pointer-events-none"></div>
           </div>
           
-          {/* Tags */}
           <div className="flex flex-wrap gap-1.5 mb-4">
             {thread.tags.slice(0, 3).map((tag) => (
               <motion.div
@@ -152,10 +148,8 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
             )}
           </div>
           
-          {/* Interaction stats */}
           <div className="flex items-center justify-between pt-3 border-t border-[#f1f5f9] dark:border-white/5">
             <div className="flex items-center space-x-4">
-              {/* Upvotes */}
               <Button 
                 variant="ghost" 
                 size="sm"
@@ -174,7 +168,6 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
                 </motion.div>
               </Button>
               
-              {/* Replies */}
               <Button 
                 variant="ghost" 
                 size="sm"
@@ -198,7 +191,6 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
               </Button>
             </div>
             
-            {/* Reading time */}
             <div className="flex items-center gap-1.5 text-xs font-medium text-[#6b7280] dark:text-gray-400 bg-[#f9f9fb] dark:bg-[#111827]/30 px-2.5 py-1.5 rounded-lg">
               <Clock className="w-3.5 h-3.5 text-[#8B5CF6]/80" />
               {Math.ceil(thread.content.length / 800)} min read
