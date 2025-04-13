@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -133,6 +134,7 @@ export default {
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       boxShadow: {
         'soft': '0 4px 14px 0 rgba(0, 0, 0, 0.05)',
