@@ -1,6 +1,7 @@
 
 import Layout from '@/components/Layout';
 import ThreadsList from '@/components/ThreadsList';
+import SectionHeader from '@/components/SectionHeader';
 import { threads } from '@/data/mockData';
 import { MessageSquare, Bookmark } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -32,6 +33,11 @@ const MyThreads = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="created" className="pt-6">
+          <SectionHeader 
+            title="Your Threads" 
+            viewAllHref="#"
+            viewAllLabel="Filter"
+          />
           <ThreadsList threads={myThreads} />
         </TabsContent>
         <TabsContent value="saved" className="pt-6">

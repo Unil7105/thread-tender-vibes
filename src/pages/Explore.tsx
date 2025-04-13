@@ -1,6 +1,6 @@
-
 import Layout from '@/components/Layout';
 import ThreadsList from '@/components/ThreadsList';
+import SectionHeader from '@/components/SectionHeader';
 import { threads, categories } from '@/data/mockData';
 import { Compass, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -54,10 +54,8 @@ const Explore = () => {
     const scrollContainer = scrollContainerRef.current;
     if (scrollContainer) {
       scrollContainer.addEventListener('scroll', updateArrowVisibility);
-      // Initial check
       updateArrowVisibility();
       
-      // Center active category on mount and when it changes
       const activeElement = scrollContainer.querySelector(`[data-value="${activeFilter}"]`);
       if (activeElement) {
         setTimeout(() => {
@@ -159,14 +157,13 @@ const Explore = () => {
       </div>
       
       <section>
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold relative">
-            Popular Threads
-            <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-[#9b87f5] rounded-full"></span>
-          </h2>
-          <div className="text-sm text-muted-foreground">
-            {filteredThreads.length} discussions
-          </div>
+        <SectionHeader 
+          title="Popular Threads" 
+          viewAllHref="#"
+          className="mb-6"
+        />
+        <div className="text-sm text-muted-foreground mb-6">
+          {filteredThreads.length} discussions
         </div>
         <ThreadsList threads={filteredThreads} />
       </section>

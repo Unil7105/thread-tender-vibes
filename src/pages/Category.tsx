@@ -2,6 +2,7 @@
 import { useParams } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import ThreadsList from '@/components/ThreadsList';
+import SectionHeader from '@/components/SectionHeader';
 import FloatingActionButton from '@/components/FloatingActionButton';
 import { categories, threads } from '@/data/mockData';
 
@@ -50,7 +51,11 @@ const Category = () => {
       </div>
       
       <section>
-        <h2 className="text-2xl font-bold mb-6">Threads</h2>
+        <SectionHeader 
+          title="Threads" 
+          viewAllHref="#"
+          viewAllLabel="Sort by"
+        />
         <ThreadsList threads={threads} categoryId={id} />
       </section>
       
