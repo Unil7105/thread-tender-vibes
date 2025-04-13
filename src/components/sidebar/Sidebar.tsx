@@ -5,15 +5,24 @@ import SidebarMobileToggle from './SidebarMobileToggle';
 import SidebarContent from './SidebarContent';
 import SidebarOverlay from './SidebarOverlay';
 
-const Sidebar = () => {
+interface SidebarProps {
+  isMobileMenuOpen?: boolean;
+  setIsMobileMenuOpen?: (value: boolean) => void;
+}
+
+const Sidebar = ({ isMobileMenuOpen: propsMobileMenuOpen, setIsMobileMenuOpen: propsSetMobileMenuOpen }: SidebarProps = {}) => {
   const location = useLocation();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [internalMobileMenuOpen, setInternalMobileMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
+  
+  // Use props values if provided, otherwise use internal state
+  const isMobileMenuOpen = propsMobileMenuOpen !== undefined ? propsMobileMenuOpen : internalMobileMenuOpen;
+  const setIsMobileMenuOpen = propsSetMobileMenuOpen || setInternalMobileMenuOpen;
   
   // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
-  }, [location.pathname]);
+  }, [location.pathname, setIsMobileMenuOpen]);
 
   // Load sidebar state from localStorage on component mount
   useEffect(() => {

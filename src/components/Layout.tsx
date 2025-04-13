@@ -1,4 +1,3 @@
-
 import { ReactNode, useEffect, useState } from 'react';
 import { Sidebar } from './sidebar';
 import { Menu } from 'lucide-react';
@@ -51,7 +50,6 @@ const Layout = ({ children, pageTitle }: LayoutProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Toggle mobile menu
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -60,7 +58,10 @@ const Layout = ({ children, pageTitle }: LayoutProps) => {
     <div className="flex min-h-screen bg-gradient-to-b from-background to-background/95 dark:from-[#0D1321] dark:to-[#161b29]">
       {/* Sidebar container */}
       <div className="flex-shrink-0">
-        <Sidebar />
+        <Sidebar 
+          isMobileMenuOpen={isMobileMenuOpen} 
+          setIsMobileMenuOpen={setIsMobileMenuOpen} 
+        />
       </div>
       
       {/* Main content area - flexible width with transition */}

@@ -23,6 +23,8 @@ const SidebarMobileToggle: React.FC<SidebarMobileToggleProps> = ({
   setIsMobileMenuOpen,
   toggleSidebar
 }) => {
+  console.log("Mobile menu state:", isMobileMenuOpen); // Add logging for debugging
+  
   return (
     <>
       {/* Use the separate SidebarOverlay component for better control */}
@@ -59,4 +61,3 @@ const SidebarMobileToggle: React.FC<SidebarMobileToggleProps> = ({
 };
 
 export default SidebarMobileToggle;
-
