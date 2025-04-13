@@ -67,6 +67,11 @@ const Sidebar = () => {
     setIsMobileMenuOpen(false);
   };
 
+  // Close button handler for mobile
+  const handleCloseSidebar = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
       {/* Mobile Sidebar Toggle */}
@@ -110,8 +115,8 @@ const Sidebar = () => {
                  md:translate-x-0 ${isCollapsed ? 'md:w-20' : 'md:w-64'} overflow-y-auto overflow-x-hidden`}
       >
         <div className="flex flex-col h-full p-4">
-          {/* Logo Section */}
-          <div className="flex justify-center md:justify-start items-center h-16 mb-2">
+          {/* Logo Section with Close Button */}
+          <div className="flex justify-between items-center h-16 mb-2">
             <motion.div 
               className="flex items-center justify-center"
               initial={{ opacity: 0 }}
@@ -132,6 +137,15 @@ const Sidebar = () => {
                 </motion.span>
               )}
             </motion.div>
+            
+            {/* Close button - visible only on mobile */}
+            <button 
+              className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-sidebar-accent/20 text-sidebar-foreground hover:bg-sidebar-accent/30 transition-colors"
+              onClick={handleCloseSidebar}
+              aria-label="Close sidebar"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
           {/* Navigation Items */}
