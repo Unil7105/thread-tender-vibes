@@ -1,4 +1,3 @@
-
 import { useParams } from 'react-router-dom';
 import { MessageSquare } from 'lucide-react';
 import Layout from '@/components/Layout';
@@ -70,13 +69,25 @@ const ThreadDetail = () => {
     <Layout pageTitle={thread.title}>
       <div className="mb-6 px-0 sm:px-0 max-w-full">
         <div className="mb-2 flex flex-wrap items-center gap-2">
-          <span className="thread-tag bg-forum-lavender text-white">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full 
+            text-xs font-medium 
+            bg-forum-lavender/10 text-forum-lavender 
+            dark:bg-forum-lavender/20 
+            hover:bg-forum-lavender/20 
+            transition-colors duration-200 
+            border border-forum-lavender/30">
             {thread.category.name}
           </span>
           {thread.tags.map((tag) => (
             <span 
               key={tag} 
-              className="thread-tag bg-forum-lavender/10 text-forum-lavender dark:bg-forum-lavender/20"
+              className="inline-flex items-center px-2.5 py-0.5 rounded-full 
+                text-xs font-medium 
+                bg-white text-forum-lavender 
+                border border-forum-lavender/30 
+                hover:bg-forum-lavender/10 
+                transition-colors duration-200 
+                shadow-sm"
             >
               #{tag}
             </span>
