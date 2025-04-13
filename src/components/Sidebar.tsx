@@ -9,18 +9,15 @@ const Sidebar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
-  // Close mobile menu when clicking outside on mobile
   useEffect(() => {
     const handleClickOutside = (event) => {
       const sidebar = document.getElementById('sidebar');
       const mobileToggle = document.getElementById('mobile-toggle');
       
-      // Don't close if clicking on the toggle button itself
       if (mobileToggle && mobileToggle.contains(event.target)) {
         return;
       }
@@ -39,7 +36,6 @@ const Sidebar = () => {
     };
   }, [isMobileMenuOpen]);
 
-  // Toggle sidebar collapsed state
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
     const sidebar = document.getElementById('sidebar');
@@ -55,20 +51,17 @@ const Sidebar = () => {
     { path: '/profile', icon: User, label: 'Profile' },
   ];
 
-  // Handle mobile menu toggle with a specific handler
   const handleMobileMenuToggle = (e) => {
-    e.stopPropagation(); // Prevent event bubbling
+    e.stopPropagation();
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-  
-  // Handle mobile menu item click to close the menu
+
   const handleMobileMenuItemClick = () => {
     setIsMobileMenuOpen(false);
   };
 
   return (
     <>
-      {/* Mobile Sidebar Toggle */}
       <button 
         id="mobile-toggle"
         className="fixed top-4 left-4 z-50 md:hidden p-2 rounded-lg bg-sidebar shadow-md border border-sidebar-border"
@@ -81,7 +74,6 @@ const Sidebar = () => {
         }
       </button>
 
-      {/* Desktop Toggle Button */}
       <button
         className="fixed bottom-4 left-4 z-50 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-forum-lavender text-white shadow-md hover:bg-forum-lavender/90 transition-all duration-300"
         onClick={toggleSidebar}
@@ -92,7 +84,6 @@ const Sidebar = () => {
           : <X className="w-5 h-5" />}
       </button>
 
-      {/* Mobile Sidebar Background Overlay */}
       {isMobileMenuOpen && (
         <div 
           className="fixed inset-0 bg-black/50 z-40 md:hidden"
@@ -100,7 +91,6 @@ const Sidebar = () => {
         ></div>
       )}
 
-      {/* Sidebar */}
       <aside 
         id="sidebar"
         className={`fixed top-0 left-0 h-full z-40 md:sticky md:z-auto bg-sidebar border-r border-sidebar-border transition-all duration-300 ease-in-out
@@ -108,7 +98,6 @@ const Sidebar = () => {
                  md:translate-x-0 ${isCollapsed ? 'md:w-20' : 'md:w-64'} overflow-y-auto overflow-x-hidden`}
       >
         <div className="flex flex-col h-full p-4">
-          {/* Logo Section with Mobile Close Button */}
           <div className="flex justify-between items-center h-16 mb-2">
             <motion.div 
               className="flex items-center"
@@ -131,7 +120,6 @@ const Sidebar = () => {
               )}
             </motion.div>
             
-            {/* Mobile Close Button Inside Sidebar */}
             <button 
               className="md:hidden flex items-center justify-center w-8 h-8 rounded-lg hover:bg-sidebar-accent text-sidebar-foreground"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -141,7 +129,6 @@ const Sidebar = () => {
             </button>
           </div>
 
-          {/* Navigation Items */}
           <nav className="flex-1 mt-4">
             <ul className="space-y-1">
               {navItems.map((item) => {
@@ -161,17 +148,14 @@ const Sidebar = () => {
                           : 'text-sidebar-foreground hover:text-white'}`}
                       onClick={handleMobileMenuItemClick}
                     >
-                      {/* Active background with proper padding */}
                       {isActive && (
                         <span className="absolute inset-0 bg-forum-lavender rounded-lg" />
                       )}
                       
-                      {/* Hover background */}
                       {!isActive && (
                         <span className="absolute inset-0 bg-sidebar-accent opacity-0 group-hover:opacity-100 rounded-lg transition-opacity" />
                       )}
                       
-                      {/* Icon and label */}
                       <span className="relative flex items-center">
                         <item.icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-sidebar-foreground group-hover:text-white'}`} />
                         {!isCollapsed && (
@@ -187,16 +171,12 @@ const Sidebar = () => {
             </ul>
           </nav>
 
-          {/* Bottom Section */}
           <div className="mt-auto pt-4 border-t border-sidebar-border">
             <div className="flex flex-col items-center space-y-3">
-              {/* User Profile Section */}
               <div className="w-full group relative mb-3">
                 <div className="flex items-center px-3 py-2 rounded-lg text-sidebar-foreground hover:text-white transition-colors relative">
-                  {/* Hover background */}
                   <span className="absolute inset-0 bg-sidebar-accent opacity-0 group-hover:opacity-100 rounded-lg transition-opacity" />
                   
-                  {/* Profile picture and username */}
                   <div className="relative flex items-center w-full">
                     <div className="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-forum-lavender/20">
                       <img 
@@ -204,7 +184,8 @@ const Sidebar = () => {
                         alt="Profile" 
                         className="w-full h-full object-cover"
                         onError={(e) => {
-                          e.target.src = 'https://via.placeholder.com/40';
+                          const target = e.target as HTMLImageElement;
+                          target.src = 'https://via.placeholder.com/40';
                         }}
                       />
                     </div>
@@ -218,11 +199,9 @@ const Sidebar = () => {
                   </div>
                 </div>
               </div>
-            
-              {/* Theme Toggle */}
+              
               <button 
                 onClick={() => {
-                  // We'll call the theme toggle functionality directly here
                   const isDark = document.documentElement.classList.contains('dark');
                   document.documentElement.classList.toggle('dark', !isDark);
                   localStorage.setItem('theme', !isDark ? 'dark' : 'light');
@@ -230,10 +209,8 @@ const Sidebar = () => {
                 className="w-full group relative"
               >
                 <div className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sidebar-foreground hover:text-white transition-colors relative">
-                  {/* Hover background */}
                   <span className="absolute inset-0 bg-sidebar-accent opacity-0 group-hover:opacity-100 rounded-lg transition-opacity" />
                   
-                  {/* Icon container with fixed dimensions */}
                   <div className="relative flex items-center w-full">
                     <div className="flex justify-center items-center w-8 h-8 rounded-full bg-gray-800">
                       <ThemeToggle />
@@ -248,15 +225,12 @@ const Sidebar = () => {
                 </div>
               </button>
               
-              {/* Logout Button */}
               <div className="w-full group relative">
                 <button
                   className="w-full flex items-center px-3 py-2.5 rounded-lg text-sidebar-foreground hover:text-destructive transition-colors relative"
                 >
-                  {/* Hover background */}
                   <span className="absolute inset-0 bg-sidebar-accent opacity-0 group-hover:opacity-100 rounded-lg transition-opacity" />
                   
-                  {/* Icon and label */}
                   <span className="relative flex items-center w-full">
                     <LogOut className="w-5 h-5 text-sidebar-foreground group-hover:text-destructive" />
                     {!isCollapsed && (
