@@ -18,9 +18,10 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed }) => {
       <button 
         onClick={toggleTheme}
         className={`
-          group flex items-center 
-          ${isCollapsed ? 'w-12 justify-center' : 'w-full px-3'} 
-          h-12 rounded-lg hover:bg-[#9b87f5]/10 transition-all
+          group flex items-center justify-center
+          ${isCollapsed ? 'w-12 h-12' : 'w-full px-3 h-12'} 
+          rounded-full bg-transparent hover:bg-[#9b87f5]/10 
+          transition-all duration-200
         `}
       >
         <Moon className="w-5 h-5 text-[#9b87f5]" />
@@ -28,9 +29,10 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed }) => {
       
       <button 
         className={`
-          group flex items-center 
-          ${isCollapsed ? 'w-12 justify-center' : 'w-full px-3'} 
-          h-12 rounded-lg hover:bg-[#9b87f5]/10 transition-all
+          group flex items-center justify-center
+          ${isCollapsed ? 'w-12 h-12' : 'w-full px-3 h-12'} 
+          rounded-full bg-transparent hover:bg-[#9b87f5]/10 
+          transition-all duration-200
         `}
       >
         <LogOut className="w-5 h-5 text-[#9b87f5]" />
@@ -40,3 +42,4 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed }) => {
 };
 
 export default SidebarFooter;
+
