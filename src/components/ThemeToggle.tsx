@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -34,30 +33,30 @@ const ThemeToggle = () => {
       variant="outline" 
       size="icon" 
       onClick={toggleTheme}
-      className="rounded-full w-10 h-10 md:w-12 md:h-12 relative overflow-hidden group transition-all duration-500 shadow-soft hover:shadow-hover border-sidebar-border"
+      className="rounded-full w-10 h-10 md:w-10 md:h-10 relative overflow-hidden transition-all duration-300"
     >
       <AnimatePresence initial={false}>
         {isDarkMode ? (
           <motion.div
             key="dark"
-            initial={{ opacity: 0, rotate: -180 }}
-            animate={{ opacity: 1, rotate: 0 }}
-            exit={{ opacity: 0, rotate: 180 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <Moon className="w-5 h-5 md:w-6 md:h-6 text-forum-lavender dark:text-yellow-300" />
+            <Moon className="w-5 h-5 text-forum-lavender" />
           </motion.div>
         ) : (
           <motion.div
             key="light"
-            initial={{ opacity: 0, rotate: -180 }}
-            animate={{ opacity: 1, rotate: 0 }}
-            exit={{ opacity: 0, rotate: 180 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <Sun className="w-5 h-5 md:w-6 md:h-6 text-orange-500" />
+            <Sun className="w-5 h-5 text-orange-500" />
           </motion.div>
         )}
       </AnimatePresence>
