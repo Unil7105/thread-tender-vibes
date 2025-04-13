@@ -20,22 +20,22 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
   toggleSidebar
 }) => {
   return (
-    <div className="flex flex-col h-full py-6 relative">
+    <div className="flex flex-col h-full py-4 relative">
       {/* Logo Section with consistent spacing */}
-      <div className="mb-4">
+      <div className="mb-2">
         <SidebarLogo isCollapsed={isCollapsed} />
       </div>
       
-      {/* Profile Section with Separator */}
-      <div className="mb-4">
+      {/* Profile Section with consistent spacing */}
+      <div className="mb-2">
         <SidebarProfile isCollapsed={isCollapsed} />
       </div>
       
-      {/* Consistent separator with proper spacing */}
+      {/* Improved separator with proper spacing and style */}
       <Separator 
         className={`
-          my-4 bg-[#e0d8ff] dark:bg-[#3a3351] opacity-70 
-          ${isCollapsed ? 'w-8 mx-auto' : 'w-full'}
+          my-3 bg-gradient-to-r from-forum-lavender/20 via-forum-lavender/40 to-forum-lavender/20 dark:from-forum-lavender/10 dark:via-forum-lavender/30 dark:to-forum-lavender/10
+          ${isCollapsed ? 'w-8 mx-auto' : 'mx-4 w-[calc(100%-2rem)]'}
         `} 
       />
       
@@ -47,12 +47,12 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
         />
       </div>
       
-      {/* Footer with Separator */}
+      {/* Footer with Gradient Separator */}
       <div className="mt-auto">
         <Separator 
           className={`
-            mb-4 bg-[#e0d8ff] dark:bg-[#3a3351] opacity-70 
-            ${isCollapsed ? 'w-8 mx-auto' : 'w-full'}
+            mb-3 bg-gradient-to-r from-forum-lavender/20 via-forum-lavender/40 to-forum-lavender/20 dark:from-forum-lavender/10 dark:via-forum-lavender/30 dark:to-forum-lavender/10
+            ${isCollapsed ? 'w-8 mx-auto' : 'mx-4 w-[calc(100%-2rem)]'}
           `} 
         />
         <SidebarFooter 

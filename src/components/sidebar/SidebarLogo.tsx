@@ -10,7 +10,7 @@ const SidebarLogo: React.FC<SidebarLogoProps> = ({
   isCollapsed
 }) => {
   return (
-    <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'justify-start'} h-16 px-2`}>
+    <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'justify-start'} h-16 pt-6 pb-4 px-2`}>
       <motion.div className="flex items-center" initial={{
         opacity: 0
       }} animate={{
@@ -18,7 +18,7 @@ const SidebarLogo: React.FC<SidebarLogoProps> = ({
       }} transition={{
         duration: 0.3
       }}>
-        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#9b87f5] to-[#b29dff] text-white font-semibold shadow-sm ring-2 ring-transparent hover:ring-[#e0d8ff] transition-all duration-200">
+        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-forum-indigo to-forum-lavender text-white font-semibold shadow-md ring-2 ring-transparent hover:ring-forum-lavender/40 transition-all duration-200">
           <span className="text-base leading-none flex items-center justify-center">T</span>
         </div>
         
@@ -31,7 +31,7 @@ const SidebarLogo: React.FC<SidebarLogoProps> = ({
         }} transition={{
           duration: 0.3,
           delay: 0.1
-        }} className="ml-3 text-xl font-bold text-[#9b87f5] whitespace-nowrap">
+        }} className="ml-3 text-xl font-bold text-forum-indigo dark:text-forum-lavender whitespace-nowrap">
             TextForum
           </motion.span>}
       </motion.div>

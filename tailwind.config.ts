@@ -64,12 +64,16 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         forum: {
-          lavender: "#9b87f5",
-          navy: "#1A1F2C",
-          coral: "#FF7E67",
-          mint: "#C7F9CC",
-          light: "#F8F9FA",
-          dark: "#272932",
+          // Updated with psychology-based color palette
+          lavender: "#9b87f5", // Creative, calm - kept as accent
+          indigo: "#4B0082", // Smart, bold - new primary anchor
+          skyblue: "#00BFFF", // Clarity, trust - secondary color
+          navy: "#1A1F2C", // Depth, authority
+          coral: "#FF7E67", // Attention, urgency
+          mint: "#C7F9CC", // Balance, health
+          amber: "#FFD166", // Energy, optimism
+          light: "#F9FAFB", // Neutral light background
+          dark: "#272932", // Dark mode background
         },
       },
       borderRadius: {
@@ -118,6 +122,8 @@ export default {
         'soft': '0 4px 14px 0 rgba(0, 0, 0, 0.05)',
         'hover': '0 6px 20px rgba(0, 0, 0, 0.1)',
         'card': '0 10px 30px -5px rgba(0, 0, 0, 0.1)',
+        'focus': '0 0 0 3px rgba(155, 135, 245, 0.3)',
+        'indigo-glow': '0 0 15px rgba(75, 0, 130, 0.4)',
       },
     },
   },

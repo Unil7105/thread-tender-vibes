@@ -32,7 +32,7 @@ const SidebarProfile: React.FC<SidebarProfileProps> = ({
       transition={{
         duration: 0.3
       }}
-      className="w-full"
+      className="w-full pt-4 pb-4"
     >
       <Link 
         to="/profile" 
@@ -45,9 +45,10 @@ const SidebarProfile: React.FC<SidebarProfileProps> = ({
           className={`
             transition-all duration-300 
             ${isCollapsed ? 'h-10 w-10' : 'h-10 w-10'} 
-            border-2 border-forum-lavender
+            border-2 border-forum-lavender/50
             flex-shrink-0
-            ring-2 ring-transparent hover:ring-[#e0d8ff] group-hover:ring-[#e0d8ff]
+            ring-2 ring-transparent hover:ring-forum-lavender/40 group-hover:ring-forum-lavender/40
+            shadow-md
           `}
         >
           <AvatarImage 
