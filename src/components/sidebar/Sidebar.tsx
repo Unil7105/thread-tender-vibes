@@ -50,7 +50,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         />
       </aside>
 
-      {/* We don't need this mobile sidebar anymore as we're using SidebarMobileToggle */}
+      {/* Mobile overlay when sidebar is open */}
       {isMobileMenuOpen && (
         <SidebarOverlay 
           onClick={() => setIsMobileMenuOpen(false)} 

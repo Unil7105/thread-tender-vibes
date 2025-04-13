@@ -65,7 +65,7 @@ const Layout = ({ children, pageTitle }: LayoutProps) => {
   };
 
   return (
-    <div className="flex min-h-screen overflow-x-hidden bg-gradient-to-b from-background to-background/95 dark:from-[#0D1321] dark:to-[#161b29]">
+    <div className="flex min-h-screen w-full overflow-x-hidden bg-gradient-to-b from-background to-background/95 dark:from-[#0D1321] dark:to-[#161b29]">
       {/* Sidebar */}
       <Sidebar 
         isMobileMenuOpen={isMobileMenuOpen} 
