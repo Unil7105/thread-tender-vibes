@@ -1,3 +1,4 @@
+
 export interface Category {
   id: string;
   name: string;
@@ -751,3 +752,166 @@ export const threads: Thread[] = [
           {
             id: 'reply_3_2_1',
             content: 'This is so important! I also use different browser profiles for work and personal use to keep them separated, and have notifications turned off outside working hours.',
+            author: users[3],
+            createdAt: '2025-04-11T12:05:00Z',
+            upvotes: 11,
+            downvotes: 0,
+            reactions: {
+              '🙌': 6,
+              '💡': 3
+            },
+            parentId: 'reply_3_2',
+          }
+        ]
+      },
+      {
+        id: 'reply_3_3',
+        content: 'Taking actual lunch breaks away from your desk makes a huge difference. I make a point to eat lunch in a different room and sometimes even go for a short walk to simulate a "commute" between work and break time.',
+        author: users[2],
+        createdAt: '2025-04-11T13:45:00Z',
+        upvotes: 24,
+        downvotes: 0,
+        reactions: {
+          '🥗': 11,
+          '🚶': 9,
+        },
+      },
+      {
+        id: 'reply_3_4',
+        content: 'Physical cues can help. I have a "work candle" that I light only during work hours. When the candle gets blown out, work is over. It sounds silly, but these rituals really help signal to your brain when it\'s time to switch modes.',
+        author: users[6],
+        createdAt: '2025-04-11T15:20:00Z',
+        upvotes: 19,
+        downvotes: 1,
+        reactions: {
+          '🕯️': 12,
+          '🧠': 8,
+        },
+      },
+      {
+        id: 'reply_3_5',
+        content: 'I was struggling with this until I created a separate user account on my computer for work. Now I literally log out of my work account at the end of the day, which helps mentally disconnect.',
+        author: users[8],
+        createdAt: '2025-04-11T16:55:00Z',
+        upvotes: 22,
+        downvotes: 0,
+        reactions: {
+          '💻': 12,
+          '👍': 9,
+        },
+      }
+    ]
+  },
+  
+  // Add a Food & Cooking thread
+  {
+    id: 'f1',
+    title: 'What\'s your go-to weeknight dinner recipe?',
+    content: 'Looking for quick, nutritious meals that can be prepared in under 30 minutes on busy weeknights. What are your favorites?',
+    author: users[2],
+    category: {
+      id: '5',
+      name: 'Food & Cooking',
+    },
+    createdAt: '2025-04-05T18:30:00Z',
+    updatedAt: '2025-04-05T18:30:00Z',
+    upvotes: 39,
+    downvotes: 1,
+    replyCount: 14,
+    tags: ['quick meals', 'weeknight dinners', 'recipes'],
+    replies: [
+      {
+        id: 'reply_f1_1',
+        content: 'Sheet pan dinners are my lifesaver! Toss chicken, vegetables, and potatoes with olive oil and herbs, spread on a sheet pan, and bake at 425°F for 25 minutes. One pan, minimal cleanup.',
+        author: users[4],
+        createdAt: '2025-04-05T19:10:00Z',
+        upvotes: 27,
+        downvotes: 0,
+        reactions: {
+          '🍗': 15,
+          '👨‍🍳': 10,
+        },
+      },
+      {
+        id: 'reply_f1_2',
+        content: 'Stir-fry is perfect for busy nights. Prep vegetables on weekends, then just heat oil, add protein, vegetables, and sauce. Ready in 15 minutes with rice.',
+        author: users[7],
+        createdAt: '2025-04-05T19:45:00Z',
+        upvotes: 21,
+        downvotes: 0,
+        reactions: {
+          '🥢': 12,
+          '🔥': 8,
+        },
+      },
+      {
+        id: 'reply_f1_3',
+        content: 'Pasta with cherry tomatoes, garlic, and spinach. While pasta cooks, sauté garlic, add halved tomatoes and spinach. Mix with pasta, add some pasta water, olive oil, and parmesan. Done in 20 minutes!',
+        author: users[1],
+        createdAt: '2025-04-05T20:30:00Z',
+        upvotes: 25,
+        downvotes: 0,
+        reactions: {
+          '🍝': 14,
+          '🍅': 9,
+        },
+      }
+    ]
+  },
+  
+  // Add a Science thread
+  {
+    id: 's1',
+    title: 'Latest breakthroughs in renewable energy technology',
+    content: 'What are some of the most promising recent developments in renewable energy that could help combat climate change?',
+    author: users[11],
+    category: {
+      id: '6',
+      name: 'Science',
+    },
+    createdAt: '2025-04-02T11:20:00Z',
+    updatedAt: '2025-04-02T11:20:00Z',
+    upvotes: 51,
+    downvotes: 2,
+    replyCount: 13,
+    tags: ['renewable energy', 'climate change', 'technology'],
+    replies: [
+      {
+        id: 'reply_s1_1',
+        content: 'Perovskite solar cells are showing incredible promise. They can be manufactured cheaply, potentially printed on flexible surfaces, and recent advances have improved their durability significantly. Could revolutionize solar adoption.',
+        author: users[0],
+        createdAt: '2025-04-02T12:15:00Z',
+        upvotes: 29,
+        downvotes: 0,
+        reactions: {
+          '☀️': 17,
+          '🔬': 12,
+        },
+      },
+      {
+        id: 'reply_s1_2',
+        content: 'Green hydrogen production is becoming more viable with the decreasing cost of electrolyzers and renewable electricity. It could be key for decarbonizing industries like steel and shipping that are difficult to electrify directly.',
+        author: users[3],
+        createdAt: '2025-04-02T13:40:00Z',
+        upvotes: 24,
+        downvotes: 1,
+        reactions: {
+          '🧪': 14,
+          '🌊': 9,
+        },
+      },
+      {
+        id: 'reply_s1_3',
+        content: 'Grid-scale battery storage technology is advancing rapidly. Flow batteries with much longer lifespans than lithium-ion are being deployed for longer-duration storage, which is essential for managing intermittent renewable sources.',
+        author: users[10],
+        createdAt: '2025-04-02T15:20:00Z',
+        upvotes: 20,
+        downvotes: 0,
+        reactions: {
+          '🔋': 12,
+          '⚡': 8,
+        },
+      }
+    ]
+  }
+];
