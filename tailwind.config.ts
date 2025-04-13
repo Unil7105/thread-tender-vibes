@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,16 +63,17 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         forum: {
-          // Updated with psychology-based color palette
-          lavender: "#9b87f5", // Creative, calm - kept as accent
-          indigo: "#4B0082", // Smart, bold - new primary anchor
-          skyblue: "#00BFFF", // Clarity, trust - secondary color
-          navy: "#1A1F2C", // Depth, authority
-          coral: "#FF7E67", // Attention, urgency
-          mint: "#C7F9CC", // Balance, health
-          amber: "#FFD166", // Energy, optimism
-          light: "#F9FAFB", // Neutral light background
-          dark: "#272932", // Dark mode background
+          lavender: "#9b87f5",
+          indigo: "#4B0082",
+          skyblue: "#00BFFF",
+          navy: "#0D1321",
+          coral: "#FF7E67",
+          mint: "#C7F9CC",
+          amber: "#FFD166",
+          light: "#F9FAFB",
+          dark: "#0D1321",
+          magenta: "#D946EF",
+          cyan: "#0FF4C6",
         },
       },
       borderRadius: {
@@ -106,6 +106,20 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.7" },
         },
+        "glow-pulse": {
+          "0%, 100%": { boxShadow: "0 0 8px 2px rgba(155, 135, 245, 0.3)" },
+          "50%": { boxShadow: "0 0 15px 5px rgba(217, 70, 239, 0.5)" },
+        },
+        "neon-border": {
+          "0%, 100%": { 
+            boxShadow: "0 0 5px rgba(155, 135, 245, 0.5), 0 0 10px rgba(155, 135, 245, 0.3)", 
+            borderColor: "rgba(155, 135, 245, 0.8)" 
+          },
+          "50%": { 
+            boxShadow: "0 0 10px rgba(217, 70, 239, 0.6), 0 0 20px rgba(217, 70, 239, 0.4)", 
+            borderColor: "rgba(217, 70, 239, 0.9)" 
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -114,6 +128,8 @@ export default {
         "fade-in": "fade-in 0.4s ease-out",
         "slide-in": "slide-in 0.3s ease-out",
         "pulse-soft": "pulse-soft 3s infinite",
+        "glow-pulse": "glow-pulse 3s infinite",
+        "neon-border": "neon-border 4s infinite",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
@@ -124,6 +140,12 @@ export default {
         'card': '0 10px 30px -5px rgba(0, 0, 0, 0.1)',
         'focus': '0 0 0 3px rgba(155, 135, 245, 0.3)',
         'indigo-glow': '0 0 15px rgba(75, 0, 130, 0.4)',
+        'neon-glow': '0 0 10px rgba(217, 70, 239, 0.6), 0 0 20px rgba(217, 70, 239, 0.3)',
+        'glass-highlight': '0 0 0 1px rgba(255, 255, 255, 0.1) inset, 0 0 30px rgba(155, 135, 245, 0.15)',
+        'text-shadow': '0 1px 3px rgba(0, 0, 0, 0.3)',
+      },
+      backdropBlur: {
+        'xs': '2px',
       },
     },
   },

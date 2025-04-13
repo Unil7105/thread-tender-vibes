@@ -39,6 +39,7 @@ const SidebarProfile: React.FC<SidebarProfileProps> = ({
         className={`
           group flex items-center ${isCollapsed ? 'justify-center' : 'justify-start'} 
           p-2 rounded-lg transition-colors hover:bg-sidebar-accent
+          dark:hover:bg-white/5 dark:hover:shadow-glass-highlight
         `}
       >
         <Avatar 
@@ -46,9 +47,12 @@ const SidebarProfile: React.FC<SidebarProfileProps> = ({
             transition-all duration-300 
             ${isCollapsed ? 'h-10 w-10' : 'h-10 w-10'} 
             border-2 border-forum-lavender/50
+            dark:border-forum-magenta/60
             flex-shrink-0
             ring-2 ring-transparent hover:ring-forum-lavender/40 group-hover:ring-forum-lavender/40
+            dark:hover:ring-forum-magenta/40 dark:group-hover:ring-forum-magenta/40
             shadow-md
+            dark:shadow-neon-glow
           `}
         >
           <AvatarImage 
@@ -57,14 +61,14 @@ const SidebarProfile: React.FC<SidebarProfileProps> = ({
             className="flex items-center justify-center" 
           />
           <AvatarFallback>
-            <User className="h-5 w-5 text-muted-foreground" />
+            <User className="h-5 w-5 text-muted-foreground dark:text-white" />
           </AvatarFallback>
         </Avatar>
         
         {!isCollapsed && (
           <div className="ml-3 flex-grow overflow-hidden min-w-0">
-            <p className="font-medium text-sm truncate">{profile.name}</p>
-            <p className="text-xs text-muted-foreground truncate">{profile.role}</p>
+            <p className="font-medium text-sm truncate dark:text-white">{profile.name}</p>
+            <p className="text-xs text-muted-foreground truncate dark:text-gray-400">{profile.role}</p>
           </div>
         )}
       </Link>

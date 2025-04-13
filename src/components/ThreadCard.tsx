@@ -16,36 +16,36 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
           <img
             src={thread.author.avatar}
             alt={thread.author.name}
-            className="w-10 h-10 rounded-full border-2 border-forum-lavender/30 shadow-md"
+            className="w-10 h-10 rounded-full border-2 border-forum-lavender/30 shadow-md dark:border-forum-magenta/40 dark:shadow-glass-highlight"
           />
           <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-lg group-hover:text-forum-lavender transition-colors line-clamp-2">
+            <h3 className="font-bold text-lg group-hover:text-forum-lavender transition-colors line-clamp-2 dark:text-white dark:group-hover:text-forum-cyan dark:shadow-text-shadow">
               {thread.title}
             </h3>
-            <div className="flex items-center space-x-3 mt-1 text-sm text-muted-foreground">
-              <span className="font-medium text-forum-lavender/80">{thread.author.name}</span>
+            <div className="flex items-center space-x-3 mt-1 text-sm text-muted-foreground dark:text-gray-400">
+              <span className="font-medium text-forum-lavender/80 dark:text-forum-cyan">{thread.author.name}</span>
               <span>•</span>
               <span className="flex items-center">
-                <CalendarClock className="w-3.5 h-3.5 mr-1" />
+                <CalendarClock className="w-3.5 h-3.5 mr-1 dark:text-forum-lavender/70" />
                 {formatDistanceToNow(new Date(thread.createdAt), { addSuffix: true })}
               </span>
             </div>
-            <div className="mt-2 line-clamp-2 text-sm text-foreground/80">
+            <div className="mt-2 line-clamp-2 text-sm text-foreground/80 dark:text-gray-300">
               {thread.content}
             </div>
           </div>
         </div>
         
-        <div className="flex items-center mt-4 pt-3 border-t">
+        <div className="flex items-center mt-4 pt-3 border-t dark:border-white/5">
           <div className="flex items-center mr-4">
             <button className="upvote-button group/upvote">
-              <ChevronUp className="w-4 h-4 group-hover/upvote:text-forum-lavender transition-colors" />
+              <ChevronUp className="w-4 h-4 group-hover/upvote:text-forum-lavender transition-colors dark:group-hover/upvote:text-forum-cyan" />
               <span>{thread.upvotes}</span>
             </button>
           </div>
           
-          <div className="flex items-center text-sm text-muted-foreground">
-            <MessageSquare className="w-4 h-4 mr-1" />
+          <div className="flex items-center text-sm text-muted-foreground dark:text-gray-400">
+            <MessageSquare className="w-4 h-4 mr-1 dark:text-forum-lavender/70" />
             <span>{thread.replyCount} replies</span>
           </div>
           
@@ -53,7 +53,7 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
             {thread.tags.map((tag) => (
               <span 
                 key={tag} 
-                className="thread-tag bg-gradient-to-r from-forum-lavender/20 to-forum-lavender/10 text-forum-lavender dark:from-forum-lavender/30 dark:to-forum-lavender/20 backdrop-blur-sm"
+                className="thread-tag dark:animate-pulse-soft"
               >
                 #{tag}
               </span>

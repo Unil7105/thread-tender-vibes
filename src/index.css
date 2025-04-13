@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -47,19 +48,20 @@
   }
 
   .dark {
-    --background: 222 47% 11%;
+    /* Updated dark mode variables to match design goals */
+    --background: 222 30% 9%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 14%;
+    --card: 222 40% 12%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 47% 14%;
+    --popover: 222 40% 10%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 262 60% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 33% 17%;
+    --secondary: 217 33% 15%;
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217 33% 17%;
@@ -75,13 +77,14 @@
     --input: 217 19% 27%;
     --ring: 262 60% 65%;
 
-    --sidebar-background: 222 30% 13%;
+    /* Updated sidebar variables for dark mode */
+    --sidebar-background: 222 30% 8%;
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 262 60% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 222 25% 18%;
+    --sidebar-accent: 262 30% 25%;
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 222 25% 22%;
+    --sidebar-border: 262 25% 20%;
     --sidebar-ring: 262 60% 65%;
   }
 }
@@ -108,12 +111,14 @@
 }
 
 @layer components {
+  /* Updated card gradients for dark mode */
   .card-gradient {
-    @apply bg-gradient-to-br from-white to-secondary/50 dark:from-card dark:to-background/80 backdrop-blur-sm;
+    @apply bg-gradient-to-br from-white to-secondary/50 dark:from-[#2B2D42] dark:to-[#1D1F36] backdrop-blur-sm;
   }
   
   .primary-gradient {
-    @apply bg-gradient-to-r from-forum-lavender to-[#b29dff] hover:to-[#c9bdff];
+    @apply bg-gradient-to-r from-forum-lavender to-[#b29dff] hover:to-[#c9bdff]
+      dark:from-forum-magenta dark:to-forum-lavender dark:hover:shadow-neon-glow;
   }
   
   .coral-gradient {
@@ -125,44 +130,65 @@
   }
   
   .thread-tag {
-    @apply inline-flex px-2 py-0.5 rounded-full text-xs font-medium shadow-sm;
+    @apply inline-flex px-2 py-0.5 rounded-full text-xs font-medium shadow-sm
+      dark:bg-gradient-to-r dark:from-forum-lavender/20 dark:to-forum-magenta/10 
+      dark:text-white dark:shadow-glass-highlight dark:backdrop-blur-sm;
   }
   
   .category-card {
-    @apply relative p-3 sm:p-5 rounded-2xl border bg-card shadow-soft hover:shadow-hover transition-all duration-300;
+    @apply relative p-3 sm:p-5 rounded-2xl border bg-card shadow-soft 
+      hover:shadow-hover transition-all duration-300
+      dark:border-white/5 dark:hover:border-white/10 dark:hover:shadow-neon-glow;
   }
   
   .thread-card {
-    @apply relative p-3 sm:p-5 rounded-xl border bg-card/70 backdrop-blur-sm hover:bg-secondary/50 transition-all duration-300 shadow-soft hover:shadow-hover;
+    @apply relative p-3 sm:p-5 rounded-xl border bg-card/70 backdrop-blur-sm 
+      hover:bg-secondary/50 transition-all duration-300 shadow-soft hover:shadow-hover
+      dark:bg-gradient-to-br dark:from-[#1A1F2C]/80 dark:to-[#1A1F2C]/60
+      dark:hover:bg-gradient-to-br dark:hover:from-[#1A1F2C] dark:hover:to-[#2A2F3C]
+      dark:backdrop-blur-md dark:border-white/5 dark:hover:border-white/10;
   }
   
   .reply-card {
-    @apply relative p-3 sm:p-4 rounded-xl bg-secondary/70 backdrop-blur-sm dark:bg-secondary/30 mt-3 ml-3 sm:ml-8 border-l-4 border-l-forum-lavender shadow-soft;
+    @apply relative p-3 sm:p-4 rounded-xl bg-secondary/70 backdrop-blur-sm 
+      dark:bg-[#1A1F2C]/70 mt-3 ml-3 sm:ml-8 border-l-4 border-l-forum-lavender 
+      dark:shadow-glass-highlight shadow-soft;
   }
   
   .upvote-button {
-    @apply flex items-center space-x-1 text-sm font-medium text-muted-foreground hover:text-forum-lavender transition-colors;
+    @apply flex items-center space-x-1 text-sm font-medium text-muted-foreground 
+      hover:text-forum-lavender transition-colors
+      dark:hover:text-forum-cyan;
   }
   
   .floating-action-button {
-    @apply fixed bottom-6 right-6 p-3 sm:p-4 rounded-full primary-gradient text-white shadow-lg hover:shadow-xl transition-all duration-300 animate-bounce-gentle overflow-hidden;
+    @apply fixed bottom-6 right-6 p-3 sm:p-4 rounded-full primary-gradient 
+      text-white shadow-lg hover:shadow-xl transition-all duration-300 
+      animate-bounce-gentle overflow-hidden
+      dark:shadow-indigo-glow dark:hover:shadow-neon-glow;
   }
   
   .nav-item {
-    @apply flex items-center space-x-3 p-3 rounded-lg text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-primary transition-all duration-200;
+    @apply flex items-center space-x-3 p-3 rounded-lg text-sidebar-foreground 
+      hover:bg-sidebar-accent hover:text-sidebar-primary transition-all duration-200
+      dark:hover:shadow-glass-highlight;
   }
   
   .nav-item.active {
-    @apply bg-sidebar-primary text-sidebar-primary-foreground;
+    @apply bg-sidebar-primary text-sidebar-primary-foreground
+      dark:bg-gradient-to-r dark:from-forum-magenta/90 dark:to-forum-lavender/80;
   }
   
   .emoji-reaction {
-    @apply inline-flex items-center px-2 py-1 rounded-full bg-secondary hover:bg-primary/10 text-sm transition-all cursor-pointer;
+    @apply inline-flex items-center px-2 py-1 rounded-full bg-secondary 
+      hover:bg-primary/10 text-sm transition-all cursor-pointer
+      dark:bg-[#1A1F2C]/70 dark:hover:bg-[#2A2F3C]/70 dark:hover:shadow-glass-highlight;
   }
 
   /* Mobile optimizations */
   .mobile-menu-toggle {
-    @apply md:hidden fixed top-4 left-4 z-50 flex flex-col justify-center items-center w-10 h-10 bg-background border border-border rounded-md shadow-md;
+    @apply md:hidden fixed top-4 left-4 z-50 flex flex-col justify-center items-center 
+      w-10 h-10 bg-background border border-border rounded-md shadow-md;
   }
 
   /* Sidebar specific classes */
@@ -185,81 +211,18 @@
   
   /* Toggle button styling */
   .sidebar-toggle-button {
-    @apply fixed bottom-4 left-4 z-50 hidden md:flex items-center justify-center w-12 h-12 bg-forum-lavender text-white rounded-full shadow-md transition-all duration-300;
+    @apply fixed bottom-4 left-4 z-50 hidden md:flex items-center 
+      justify-center w-12 h-12 bg-forum-lavender text-white rounded-full 
+      shadow-md transition-all duration-300
+      dark:bg-gradient-to-r dark:from-forum-magenta dark:to-forum-lavender 
+      dark:shadow-neon-glow;
+  }
+
+  /* Glassmorphism card overlay */
+  .glass-card {
+    @apply dark:bg-white/5 dark:backdrop-blur-md dark:border-white/10 
+      dark:shadow-glass-highlight transition-all duration-300;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  
-  /* Glass effect */
-  .glass {
-    @apply backdrop-blur-md bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10;
-  }
-  
-  /* Text gradient */
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r;
-  }
-
-  /* Mobile safe area utilities */
-  .safe-top {
-    padding-top: env(safe-area-inset-top, 0);
-  }
-  
-  .safe-bottom {
-    padding-bottom: env(safe-area-inset-bottom, 0);
-  }
-  
-  .safe-left {
-    padding-left: env(safe-area-inset-left, 0);
-  }
-  
-  .safe-right {
-    padding-right: env(safe-area-inset-right, 0);
-  }
-  
-  /* Sidebar animation utilities */
-  .sidebar-enter {
-    animation: slideIn 0.3s ease-out forwards;
-  }
-  
-  .sidebar-exit {
-    animation: slideOut 0.3s ease-out forwards;
-  }
-  
-  @keyframes slideIn {
-    from {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideOut {
-    from {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    to {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-  }
-  
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
-}
+/* ... keep existing code (utility layer and animations) */

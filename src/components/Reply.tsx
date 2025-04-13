@@ -16,7 +16,7 @@ const Reply = ({ reply, level = 0 }: ReplyProps) => {
   const maxLevel = 4;
   const currentLevel = Math.min(level, maxLevel);
   
-  const borderColor = 'border-forum-lavender';
+  const borderColor = 'border-forum-lavender dark:border-forum-magenta';
   
   // Generate reaction emoji buttons
   const reactionEmojis = [
@@ -29,21 +29,21 @@ const Reply = ({ reply, level = 0 }: ReplyProps) => {
   
   return (
     <div className={`mb-4 ${currentLevel > 0 ? 'pl-3 md:pl-6 border-l-2 ' + borderColor : ''}`}>
-      <div className="reply-card border-l-forum-lavender">
+      <div className="reply-card border-l-forum-lavender dark:border-l-forum-magenta dark:backdrop-blur-md">
         <div className="flex items-start space-x-3">
           <img
             src={reply.author.avatar}
             alt={reply.author.name}
-            className="w-8 h-8 rounded-full border-2 border-forum-lavender/30"
+            className="w-8 h-8 rounded-full border-2 border-forum-lavender/30 dark:border-forum-magenta/30 dark:shadow-glass-highlight"
           />
           <div className="flex-1">
             <div className="flex items-center">
-              <span className="font-medium">{reply.author.name}</span>
-              <span className="ml-2 text-xs text-muted-foreground">
+              <span className="font-medium dark:text-white dark:shadow-text-shadow">{reply.author.name}</span>
+              <span className="ml-2 text-xs text-muted-foreground dark:text-gray-400">
                 {formatDistanceToNow(new Date(reply.createdAt), { addSuffix: true })}
               </span>
             </div>
-            <div className="mt-2 text-sm">
+            <div className="mt-2 text-sm dark:text-gray-300">
               {reply.content}
             </div>
             
@@ -54,7 +54,7 @@ const Reply = ({ reply, level = 0 }: ReplyProps) => {
               </button>
               
               <button 
-                className="flex items-center text-xs text-muted-foreground hover:text-forum-lavender transition-colors"
+                className="flex items-center text-xs text-muted-foreground hover:text-forum-lavender transition-colors dark:text-gray-400 dark:hover:text-forum-cyan"
                 onClick={() => setShowReplyForm(!showReplyForm)}
               >
                 <MessageSquare className="w-3.5 h-3.5 mr-1" />
@@ -65,11 +65,11 @@ const Reply = ({ reply, level = 0 }: ReplyProps) => {
                 {reactionEmojis.map((reaction) => (
                   <button 
                     key={reaction.id}
-                    className="emoji-reaction"
+                    className="emoji-reaction dark:hover:shadow-glass-highlight dark:border dark:border-white/5"
                   >
                     <span>{reaction.emoji}</span>
                     {reaction.count > 0 && (
-                      <span className="ml-1 text-xs">{reaction.count}</span>
+                      <span className="ml-1 text-xs dark:text-gray-300">{reaction.count}</span>
                     )}
                   </button>
                 ))}

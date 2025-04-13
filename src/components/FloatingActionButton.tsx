@@ -22,12 +22,12 @@ const FloatingActionButton = ({
       <div className="relative z-10 flex items-center justify-center">
         {icon}
       </div>
-      <span className="absolute right-full mr-3 rounded-lg bg-black/80 backdrop-blur-md text-white px-3 py-1.5 text-sm opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap shadow-md">
+      <span className="absolute right-full mr-3 rounded-lg bg-black/80 backdrop-blur-md text-white px-3 py-1.5 text-sm opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap shadow-md dark:bg-gradient-to-r dark:from-[#2B2D42] dark:to-[#3A0CA3]/90 dark:shadow-neon-glow">
         {label}
       </span>
       
       {/* Gradient ripple effect */}
-      <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 bg-white/20 animate-ping"></span>
+      <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 bg-white/20 animate-ping dark:bg-forum-magenta/40"></span>
     </button>
   );
 };
