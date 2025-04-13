@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -181,6 +182,11 @@
   
   .sidebar-close {
     @apply animate-slide-out-right;
+  }
+  
+  /* Toggle button styling */
+  .sidebar-toggle-button {
+    @apply fixed bottom-4 left-4 z-50 hidden md:flex items-center justify-center w-12 h-12 bg-forum-lavender text-white rounded-full shadow-md transition-all duration-300;
   }
 }
 

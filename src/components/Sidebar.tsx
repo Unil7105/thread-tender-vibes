@@ -63,7 +63,7 @@ const Sidebar = () => {
 
       {/* Desktop Toggle Button */}
       <button
-        className="fixed bottom-4 left-4 z-50 hidden md:flex items-center justify-center p-2 rounded-full bg-primary text-primary-foreground shadow-md hover:bg-primary/90 transition-all duration-300"
+        className="fixed bottom-4 left-4 z-50 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-forum-lavender text-white shadow-md hover:bg-forum-lavender/90 transition-all duration-300"
         onClick={toggleSidebar}
         aria-label="Toggle sidebar"
       >
@@ -94,7 +94,7 @@ const Sidebar = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: isCollapsed ? 0 : 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              className={`text-xl font-bold text-forum-lavender whitespace-nowrap ${isCollapsed ? 'hidden' : 'block'}`}
+              className={`text-xl font-bold text-forum-lavender whitespace-nowrap ${isCollapsed ? 'hidden md:hidden' : 'block'}`}
             >
               TextForum
             </motion.span>
