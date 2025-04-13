@@ -64,7 +64,7 @@ const Explore = () => {
           <Button 
             variant="ghost" 
             size="icon" 
-            className="absolute left-0 z-10 bg-forum-lavender/10 hover:bg-forum-lavender/20 text-forum-lavender"
+            className="absolute left-0 z-10 bg-forum-navy/80 hover:bg-forum-navy text-white rounded-full shadow-md dark:bg-forum-navy/90 dark:hover:bg-forum-navy/70"
             onClick={() => handleScroll('left')}
           >
             <ChevronLeft className="h-5 w-5" />
@@ -72,23 +72,23 @@ const Explore = () => {
           
           <div 
             ref={scrollContainerRef}
-            className="flex items-center overflow-x-auto scroll-smooth py-2 px-10 max-w-full scrollbar-hide"
+            className="flex items-center overflow-x-auto scroll-smooth py-4 px-10 max-w-full scrollbar-hide bg-forum-navy/90 dark:bg-forum-navy/70 rounded-full shadow-inner"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <ToggleGroup 
               type="single" 
               value={activeFilter} 
               onValueChange={(value) => value && setActiveFilter(value)}
-              className="inline-flex flex-nowrap min-w-max"
+              className="inline-flex flex-nowrap min-w-max gap-2 px-2"
             >
               {categoryItems.map((category) => (
                 <ToggleGroupItem 
                   key={category.id} 
                   value={category.id}
-                  className={`rounded-full px-6 py-3 text-sm font-medium transition-all mx-1 whitespace-nowrap ${
+                  className={`rounded-full px-8 py-3 text-sm font-medium transition-all mx-1 whitespace-nowrap ${
                     activeFilter === category.id 
                       ? "bg-forum-lavender text-white shadow-md" 
-                      : "bg-forum-lavender/10 text-forum-lavender hover:bg-forum-lavender/20 dark:bg-forum-lavender/20"
+                      : "bg-forum-navy/70 text-white/80 hover:text-white hover:bg-forum-navy/50"
                   }`}
                 >
                   {category.label}
@@ -100,7 +100,7 @@ const Explore = () => {
           <Button 
             variant="ghost" 
             size="icon" 
-            className="absolute right-0 z-10 bg-forum-lavender/10 hover:bg-forum-lavender/20 text-forum-lavender"
+            className="absolute right-0 z-10 bg-forum-navy/80 hover:bg-forum-navy text-white rounded-full shadow-md dark:bg-forum-navy/90 dark:hover:bg-forum-navy/70"
             onClick={() => handleScroll('right')}
           >
             <ChevronRight className="h-5 w-5" />
