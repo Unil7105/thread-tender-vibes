@@ -1,3 +1,4 @@
+
 import { ReactNode, useEffect, useState } from 'react';
 import { Sidebar } from './sidebar';
 import { Menu } from 'lucide-react';
@@ -77,15 +78,17 @@ const Layout = ({ children, pageTitle }: LayoutProps) => {
                     ${isScrolled ? 'shadow-md dark:shadow-neon-glow/10' : ''}`}
         >
           <div className="flex items-center gap-3">
-            {/* Mobile menu button - embedded in header */}
+            {/* Redesigned Mobile menu button with improved styling */}
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden h-10 w-10 rounded-lg bg-[#EDE9FE]/20 dark:bg-white/10 hover:scale-105 transition-transform"
+              className="md:hidden h-9 w-9 rounded-md bg-gradient-to-br from-[#EDE9FE] to-[#E5DEFF] dark:from-[#2D2B42] dark:to-[#252340] hover:scale-105 transition-all duration-200 shadow-sm"
               onClick={toggleMobileMenu}
               aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-sidebar"
             >
-              <Menu className="h-5 w-5 text-foreground dark:text-white" />
+              <Menu className="h-5 w-5 text-[#7C3AED] dark:text-[#9b87f5]" />
             </Button>
             
             <h2 className="text-xl font-bold">{pageTitle || 'TextForum'}</h2>
