@@ -1,4 +1,3 @@
-
 import Layout from '@/components/Layout';
 import ThreadsList from '@/components/ThreadsList';
 import { threads } from '@/data/mockData';
