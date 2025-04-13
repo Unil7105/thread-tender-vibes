@@ -10,8 +10,8 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="flex min-h-screen bg-background">
       <Sidebar />
-      <main className="flex-1 p-4 pt-16 md:pt-4 md:p-6 lg:p-8 overflow-y-auto w-full transition-all duration-300">
-        <div className="max-w-6xl mx-auto animate-fade-in relative">
+      <main className="flex-1 p-0 md:pl-6 lg:pl-8 pt-16 md:pt-6 overflow-y-auto w-full transition-all duration-300">
+        <div className="max-w-5xl mx-auto animate-fade-in relative px-4 md:px-6">
           <div className="relative z-10">
             {children}
           </div>

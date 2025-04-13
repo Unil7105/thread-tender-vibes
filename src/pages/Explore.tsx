@@ -83,33 +83,34 @@ const Explore = () => {
   
   return (
     <Layout>
-      <div className="relative mb-12 overflow-hidden bg-gradient-to-br from-forum-lavender/10 to-purple-500/10 rounded-2xl p-8">
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-forum-lavender/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-forum-mint/20 rounded-full blur-3xl" />
-        
-        <div className="relative z-10">
-          <div className="flex items-center space-x-4 mb-5">
-            <div className="bg-gradient-to-br from-forum-lavender to-purple-500 p-3 rounded-xl text-white shadow-md">
+      <div className="mb-8 rounded-2xl overflow-hidden bg-[#f1effe]">
+        <div className="p-6 md:p-8 relative">
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-forum-lavender/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-forum-mint/20 rounded-full blur-3xl" />
+          
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+            <div className="bg-[#9b87f5] p-3 rounded-xl text-white shadow-md w-fit">
               <Compass className="w-8 h-8" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-forum-lavender to-purple-600 bg-clip-text text-transparent">
-              Explore Discussions
-            </h1>
+            <div>
+              <h1 className="text-3xl md:text-4xl font-bold text-[#9b87f5]">
+                Explore Discussions
+              </h1>
+              <p className="text-muted-foreground text-lg mt-2 max-w-2xl">
+                Discover trending topics and join fascinating conversations across all categories
+              </p>
+            </div>
           </div>
-          
-          <p className="text-muted-foreground text-lg max-w-2xl mb-8">
-            Discover trending topics and join fascinating conversations across all categories
-          </p>
         </div>
       </div>
       
-      <div className="relative mb-10">
+      <div className="relative mb-8">
         <div className="flex items-center mb-4">
           {showLeftArrow && (
             <Button 
               variant="ghost" 
               size="icon" 
-              className="absolute left-0 z-10 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-full shadow-md"
+              className="absolute left-0 z-10 bg-white hover:bg-gray-100 text-gray-800 rounded-full shadow-md"
               onClick={() => handleScroll('left')}
             >
               <ChevronLeft className="h-5 w-5" />
@@ -118,7 +119,7 @@ const Explore = () => {
           
           <div 
             ref={scrollContainerRef}
-            className="flex items-center overflow-x-auto scroll-smooth py-4 px-10 max-w-full scrollbar-hide bg-gray-100 dark:bg-forum-navy/70 rounded-full shadow-inner mx-auto"
+            className="flex items-center overflow-x-auto scroll-smooth py-2 px-10 max-w-full scrollbar-hide bg-white/80 dark:bg-gray-900/30 rounded-full shadow-sm"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <ToggleGroup 
@@ -132,10 +133,10 @@ const Explore = () => {
                   key={category.id} 
                   value={category.id}
                   data-value={category.id}
-                  className={`rounded-full px-8 py-3 text-sm font-medium transition-all mx-1 whitespace-nowrap ${
+                  className={`rounded-full px-6 py-2 text-sm font-medium transition-all whitespace-nowrap ${
                     activeFilter === category.id 
-                      ? "bg-forum-lavender text-white shadow-md" 
-                      : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 hover:border-forum-lavender"
+                      ? "bg-[#9b87f5] text-white shadow-md" 
+                      : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
                   }`}
                 >
                   {category.label}
@@ -148,7 +149,7 @@ const Explore = () => {
             <Button 
               variant="ghost" 
               size="icon" 
-              className="absolute right-0 z-10 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-full shadow-md"
+              className="absolute right-0 z-10 bg-white hover:bg-gray-100 text-gray-800 rounded-full shadow-md"
               onClick={() => handleScroll('right')}
             >
               <ChevronRight className="h-5 w-5" />
@@ -158,10 +159,10 @@ const Explore = () => {
       </div>
       
       <section>
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold relative">
             Popular Threads
-            <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-forum-lavender rounded-full"></span>
+            <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-[#9b87f5] rounded-full"></span>
           </h2>
           <div className="text-sm text-muted-foreground">
             {filteredThreads.length} discussions
