@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { User } from 'lucide-react';
+import { UserRound } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface SidebarProfileProps {
@@ -12,11 +12,12 @@ interface SidebarProfileProps {
 const SidebarProfile: React.FC<SidebarProfileProps> = ({
   isCollapsed
 }) => {
-  // Mock profile data - this would normally come from auth state
+  // Rich profile data with proper image
   const profile = {
     name: 'Alexandra Chen',
-    avatar: 'https://ui-avatars.com/api/?name=Alexandra+Chen&background=random',
-    role: 'Forum Member'
+    avatar: 'https://i.pravatar.cc/300?img=47', // Using a proper avatar image
+    role: 'Product Designer',
+    status: 'online'
   };
 
   return (
@@ -45,7 +46,7 @@ const SidebarProfile: React.FC<SidebarProfileProps> = ({
         <Avatar 
           className={`
             transition-all duration-300 
-            ${isCollapsed ? 'h-8 w-8' : 'h-8 w-8'} 
+            ${isCollapsed ? 'h-8 w-8' : 'h-9 w-9'} 
             border-2 border-forum-lavender/50
             dark:border-forum-magenta/60
             flex-shrink-0
@@ -58,16 +59,21 @@ const SidebarProfile: React.FC<SidebarProfileProps> = ({
           <AvatarImage 
             src={profile.avatar} 
             alt={profile.name} 
-            className="flex items-center justify-center" 
+            className="object-cover"
           />
           <AvatarFallback>
-            <User className="h-4 w-4 text-muted-foreground dark:text-white" />
+            <UserRound className="h-4 w-4 text-muted-foreground dark:text-white" />
           </AvatarFallback>
         </Avatar>
         
         {!isCollapsed && (
           <div className="ml-2 flex-grow overflow-hidden min-w-0">
-            <p className="font-medium text-xs truncate dark:text-white">{profile.name}</p>
+            <div className="flex items-center">
+              <p className="font-medium text-sm truncate dark:text-white">{profile.name}</p>
+              {profile.status === 'online' && (
+                <span className="ml-1.5 h-2 w-2 rounded-full bg-green-500 shadow-glow-sm"></span>
+              )}
+            </div>
             <p className="text-xs text-muted-foreground truncate dark:text-gray-400">{profile.role}</p>
           </div>
         )}
