@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { MessageSquare, ChevronUp, CalendarClock } from 'lucide-react';
 import { Thread } from '@/data/mockData';
@@ -24,7 +23,14 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
   
   const upvoteVariants = {
     initial: { scale: 1 },
-    hover: { scale: 1.1, transition: { duration: 0.2, repeat: 1, repeatType: "reverse" } }
+    hover: { 
+      scale: 1.1, 
+      transition: { 
+        duration: 0.2, 
+        repeat: 1, 
+        repeatType: "reverse"
+      } 
+    }
   };
   
   return (
