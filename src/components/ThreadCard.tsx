@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { MessageSquare, ChevronUp, CalendarClock } from 'lucide-react';
 import { Thread } from '@/data/mockData';
@@ -5,7 +6,7 @@ import { formatDistanceToNow } from 'date-fns';
 import { Card } from './ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 import { Badge } from './ui/badge';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { useState } from 'react';
 
 interface ThreadCardProps {
@@ -16,19 +17,19 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   
   // Animation variants
-  const cardVariants = {
+  const cardVariants: Variants = {
     initial: { y: 0 },
     hover: { y: -8, transition: { duration: 0.3 } }
   };
   
-  const upvoteVariants = {
+  const upvoteVariants: Variants = {
     initial: { scale: 1 },
     hover: { 
       scale: 1.1, 
       transition: { 
         duration: 0.2, 
         repeat: 1, 
-        repeatType: "reverse"
+        repeatType: "reverse" as const
       } 
     }
   };
