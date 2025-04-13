@@ -3,7 +3,7 @@ import React from 'react';
 
 interface SidebarOverlayProps {
   onClick: () => void;
-  className?: string; // Add optional className prop
+  className?: string;
 }
 
 const SidebarOverlay: React.FC<SidebarOverlayProps> = ({ onClick, className }) => {

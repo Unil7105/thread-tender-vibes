@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import SidebarMobileToggle from './SidebarMobileToggle';
@@ -64,6 +65,7 @@ const Sidebar = ({ isMobileMenuOpen: propsMobileMenuOpen, setIsMobileMenuOpen: p
 
   return (
     <>
+      {/* Mobile sidebar with SheetContent component */}
       <SidebarMobileToggle 
         isMobileMenuOpen={isMobileMenuOpen} 
         isCollapsed={isCollapsed}
@@ -71,13 +73,14 @@ const Sidebar = ({ isMobileMenuOpen: propsMobileMenuOpen, setIsMobileMenuOpen: p
         toggleSidebar={toggleSidebar}
       />
 
+      {/* Desktop sidebar - fixed positioning */}
       <aside 
         id="sidebar"
         className={`
           fixed top-0 left-0 h-full z-40
           bg-[#f7f5ff] dark:bg-[#252332] border-r border-[#e0d8ff] dark:border-[#3a3351]
           transition-all duration-300 ease-in-out
-          ${isCollapsed ? 'w-[72px]' : 'w-[240px] max-w-[260px] min-w-[200px]'}
+          ${isCollapsed ? 'w-[72px]' : 'w-[240px]'}
           hidden md:block shadow-sm
         `}
       >
@@ -89,24 +92,7 @@ const Sidebar = ({ isMobileMenuOpen: propsMobileMenuOpen, setIsMobileMenuOpen: p
         />
       </aside>
 
-      <aside 
-        id="mobile-sidebar"
-        className={`
-          fixed top-0 left-0 h-full z-50 w-[240px] max-w-[80vw]
-          bg-[#f7f5ff] dark:bg-[#252332] border-r border-[#e0d8ff] dark:border-[#3a3351]
-          transition-all duration-300 ease-in-out transform
-          ${isMobileMenuOpen ? 'translate-x-0 shadow-xl' : '-translate-x-full'}
-          md:hidden
-        `}
-      >
-        <SidebarContent 
-          isMobileMenuOpen={isMobileMenuOpen}
-          isCollapsed={false}
-          setIsMobileMenuOpen={setIsMobileMenuOpen}
-          toggleSidebar={toggleSidebar}
-        />
-      </aside>
-
+      {/* We don't need this mobile sidebar anymore as we're using SidebarMobileToggle */}
       {isMobileMenuOpen && (
         <SidebarOverlay 
           onClick={() => setIsMobileMenuOpen(false)} 

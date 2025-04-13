@@ -65,20 +65,20 @@ const Layout = ({ children, pageTitle }: LayoutProps) => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-b from-background to-background/95 dark:from-[#0D1321] dark:to-[#161b29] overflow-x-hidden">
+    <div className="flex min-h-screen overflow-x-hidden bg-gradient-to-b from-background to-background/95 dark:from-[#0D1321] dark:to-[#161b29]">
       {/* Sidebar */}
       <Sidebar 
         isMobileMenuOpen={isMobileMenuOpen} 
         setIsMobileMenuOpen={setIsMobileMenuOpen} 
       />
       
-      {/* Main content area - with proper margin to avoid overlap */}
+      {/* Main content area with proper margin that adjusts based on sidebar state */}
       <main 
         className={cn(
-          "flex-grow transition-all duration-300 ease-in-out",
-          // Apply margin based on sidebar collapsed state
+          "flex-grow transition-all duration-300 ease-in-out w-full",
+          // Apply proper margin based on sidebar collapsed state
           isCollapsed ? "md:ml-[72px]" : "md:ml-[240px]",
-          // No margin on mobile
+          // No left margin on mobile (sidebar is overlay on mobile)
           "ml-0"
         )}
       >
