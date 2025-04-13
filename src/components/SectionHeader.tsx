@@ -30,7 +30,7 @@ const SectionHeader = ({
       {viewAllHref && (
         <Link
           to={viewAllHref}
-          className="flex items-center gap-x-1 text-forum-lavender hover:text-forum-lavender/80 font-medium transition-all duration-150 hover:underline"
+          className="flex items-center gap-x-2 text-indigo-600 hover:text-indigo-800 dark:text-forum-lavender dark:hover:text-forum-lavender/80 font-medium transition-all duration-150 hover:underline px-3 py-1.5 rounded-full hover:bg-indigo-50 dark:hover:bg-forum-lavender/10"
         >
           <span>{viewAllLabel}</span>
           <ChevronRight className="h-4 w-4" />

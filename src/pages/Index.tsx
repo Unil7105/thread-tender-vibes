@@ -44,7 +44,7 @@ const Index = () => {
         <section className="w-full lg:w-4/12 mb-8 lg:mb-0">
           <SectionHeader 
             title="Categories" 
-            viewAllHref="/categories" 
+            viewAllHref="/view-all/categories" 
           />
           <CategoriesGrid />
         </section>
@@ -52,7 +52,7 @@ const Index = () => {
         <section className="w-full lg:w-8/12">
           <SectionHeader 
             title="Recent Threads" 
-            viewAllHref="/explore" 
+            viewAllHref="/view-all/threads" 
           />
           <ThreadsList threads={threads} isLoading={isLoading} />
         </section>

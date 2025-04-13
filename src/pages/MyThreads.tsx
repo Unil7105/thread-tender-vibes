@@ -35,8 +35,8 @@ const MyThreads = () => {
         <TabsContent value="created" className="pt-6">
           <SectionHeader 
             title="Your Threads" 
-            viewAllHref="#"
-            viewAllLabel="Filter"
+            viewAllHref="/view-all/my-threads"
+            viewAllLabel="View all threads"
           />
           <ThreadsList threads={myThreads} />
         </TabsContent>

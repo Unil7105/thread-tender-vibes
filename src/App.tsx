@@ -10,6 +10,7 @@ import ThreadDetail from "./pages/ThreadDetail";
 import Explore from "./pages/Explore";
 import MyThreads from "./pages/MyThreads";
 import Profile from "./pages/Profile";
+import ViewAll from "./pages/ViewAll";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/explore" element={<Explore />} />
           <Route path="/my-threads" element={<MyThreads />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/view-all/:type" element={<ViewAll />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
