@@ -1,38 +1,36 @@
 
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-/**
- * Custom hook to manage sidebar state.
- * Allows for external control through props or internal state management.
- */
 export const useSidebarState = (
   propsMobileMenuOpen?: boolean,
   propsSetMobileMenuOpen?: (value: boolean) => void
 ) => {
-  // State for controlling the sidebar menu on mobile
-  const [_isMobileMenuOpen, _setIsMobileMenuOpen] = useState(false);
-  
-  // Use provided props or fallback to internal state
-  const isMobileMenuOpen = propsMobileMenuOpen !== undefined ? propsMobileMenuOpen : _isMobileMenuOpen;
-  const setIsMobileMenuOpen = propsSetMobileMenuOpen || _setIsMobileMenuOpen;
-  
-  // State for controlling the collapsed state of the sidebar
+  const location = useLocation();
+  const [internalMobileMenuOpen, setInternalMobileMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
   
-  // Toggle sidebar collapsed state
-  const toggleSidebar = () => {
-    const newState = !isCollapsed;
-    setIsCollapsed(newState);
-    
-    // Save state to localStorage for persistence
-    try {
-      localStorage.setItem('sidebarCollapsed', JSON.stringify(newState));
-    } catch (error) {
-      console.error('Error saving sidebar state to localStorage:', error);
-    }
-  };
+  const isMobileMenuOpen = propsMobileMenuOpen !== undefined ? propsMobileMenuOpen : internalMobileMenuOpen;
+  const setIsMobileMenuOpen = propsSetMobileMenuOpen || setInternalMobileMenuOpen;
   
-  // Load saved state from localStorage on mount
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname, setIsMobileMenuOpen]);
+
+  // Close mobile menu on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth < 768 && window.scrollY > 300 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMobileMenuOpen, setIsMobileMenuOpen]);
+
+  // Load sidebar collapsed state from localStorage
   useEffect(() => {
     try {
       const savedState = localStorage.getItem('sidebarCollapsed');
@@ -43,7 +41,27 @@ export const useSidebarState = (
       console.error('Error retrieving sidebar state from localStorage:', error);
     }
   }, []);
-  
+
+  // Add keyboard shortcut for toggling sidebar
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 's' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        toggleSidebar();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isCollapsed]);
+
+  const toggleSidebar = () => {
+    const newState = !isCollapsed;
+    setIsCollapsed(newState);
+    
+    localStorage.setItem('sidebarCollapsed', JSON.stringify(newState));
+  };
+
   return {
     isMobileMenuOpen,
     setIsMobileMenuOpen,
