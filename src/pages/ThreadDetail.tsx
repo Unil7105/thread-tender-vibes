@@ -91,7 +91,7 @@ const ThreadDetail = () => {
           />
           <div className="ml-3">
             <div className="font-medium text-sm md:text-base">{thread.author.name}</div>
-            <div className="text-xs md:text-sm text-muted-foreground">
+            <div className="text-xs md:text-sm text-[#8e8e93] dark:text-muted-foreground">
               {formatDistanceToNow(new Date(thread.createdAt), { addSuffix: true })}
             </div>
           </div>
@@ -102,12 +102,12 @@ const ThreadDetail = () => {
         </div>
         
         <div className="mt-6 flex items-center space-x-4">
-          <button className="upvote-button">
+          <button className="upvote-button bg-transparent hover:bg-forum-lavender/5 px-2 py-1 rounded-md transition-colors">
             <span className="text-lg">▲</span>
             <span>{thread.upvotes}</span>
           </button>
           
-          <div className="flex items-center text-xs md:text-sm text-muted-foreground">
+          <div className="flex items-center text-xs md:text-sm text-[#8e8e93] dark:text-muted-foreground">
             <MessageSquare className="w-4 h-4 mr-1" />
             <span>{thread.replyCount} replies</span>
           </div>
@@ -120,12 +120,16 @@ const ThreadDetail = () => {
         {thread.replies && thread.replies.length > 0 ? (
           <div className="space-y-4">
             {thread.replies.map((reply) => (
-              <Reply key={reply.id} reply={reply} />
+              <Reply 
+                key={reply.id} 
+                reply={reply} 
+                isOriginalPoster={reply.author.id === thread.author.id}
+              />
             ))}
           </div>
         ) : (
           <div className="text-center py-8">
-            <p className="text-muted-foreground">No replies yet. Be the first to reply!</p>
+            <p className="text-[#8e8e93] dark:text-muted-foreground">No replies yet. Be the first to reply!</p>
           </div>
         )}
       </div>
