@@ -1,3 +1,4 @@
+
 import { Home, Compass, MessageSquare, User, LogOut, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
@@ -18,14 +19,24 @@ const Sidebar = () => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       const sidebar = document.getElementById('sidebar');
+      const mobileToggle = document.getElementById('mobile-toggle');
+      
+      // Don't close if clicking on the toggle button itself
+      if (mobileToggle && mobileToggle.contains(event.target)) {
+        return;
+      }
+      
       if (isMobileMenuOpen && sidebar && !sidebar.contains(event.target)) {
         setIsMobileMenuOpen(false);
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
     };
   }, [isMobileMenuOpen]);
 
@@ -45,12 +56,24 @@ const Sidebar = () => {
     { path: '/profile', icon: User, label: 'Profile' },
   ];
 
+  // Handle mobile menu toggle with a specific handler
+  const handleMobileMenuToggle = (e) => {
+    e.stopPropagation(); // Prevent event bubbling
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+  
+  // Handle mobile menu item click to close the menu
+  const handleMobileMenuItemClick = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
       {/* Mobile Sidebar Toggle */}
       <button 
+        id="mobile-toggle"
         className="fixed top-4 left-4 z-50 md:hidden p-2 rounded-lg bg-sidebar shadow-md border border-sidebar-border"
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        onClick={handleMobileMenuToggle}
         aria-label="Toggle menu"
       >
         <div className="w-5 h-5 flex flex-col justify-between">
@@ -129,6 +152,7 @@ const Sidebar = () => {
                         ${isActive 
                           ? 'text-white' 
                           : 'text-sidebar-foreground hover:text-white'}`}
+                      onClick={handleMobileMenuItemClick}
                     >
                       {/* Active background with proper padding */}
                       {isActive && (
