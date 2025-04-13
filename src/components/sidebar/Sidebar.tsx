@@ -3,59 +3,27 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import SidebarMobileToggle from './SidebarMobileToggle';
 import SidebarCollapseButton from './SidebarCollapseButton';
-import SidebarOverlay from './SidebarOverlay';
 import SidebarContent from './SidebarContent';
 
 const Sidebar = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true); // Default to collapsed on desktop
   
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      const sidebar = document.getElementById('sidebar');
-      const mobileToggle = document.getElementById('mobile-toggle');
-      
-      if (mobileToggle && mobileToggle.contains(event.target)) {
-        return;
-      }
-      
-      if (isMobileMenuOpen && sidebar && !sidebar.contains(event.target)) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('touchstart', handleClickOutside);
-    
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
-    };
-  }, [isMobileMenuOpen]);
-
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
-    const sidebar = document.getElementById('sidebar');
-    if (sidebar) {
-      sidebar.classList.toggle('sidebar-collapsed');
-    }
-  };
-
-  const handleMobileMenuToggle = (e) => {
-    e.stopPropagation();
-    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
     <>
       <SidebarMobileToggle 
         isMobileMenuOpen={isMobileMenuOpen} 
-        handleMobileMenuToggle={handleMobileMenuToggle} 
+        isCollapsed={isCollapsed}
+        setIsMobileMenuOpen={setIsMobileMenuOpen} 
       />
 
       <SidebarCollapseButton 
@@ -63,15 +31,18 @@ const Sidebar = () => {
         toggleSidebar={toggleSidebar} 
       />
 
-      {isMobileMenuOpen && (
-        <SidebarOverlay onClick={() => setIsMobileMenuOpen(false)} />
-      )}
-
-      <SidebarContent 
-        isMobileMenuOpen={isMobileMenuOpen}
-        isCollapsed={isCollapsed}
-        setIsMobileMenuOpen={setIsMobileMenuOpen}
-      />
+      {/* Desktop Sidebar */}
+      <aside 
+        id="sidebar"
+        className={`hidden md:block fixed top-0 left-0 h-full z-40 md:sticky md:z-auto bg-sidebar border-r border-sidebar-border transition-all duration-300 ease-in-out
+                 md:translate-x-0 ${isCollapsed ? 'md:w-20' : 'md:w-64'} overflow-y-auto overflow-x-hidden`}
+      >
+        <SidebarContent 
+          isMobileMenuOpen={false}
+          isCollapsed={isCollapsed}
+          setIsMobileMenuOpen={setIsMobileMenuOpen}
+        />
+      </aside>
     </>
   );
 };

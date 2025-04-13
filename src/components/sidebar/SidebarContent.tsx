@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { X } from 'lucide-react';
 import SidebarLogo from './SidebarLogo';
 import SidebarNavigation from './SidebarNavigation';
 import SidebarFooter from './SidebarFooter';
@@ -18,22 +18,26 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
   setIsMobileMenuOpen
 }) => {
   return (
-    <aside 
-      id="sidebar"
-      className={`fixed top-0 left-0 h-full z-40 md:sticky md:z-auto bg-sidebar border-r border-sidebar-border transition-all duration-300 ease-in-out
-               ${isMobileMenuOpen ? 'translate-x-0 shadow-xl' : '-translate-x-full'} 
-               md:translate-x-0 ${isCollapsed ? 'md:w-20' : 'md:w-64'} overflow-y-auto overflow-x-hidden`}
-    >
-      <div className="flex flex-col h-full p-4">
-        <SidebarLogo isCollapsed={isCollapsed} />
-        <SidebarProfile isCollapsed={isCollapsed} />
-        <SidebarNavigation 
-          isCollapsed={isCollapsed} 
-          setIsMobileMenuOpen={setIsMobileMenuOpen} 
-        />
-        <SidebarFooter isCollapsed={isCollapsed} />
-      </div>
-    </aside>
+    <div className="flex flex-col h-full py-6 px-3 relative">
+      {/* Close button for mobile view */}
+      {isMobileMenuOpen && (
+        <button 
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="absolute top-4 right-4 p-1 rounded-full hover:bg-accent/50 text-muted-foreground hover:text-accent-foreground md:hidden"
+          aria-label="Close menu"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      )}
+      
+      <SidebarLogo isCollapsed={isCollapsed} />
+      <SidebarProfile isCollapsed={isCollapsed} />
+      <SidebarNavigation 
+        isCollapsed={isCollapsed} 
+        setIsMobileMenuOpen={setIsMobileMenuOpen} 
+      />
+      <SidebarFooter isCollapsed={isCollapsed} />
+    </div>
   );
 };
 

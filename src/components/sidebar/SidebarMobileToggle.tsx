@@ -1,28 +1,48 @@
 
 import React from 'react';
+import { Menu } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { 
+  Sheet,
+  SheetContent,
+  SheetTrigger
+} from "@/components/ui/sheet";
+import SidebarContent from './SidebarContent';
 
 interface SidebarMobileToggleProps {
   isMobileMenuOpen: boolean;
-  handleMobileMenuToggle: (e: React.MouseEvent) => void;
+  isCollapsed: boolean;
+  setIsMobileMenuOpen: (value: boolean) => void;
 }
 
 const SidebarMobileToggle: React.FC<SidebarMobileToggleProps> = ({ 
   isMobileMenuOpen, 
-  handleMobileMenuToggle 
+  isCollapsed,
+  setIsMobileMenuOpen 
 }) => {
   return (
-    <button 
-      id="mobile-toggle"
-      className="fixed top-4 left-4 z-50 md:hidden p-2 rounded-lg bg-sidebar shadow-md border border-sidebar-border"
-      onClick={handleMobileMenuToggle}
-      aria-label="Toggle menu"
-    >
-      <div className="w-5 h-5 flex flex-col justify-between">
-        <span className={`block h-0.5 w-full bg-sidebar-foreground rounded transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-        <span className={`block h-0.5 w-full bg-sidebar-foreground rounded transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-        <span className={`block h-0.5 w-full bg-sidebar-foreground rounded transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-      </div>
-    </button>
+    <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+      <SheetTrigger asChild>
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="fixed top-4 left-4 z-50 md:hidden h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-md hover:shadow-lg transition-all duration-300"
+          aria-label="Toggle menu"
+        >
+          <Menu className="h-5 w-5" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent 
+        side="left" 
+        className="p-0 w-[75vw] max-w-[300px] border-r border-sidebar-border bg-sidebar overflow-y-auto"
+      >
+        <SidebarContent 
+          isMobileMenuOpen={true}
+          isCollapsed={false}
+          setIsMobileMenuOpen={setIsMobileMenuOpen}
+        />
+      </SheetContent>
+    </Sheet>
   );
 };
 
