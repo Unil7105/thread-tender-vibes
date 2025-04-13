@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,17 +63,23 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         forum: {
-          lavender: "#8B5CF6", // Updated to Violet
-          indigo: "#6366F1",   // Neon Indigo
-          skyblue: "#38BDF8",  // Keep but adjusted
-          navy: "#0F172A",     // Midnight Navy
-          coral: "#FB7185",    // Coral for upvotes
-          mint: "#C084FC",     // Accent violet
-          amber: "#F59E0B",    // Keep amber
-          light: "#F9FAFB",    // Near white for headings
-          dark: "#0F172A",     // Midnight navy
-          magenta: "#A78BFA",  // Violet hover state
-          cyan: "#67E8F9",     // Keep cyan but adjusted
+          electric: "#1E90FF",     // Primary - Electric Blue
+          orange: "#FF4500",       // Secondary - Vivid Orange
+          neon: "#39FF14",         // Accent - Neon Green
+          black: "#000000",        // Background - Jet Black
+          yellow: "#FFFF00",       // CTA Highlight - Bright Yellow
+          
+          lavender: "#1E90FF",     // Updated to Electric Blue
+          indigo: "#FF4500",       // Updated to Vivid Orange
+          skyblue: "#39FF14",      // Updated to Neon Green
+          navy: "#000000",         // Updated to Jet Black
+          coral: "#FFFF00",        // Updated to Bright Yellow
+          mint: "#1E90FF",         // Electric Blue for consistency
+          amber: "#FF4500",        // Vivid Orange for consistency
+          light: "#FFFFFF",        // Pure white for contrast with dark background
+          dark: "#000000",         // Jet Black
+          magenta: "#FF4500",      // Vivid Orange
+          cyan: "#39FF14",         // Neon Green
         },
       },
       borderRadius: {
@@ -135,15 +140,18 @@ export default {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         inter: ["Inter", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
       boxShadow: {
-        'soft': '0 4px 14px 0 rgba(0, 0, 0, 0.05)',
-        'hover': '0 6px 20px rgba(0, 0, 0, 0.1)',
-        'card': '0 10px 30px -5px rgba(0, 0, 0, 0.1)',
-        'focus': '0 0 0 3px rgba(139, 92, 246, 0.3)',
-        'indigo-glow': '0 0 15px rgba(99, 102, 241, 0.4)',
-        'neon-glow': '0 0 10px rgba(139, 92, 246, 0.6), 0 0 20px rgba(139, 92, 246, 0.3)',
-        'glass-highlight': '0 0 0 1px rgba(255, 255, 255, 0.1) inset, 0 0 30px rgba(139, 92, 246, 0.15)',
+        'soft': '0 4px 14px 0 rgba(30, 144, 255, 0.2)',
+        'hover': '0 6px 20px rgba(30, 144, 255, 0.25)',
+        'card': '0 10px 30px -5px rgba(30, 144, 255, 0.15)',
+        'focus': '0 0 0 3px rgba(30, 144, 255, 0.3)',
+        'electric-glow': '0 0 15px rgba(30, 144, 255, 0.6)',
+        'neon-glow': '0 0 10px rgba(57, 255, 20, 0.6), 0 0 20px rgba(57, 255, 20, 0.3)',
+        'orange-glow': '0 0 15px rgba(255, 69, 0, 0.4)',
+        'yellow-glow': '0 0 15px rgba(255, 255, 0, 0.4)',
+        'glass-highlight': '0 0 0 1px rgba(255, 255, 255, 0.1) inset, 0 0 30px rgba(30, 144, 255, 0.15)',
         'text-shadow': '0 1px 3px rgba(0, 0, 0, 0.3)',
       },
       backdropBlur: {
