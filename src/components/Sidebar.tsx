@@ -161,23 +161,22 @@ const Sidebar = () => {
             <div className="flex flex-col items-center space-y-3">
               {/* Theme Toggle */}
               <div className="w-full group relative">
-                <Link
-                  to="#"
-                  className="flex items-center px-3 py-2.5 rounded-lg text-sidebar-foreground hover:text-white transition-colors relative"
+                <div
+                  className="flex items-center px-3 py-2.5 rounded-lg text-sidebar-foreground hover:text-white transition-colors relative cursor-pointer"
                 >
                   {/* Hover background */}
                   <span className="absolute inset-0 bg-sidebar-accent opacity-0 group-hover:opacity-100 rounded-lg transition-opacity" />
                   
                   {/* Icon and label */}
                   <span className="relative flex items-center">
-                    <ThemeToggle className="w-5 h-5 text-sidebar-foreground group-hover:text-white" />
+                    <ThemeToggle />
                     {!isCollapsed && (
                       <span className="ml-3 text-sm transition-all duration-300 whitespace-nowrap">
                         Toggle theme
                       </span>
                     )}
                   </span>
-                </Link>
+                </div>
               </div>
               
               {/* Logout Button */}
