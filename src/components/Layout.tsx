@@ -1,6 +1,5 @@
-
 import { ReactNode } from 'react';
-import Sidebar from './Sidebar';
+import Sidebar from './sidebar';
 
 interface LayoutProps {
   children: ReactNode;
