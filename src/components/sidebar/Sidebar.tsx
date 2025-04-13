@@ -62,10 +62,11 @@ const Sidebar = () => {
       <aside 
         id="sidebar"
         className={`
-          hidden md:block fixed top-0 left-0 h-full z-40 
+          fixed top-0 left-0 h-full z-40
           bg-[#f1effe] border-r border-sidebar-border 
           transition-all duration-300 ease-in-out
           ${isCollapsed ? 'w-16' : 'w-64'}
+          hidden md:block
         `}
       >
         <SidebarContent 
@@ -74,6 +75,25 @@ const Sidebar = () => {
           setIsMobileMenuOpen={setIsMobileMenuOpen}
         />
       </aside>
+
+      {/* Mobile Sidebar - Only visible when menu is open */}
+      {isMobileMenuOpen && (
+        <aside 
+          className="fixed inset-0 z-40 bg-black/50 md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <div 
+            className="absolute top-0 left-0 h-full w-64 bg-[#f1effe] border-r border-sidebar-border"
+            onClick={e => e.stopPropagation()}
+          >
+            <SidebarContent 
+              isMobileMenuOpen={true}
+              isCollapsed={false}
+              setIsMobileMenuOpen={setIsMobileMenuOpen}
+            />
+          </div>
+        </aside>
+      )}
     </>
   );
 };

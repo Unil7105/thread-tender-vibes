@@ -35,13 +35,18 @@ const Layout = ({ children }: LayoutProps) => {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-background">
-      <Sidebar />
+    <div className="flex min-h-screen bg-background overflow-hidden">
+      {/* Sidebar container - fixed position */}
+      <div className="flex-shrink-0">
+        <Sidebar />
+      </div>
+      
+      {/* Main content area - flexible width with transition */}
       <main 
-        className={`flex-1 p-0 pt-16 md:pt-6 overflow-y-auto w-full transition-all duration-300
-                    ${isCollapsed ? 'md:pl-6 lg:pl-8' : 'md:pl-[272px]'}`}
+        className={`flex-grow overflow-y-auto transition-all duration-300 ease-in-out
+                   ${isCollapsed ? 'ml-16 md:ml-16' : 'ml-16 md:ml-64'}`}
       >
-        <div className="max-w-5xl mx-auto animate-fade-in relative px-4 md:px-6">
+        <div className="max-w-5xl mx-auto py-6 px-4 md:px-6 relative">
           <div className="relative z-10">
             {children}
           </div>
