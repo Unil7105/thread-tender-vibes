@@ -1,6 +1,7 @@
 
-import { Sidebar } from './Sidebar';
+import Sidebar from './Sidebar';
 import SidebarProfile from './SidebarProfile';
 
-export default Sidebar;
+export { Sidebar };
 export { SidebarProfile };
+
