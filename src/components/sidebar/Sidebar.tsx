@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import SidebarMobileToggle from './SidebarMobileToggle';
@@ -48,9 +47,12 @@ const Sidebar = () => {
         onClick={toggleSidebar}
         className={`
           fixed bottom-4 left-4 z-50 hidden md:flex 
-          items-center justify-center w-12 h-12 
-          bg-[#9b87f5] text-white rounded-full 
-          shadow-lg transition-all duration-300
+          items-center justify-center 
+          w-12 h-12 
+          bg-[#9b87f5] text-white 
+          rounded-full 
+          shadow-lg 
+          transition-all duration-300
         `}
       >
         <ChevronRight 
