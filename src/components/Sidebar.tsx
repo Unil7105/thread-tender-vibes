@@ -102,10 +102,10 @@ const Sidebar = () => {
       >
         <div className="flex flex-col h-full py-6 px-3">
           {/* Logo Section */}
-          <div className="flex justify-center md:justify-start items-center mb-6 px-2">
+          <div className={`flex ${isCollapsed ? 'justify-center' : 'justify-start'} items-center mb-6 px-2`}>
             <div className="flex items-center">
-              <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary text-primary-foreground">
-                {isCollapsed ? 'T' : 'T'}
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground">
+                <span className="text-lg font-semibold">T</span>
               </div>
               {!isCollapsed && (
                 <span className="ml-2 text-lg font-semibold truncate">
@@ -123,13 +123,13 @@ const Sidebar = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center py-2 px-3 rounded-md transition-colors text-sm font-medium
+                  className={`flex ${isCollapsed ? 'justify-center' : 'justify-start'} items-center py-2 px-3 rounded-md transition-colors text-sm font-medium
                     ${isActive 
-                      ? 'bg-accent text-accent-foreground' 
+                      ? 'bg-primary text-primary-foreground' 
                       : 'text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground'}`}
                   onClick={handleMobileMenuItemClick}
                 >
-                  <item.icon className="w-4 h-4 shrink-0" />
+                  <item.icon className="w-5 h-5 shrink-0" />
                   {!isCollapsed && (
                     <span className="ml-3 truncate">
                       {item.label}
@@ -143,9 +143,9 @@ const Sidebar = () => {
           {/* Bottom Section */}
           <div className="mt-auto pt-4 border-t border-border space-y-2 px-2">
             {/* User Profile Section */}
-            <div className="flex items-center gap-2 rounded-md p-2 bg-accent/20 mb-3">
-              <div className="w-8 h-8 rounded-full bg-primary/10 overflow-hidden flex items-center justify-center">
-                <User className="w-4 h-4 text-primary" />
+            <div className={`flex ${isCollapsed ? 'justify-center' : 'items-center gap-2'} rounded-md p-2 ${isCollapsed ? 'px-0' : 'px-2'} mb-3`}>
+              <div className="w-10 h-10 rounded-full bg-primary overflow-hidden flex items-center justify-center">
+                <User className="w-5 h-5 text-primary-foreground" />
               </div>
               
               {!isCollapsed && (
@@ -163,9 +163,9 @@ const Sidebar = () => {
                 document.documentElement.classList.toggle('dark', !isDark);
                 localStorage.setItem('theme', !isDark ? 'dark' : 'light');
               }}
-              className="flex items-center w-full py-2 px-3 rounded-md text-sm text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground transition-colors"
+              className={`flex ${isCollapsed ? 'justify-center' : 'justify-start'} items-center w-full py-2 px-3 rounded-md text-sm text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground transition-colors`}
             >
-              <div className="w-4 h-4 shrink-0">
+              <div className="w-5 h-5 flex items-center justify-center shrink-0">
                 <ThemeToggle />
               </div>
               
@@ -178,9 +178,9 @@ const Sidebar = () => {
             
             {/* Logout Button */}
             <button
-              className="flex items-center w-full py-2 px-3 rounded-md text-sm text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-colors"
+              className={`flex ${isCollapsed ? 'justify-center' : 'justify-start'} items-center w-full py-2 px-3 rounded-md text-sm text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-colors`}
             >
-              <LogOut className="w-4 h-4 shrink-0" />
+              <LogOut className="w-5 h-5 shrink-0" />
               {!isCollapsed && (
                 <span className="ml-3 truncate">
                   Logout
