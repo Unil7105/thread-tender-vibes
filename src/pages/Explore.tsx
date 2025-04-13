@@ -28,11 +28,11 @@ const Explore = () => {
   
   return (
     <Layout>
-      <div className="relative mb-12 overflow-hidden">
+      <div className="relative mb-12 overflow-hidden bg-gradient-to-br from-forum-lavender/10 to-purple-500/10 rounded-2xl p-8">
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-forum-lavender/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-forum-mint/20 rounded-full blur-3xl" />
         
-        <div className="relative">
+        <div className="relative z-10">
           <div className="flex items-center space-x-4 mb-5">
             <div className="bg-gradient-to-br from-forum-lavender to-purple-500 p-3 rounded-xl text-white shadow-md">
               <Compass className="w-8 h-8" />
