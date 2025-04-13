@@ -48,44 +48,44 @@
   }
 
   .dark {
-    /* Updated dark mode variables to match design goals */
-    --background: 222 30% 9%;
+    /* Updated dark mode variables to match our new color palette */
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 222 40% 12%;
+    --card: 217 33% 17%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 40% 10%;
+    --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 262 60% 65%;
+    --primary: 262 83% 66%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 33% 15%;
+    --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 262 60% 65%;
+    --accent: 280 90% 76%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62% 50%;
+    --destructive: 350 89% 71%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 217 19% 27%;
-    --input: 217 19% 27%;
-    --ring: 262 60% 65%;
+    --border: 220 13% 26%;
+    --input: 220 13% 26%;
+    --ring: 262 83% 66%;
 
     /* Updated sidebar variables for dark mode */
-    --sidebar-background: 222 30% 8%;
+    --sidebar-background: 225 19% 14%;
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 262 60% 65%;
+    --sidebar-primary: 262 83% 66%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 262 30% 25%;
+    --sidebar-accent: 264 66% 27%;
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 262 25% 20%;
-    --sidebar-ring: 262 60% 65%;
+    --sidebar-border: 264 20% 20%;
+    --sidebar-ring: 262 83% 66%;
   }
 }
 
@@ -113,12 +113,12 @@
 @layer components {
   /* Updated card gradients for dark mode */
   .card-gradient {
-    @apply bg-gradient-to-br from-white to-secondary/50 dark:from-[#2B2D42] dark:to-[#1D1F36] backdrop-blur-sm;
+    @apply bg-gradient-to-br from-white to-secondary/50 dark:from-[#1E293B] dark:to-[#0F172A] backdrop-blur-sm;
   }
   
   .primary-gradient {
-    @apply bg-gradient-to-r from-forum-lavender to-[#b29dff] hover:to-[#c9bdff]
-      dark:from-forum-magenta dark:to-forum-lavender dark:hover:shadow-neon-glow;
+    @apply bg-gradient-to-r from-forum-lavender to-[#9d77fa] hover:to-[#b29dff]
+      dark:from-forum-lavender dark:to-forum-magenta dark:hover:shadow-neon-glow;
   }
   
   .coral-gradient {
@@ -126,39 +126,39 @@
   }
   
   .mint-gradient {
-    @apply bg-gradient-to-r from-forum-mint to-[#e0fff0];
+    @apply bg-gradient-to-r from-forum-mint to-[#d3a4ff];
   }
   
   .thread-tag {
     @apply inline-flex px-2 py-0.5 rounded-full text-xs font-medium shadow-sm
-      dark:bg-gradient-to-r dark:from-forum-lavender/20 dark:to-forum-magenta/10 
-      dark:text-white dark:shadow-glass-highlight dark:backdrop-blur-sm;
+      dark:bg-[#334155] dark:hover:bg-[#475569] dark:text-[#F1F5F9]
+      dark:shadow-glass-highlight dark:backdrop-blur-sm;
   }
   
   .category-card {
     @apply relative p-3 sm:p-5 rounded-2xl border bg-card shadow-soft 
       hover:shadow-hover transition-all duration-300
-      dark:border-white/5 dark:hover:border-white/10 dark:hover:shadow-neon-glow;
+      dark:bg-[#1E293B] dark:border-[#334155] dark:hover:border-[#475569] dark:hover:shadow-neon-glow;
   }
   
   .thread-card {
     @apply relative p-4 rounded-xl border bg-card/70 backdrop-blur-sm 
       hover:bg-secondary/50 transition-all duration-300 shadow-soft hover:shadow-hover
-      dark:bg-gradient-to-br dark:from-[#1A1F2C]/80 dark:to-[#1A1F2C]/60
-      dark:hover:bg-gradient-to-br dark:hover:from-[#1A1F2C] dark:hover:to-[#2A2F3C]
-      dark:backdrop-blur-md dark:border-white/5 dark:hover:border-white/10;
+      dark:bg-gradient-to-br dark:from-[#1E293B]/80 dark:to-[#1E293B]/60
+      dark:hover:bg-gradient-to-br dark:hover:from-[#1E293B] dark:hover:to-[#2A3A50]
+      dark:backdrop-blur-md dark:border-[#334155] dark:hover:border-[#475569];
   }
   
   .reply-card {
     @apply relative p-3 sm:p-4 rounded-xl bg-secondary/70 backdrop-blur-sm 
-      dark:bg-[#1A1F2C]/70 mt-3 ml-3 sm:ml-8 border-l-4 border-l-forum-lavender 
+      dark:bg-[#1E293B]/70 mt-3 ml-3 sm:ml-8 border-l-4 border-l-forum-lavender 
       dark:shadow-glass-highlight shadow-soft;
   }
   
   .upvote-button {
     @apply flex items-center space-x-1 text-sm font-medium text-muted-foreground 
       hover:text-forum-lavender transition-colors
-      dark:hover:text-forum-cyan;
+      dark:hover:text-forum-coral;
   }
   
   .floating-action-button {
@@ -176,13 +176,13 @@
   
   .nav-item.active {
     @apply bg-sidebar-primary text-sidebar-primary-foreground
-      dark:bg-gradient-to-r dark:from-forum-magenta/90 dark:to-forum-lavender/80;
+      dark:bg-gradient-to-r dark:from-forum-lavender/90 dark:to-forum-magenta/80;
   }
   
   .emoji-reaction {
     @apply inline-flex items-center px-2 py-1 rounded-full bg-secondary 
       hover:bg-primary/10 text-sm transition-all cursor-pointer
-      dark:bg-[#1A1F2C]/70 dark:hover:bg-[#2A2F3C]/70 dark:hover:shadow-glass-highlight;
+      dark:bg-[#334155] dark:hover:bg-[#475569] dark:hover:shadow-glass-highlight;
   }
 
   /* Mobile optimizations */
@@ -214,7 +214,7 @@
     @apply fixed bottom-4 left-4 z-50 hidden md:flex items-center 
       justify-center w-12 h-12 bg-forum-lavender text-white rounded-full 
       shadow-md transition-all duration-300
-      dark:bg-gradient-to-r dark:from-forum-magenta dark:to-forum-lavender 
+      dark:bg-gradient-to-r dark:from-forum-lavender dark:to-forum-magenta 
       dark:shadow-neon-glow;
   }
 

@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,17 +64,17 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         forum: {
-          lavender: "#9b87f5",
-          indigo: "#4B0082",
-          skyblue: "#00BFFF",
-          navy: "#0D1321",
-          coral: "#FF7E67",
-          mint: "#C7F9CC",
-          amber: "#FFD166",
-          light: "#F9FAFB",
-          dark: "#0D1321",
-          magenta: "#D946EF",
-          cyan: "#0FF4C6",
+          lavender: "#8B5CF6", // Updated to Violet
+          indigo: "#6366F1",   // Neon Indigo
+          skyblue: "#38BDF8",  // Keep but adjusted
+          navy: "#0F172A",     // Midnight Navy
+          coral: "#FB7185",    // Coral for upvotes
+          mint: "#C084FC",     // Accent violet
+          amber: "#F59E0B",    // Keep amber
+          light: "#F9FAFB",    // Near white for headings
+          dark: "#0F172A",     // Midnight navy
+          magenta: "#A78BFA",  // Violet hover state
+          cyan: "#67E8F9",     // Keep cyan but adjusted
         },
       },
       borderRadius: {
@@ -138,10 +139,10 @@ export default {
         'soft': '0 4px 14px 0 rgba(0, 0, 0, 0.05)',
         'hover': '0 6px 20px rgba(0, 0, 0, 0.1)',
         'card': '0 10px 30px -5px rgba(0, 0, 0, 0.1)',
-        'focus': '0 0 0 3px rgba(155, 135, 245, 0.3)',
-        'indigo-glow': '0 0 15px rgba(75, 0, 130, 0.4)',
-        'neon-glow': '0 0 10px rgba(217, 70, 239, 0.6), 0 0 20px rgba(217, 70, 239, 0.3)',
-        'glass-highlight': '0 0 0 1px rgba(255, 255, 255, 0.1) inset, 0 0 30px rgba(155, 135, 245, 0.15)',
+        'focus': '0 0 0 3px rgba(139, 92, 246, 0.3)',
+        'indigo-glow': '0 0 15px rgba(99, 102, 241, 0.4)',
+        'neon-glow': '0 0 10px rgba(139, 92, 246, 0.6), 0 0 20px rgba(139, 92, 246, 0.3)',
+        'glass-highlight': '0 0 0 1px rgba(255, 255, 255, 0.1) inset, 0 0 30px rgba(139, 92, 246, 0.15)',
         'text-shadow': '0 1px 3px rgba(0, 0, 0, 0.3)',
       },
       backdropBlur: {

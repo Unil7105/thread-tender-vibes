@@ -36,7 +36,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         id="sidebar"
         className={`
           fixed top-0 left-0 h-full z-40
-          bg-[#f7f5ff] dark:bg-[#252332] border-r border-[#e0d8ff] dark:border-[#3a3351]
+          bg-[#f7f5ff] dark:bg-[#1C1F2A] border-r border-[#e0d8ff] dark:border-[#334155]
           transition-all duration-300 ease-in-out
           ${isCollapsed ? 'w-[72px]' : 'w-[240px]'}
           hidden md:block shadow-sm
