@@ -34,7 +34,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
       {/* Improved separator with proper spacing and style */}
       <Separator 
         className={`
-          my-3 bg-gradient-to-r from-forum-lavender/20 via-forum-lavender/40 to-forum-lavender/20 dark:from-forum-lavender/10 dark:via-forum-lavender/30 dark:to-forum-lavender/10
+          my-3 bg-gradient-to-r from-forum-lavender/20 via-forum-lavender/40 to-forum-lavender/20 dark:from-forum-lavender/10 dark:via-forum-magenta/30 dark:to-forum-lavender/10
           ${isCollapsed ? 'w-8 mx-auto' : 'mx-4 w-[calc(100%-2rem)]'}
         `} 
       />
@@ -51,7 +51,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
       <div className="mt-auto">
         <Separator 
           className={`
-            mb-3 bg-gradient-to-r from-forum-lavender/20 via-forum-lavender/40 to-forum-lavender/20 dark:from-forum-lavender/10 dark:via-forum-lavender/30 dark:to-forum-lavender/10
+            mb-3 bg-gradient-to-r from-forum-lavender/20 via-forum-lavender/40 to-forum-lavender/20 dark:from-forum-lavender/10 dark:via-forum-magenta/30 dark:to-forum-lavender/10
             ${isCollapsed ? 'w-8 mx-auto' : 'mx-4 w-[calc(100%-2rem)]'}
           `} 
         />

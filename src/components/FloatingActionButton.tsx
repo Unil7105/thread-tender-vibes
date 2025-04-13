@@ -26,8 +26,9 @@ const FloatingActionButton = ({
         {label}
       </span>
       
-      {/* Gradient ripple effect */}
+      {/* Enhanced Gradient ripple effect */}
       <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 bg-white/20 animate-ping dark:bg-forum-magenta/40"></span>
+      <span className="absolute inset-0 rounded-full opacity-0 group-active:opacity-70 bg-white/40 scale-90 group-active:scale-100 transition-all duration-200 dark:bg-forum-magenta/60"></span>
     </button>
   );
 };
