@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Menu, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { 
   Sheet,
@@ -24,16 +24,6 @@ const SidebarMobileToggle: React.FC<SidebarMobileToggleProps> = ({
 }) => {
   return (
     <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-      <SheetTrigger asChild>
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className="fixed top-4 left-4 z-50 md:hidden h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-md hover:shadow-lg transition-all duration-300 dark:bg-[#1E1E2F]/70 dark:border-white/5 dark:hover:shadow-neon-glow/30"
-          aria-label="Toggle menu"
-        >
-          <Menu className="h-5 w-5 text-foreground dark:text-white" />
-        </Button>
-      </SheetTrigger>
       <SheetContent 
         side="left" 
         className="p-0 w-[75vw] max-w-[300px] border-r border-sidebar-border bg-[#f1effe] dark:bg-[#1E1E2F] dark:border-white/5 h-full overflow-y-auto shadow-lg dark:shadow-neon-glow/20 backdrop-blur-md"

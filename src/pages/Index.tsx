@@ -24,9 +24,8 @@ const Index = () => {
   };
   
   return (
-    <Layout>
-      <div className="mb-8">
-        <h1 className="text-2xl md:text-4xl font-bold mb-2">Welcome to TextForum</h1>
+    <Layout pageTitle="Welcome to TextForum">
+      <div className="mb-8 mt-4">
         <p className="text-muted-foreground">A cozy digital space for deep conversations</p>
       </div>
       
