@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import SidebarLogo from './SidebarLogo';
 import SidebarNavigation from './SidebarNavigation';
 import SidebarFooter from './SidebarFooter';
+import SidebarProfile from './SidebarProfile';
 
 interface SidebarContentProps {
   isMobileMenuOpen: boolean;
@@ -25,6 +26,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
     >
       <div className="flex flex-col h-full p-4">
         <SidebarLogo isCollapsed={isCollapsed} />
+        <SidebarProfile isCollapsed={isCollapsed} />
         <SidebarNavigation 
           isCollapsed={isCollapsed} 
           setIsMobileMenuOpen={setIsMobileMenuOpen} 
