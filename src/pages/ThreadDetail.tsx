@@ -1,3 +1,4 @@
+
 import { useParams } from 'react-router-dom';
 import { MessageSquare } from 'lucide-react';
 import Layout from '@/components/Layout';
@@ -7,6 +8,60 @@ import { threads } from '@/data/mockData';
 import { formatDistanceToNow } from 'date-fns';
 import { useState, useEffect } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
+
+// Tag color mapping based on tag content
+const getTagColors = (tag: string) => {
+  const tagLower = tag.toLowerCase();
+  
+  if (tagLower.includes('ai')) {
+    return 'bg-blue-100 text-blue-700 hover:bg-blue-200 border-blue-200';
+  } else if (tagLower.includes('career')) {
+    return 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200 border-emerald-200';
+  } else if (tagLower.includes('future')) {
+    return 'bg-amber-100 text-amber-700 hover:bg-amber-200 border-amber-200';
+  } else if (tagLower.includes('programming') || tagLower.includes('technology') || tagLower.includes('tech')) {
+    return 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200 border-indigo-200';
+  } else if (tagLower.includes('health') || tagLower.includes('wellness')) {
+    return 'bg-purple-100 text-purple-700 hover:bg-purple-200 border-purple-200';
+  } else if (tagLower.includes('book') || tagLower.includes('reading')) {
+    return 'bg-teal-100 text-teal-700 hover:bg-teal-200 border-teal-200';
+  } else if (tagLower.includes('art') || tagLower.includes('creative')) {
+    return 'bg-pink-100 text-pink-700 hover:bg-pink-200 border-pink-200';
+  }
+  
+  // Default style
+  return 'bg-gray-100 text-gray-700 hover:bg-gray-200 border-gray-200';
+};
+
+// Category color mapping
+const getCategoryColors = (categoryName: string) => {
+  const nameLower = categoryName.toLowerCase();
+  
+  if (nameLower.includes('technology')) {
+    return 'bg-indigo-100 text-indigo-800 border-indigo-300';
+  } else if (nameLower.includes('health')) {
+    return 'bg-purple-100 text-purple-800 border-purple-300';
+  } else if (nameLower.includes('books') || nameLower.includes('literature')) {
+    return 'bg-teal-100 text-teal-800 border-teal-300';
+  } else if (nameLower.includes('art') || nameLower.includes('creativity')) {
+    return 'bg-pink-100 text-pink-800 border-pink-300';
+  } else if (nameLower.includes('food') || nameLower.includes('cooking')) {
+    return 'bg-orange-100 text-orange-800 border-orange-300';
+  } else if (nameLower.includes('science')) {
+    return 'bg-blue-100 text-blue-800 border-blue-300';
+  } else if (nameLower.includes('travel')) {
+    return 'bg-cyan-100 text-cyan-800 border-cyan-300';
+  } else if (nameLower.includes('music')) {
+    return 'bg-rose-100 text-rose-800 border-rose-300';
+  } else if (nameLower.includes('gaming')) {
+    return 'bg-violet-100 text-violet-800 border-violet-300';
+  }
+  
+  // Default style
+  return 'bg-slate-100 text-slate-800 border-slate-300';
+};
 
 const ThreadDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -69,25 +124,24 @@ const ThreadDetail = () => {
     <Layout pageTitle={thread.title}>
       <div className="mb-6 px-0 sm:px-0 max-w-full">
         <div className="mb-2 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full 
-            text-xs font-medium 
-            bg-forum-lavender/10 text-forum-lavender 
-            dark:bg-forum-lavender/20 
-            hover:bg-forum-lavender/20 
-            transition-colors duration-200 
-            border border-forum-lavender/30">
+          <span className={cn(
+            "inline-flex items-center px-3 py-1 rounded-full font-medium text-sm font-poppins", 
+            "border transition-all duration-200 shadow-sm", 
+            "transform hover:scale-105 hover:shadow-md",
+            getCategoryColors(thread.category.name)
+          )}>
             {thread.category.name}
           </span>
+          
           {thread.tags.map((tag) => (
             <span 
               key={tag} 
-              className="inline-flex items-center px-2.5 py-0.5 rounded-full 
-                text-xs font-medium 
-                bg-white text-forum-lavender 
-                border border-forum-lavender/30 
-                hover:bg-forum-lavender/10 
-                transition-colors duration-200 
-                shadow-sm"
+              className={cn(
+                "inline-flex items-center px-3 py-1 rounded-full text-sm font-medium font-poppins",
+                "border transition-all duration-200 shadow-sm",
+                "transform hover:scale-105 hover:shadow-md",
+                getTagColors(tag)
+              )}
             >
               #{tag}
             </span>
