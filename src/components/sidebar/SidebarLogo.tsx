@@ -16,7 +16,7 @@ const SidebarLogo: React.FC<SidebarLogoProps> = ({ isCollapsed }) => {
         transition={{ duration: 0.3 }}
       >
         <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#9b87f5] to-[#b29dff] text-white font-semibold shadow-sm">
-          <span className="text-base">T</span>
+          <span className="text-base leading-none flex items-center justify-center">T</span>
         </div>
         
         {!isCollapsed && (
