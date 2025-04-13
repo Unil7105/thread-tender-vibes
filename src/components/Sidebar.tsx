@@ -1,51 +1,18 @@
 
-import { useState, useEffect } from 'react';
-import { Home, Compass, MessageSquare, User, LogOut, Sun, Moon } from 'lucide-react';
+import { Home, Compass, MessageSquare, User, LogOut } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Sidebar as ShadcnSidebar, 
-  SidebarContent, 
-  SidebarHeader, 
-  SidebarFooter,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton
-} from '@/components/ui/sidebar';
-import { Button } from '@/components/ui/button';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { SidebarProvider } from '@/components/ui/sidebar';
+import ThemeToggle from './ThemeToggle';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 const Sidebar = () => {
   const location = useLocation();
-  const isMobile = useIsMobile();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   
   // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
-
-  // Check for dark mode on component mount
-  useEffect(() => {
-    const isDark = localStorage.getItem('theme') === 'dark' || 
-                  (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    setIsDarkMode(isDark);
-  }, []);
-
-  const toggleTheme = () => {
-    const newMode = !isDarkMode;
-    setIsDarkMode(newMode);
-    
-    if (newMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
 
   const navItems = [
     { path: '/', icon: Home, label: 'Home' },
@@ -55,12 +22,11 @@ const Sidebar = () => {
   ];
 
   return (
-    <SidebarProvider defaultOpen={!isMobile}>
+    <>
       {/* Mobile Sidebar Toggle */}
       <button 
         className="fixed top-4 left-4 z-50 md:hidden bg-sidebar p-2 rounded-full shadow-md"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        aria-label="Toggle menu"
       >
         <div className="w-5 h-5 flex flex-col justify-between">
           <span className={`block h-0.5 w-full bg-sidebar-foreground rounded transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
@@ -77,90 +43,82 @@ const Sidebar = () => {
         ></div>
       )}
 
-      {/* Sidebar content using shadcn components */}
-      <ShadcnSidebar 
-        className={`transition-all duration-300 ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
-        collapsible="icon"
-      >
-        <SidebarHeader className="pb-2">
-          <div className="flex items-center justify-center p-2">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="text-xl font-bold text-forum-lavender"
-            >
-              TextForum
-            </motion.div>
-          </div>
-        </SidebarHeader>
+      {/* Sidebar */}
+      <aside className={`fixed top-0 left-0 h-full z-40 md:sticky md:z-auto bg-sidebar p-5 border-r transform transition-all duration-300 
+                        ${isMobileMenuOpen ? 'translate-x-0 w-64 shadow-xl' : '-translate-x-full w-64'} 
+                        md:translate-x-0 md:w-20 md:hover:w-64 group overflow-y-auto overflow-x-hidden`}>
+        
+        {/* Logo Section */}
+        <div className="flex justify-center md:justify-start items-center mb-8">
+          <motion.span 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="hidden group-hover:inline-block md:inline-block text-2xl font-bold text-forum-lavender"
+          >
+            TextForum
+          </motion.span>
+          <motion.span 
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="group-hover:hidden md:hidden text-3xl font-bold text-forum-lavender"
+          >
+            Tf
+          </motion.span>
+        </div>
 
-        <SidebarContent>
-          <SidebarMenu>
+        {/* Navigation Items */}
+        <nav className="flex-1">
+          <ul className="space-y-2">
             {navItems.map((item) => (
-              <SidebarMenuItem key={item.path}>
-                <SidebarMenuButton
-                  asChild
-                  isActive={location.pathname === item.path}
-                  tooltip={item.label}
+              <motion.li 
+                key={item.path}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Link
+                  to={item.path}
+                  className={`nav-item group/link ${
+                    location.pathname === item.path ? 'active' : ''
+                  }`}
                 >
-                  <Link to={item.path} className="flex items-center gap-3">
-                    <item.icon className="h-5 w-5" />
-                    <span>{item.label}</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
+                  <motion.div 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center space-x-3"
+                  >
+                    <item.icon className="w-6 h-6 group-hover/link:text-forum-lavender transition-colors" />
+                    <span className="opacity-0 group-hover:opacity-100 md:opacity-100 transition-opacity duration-300">
+                      {item.label}
+                    </span>
+                  </motion.div>
+                </Link>
+              </motion.li>
             ))}
-          </SidebarMenu>
-        </SidebarContent>
+          </ul>
+        </nav>
 
-        <SidebarFooter className="mt-auto">
-          <div className="flex flex-col gap-2 p-4">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={toggleTheme}
-              className="rounded-full w-10 h-10 relative overflow-hidden transition-all duration-300"
-            >
-              <AnimatePresence initial={false}>
-                {isDarkMode ? (
-                  <motion.div
-                    key="dark"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    <Moon className="h-5 w-5 text-forum-lavender" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="light"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    <Sun className="h-5 w-5 text-orange-500" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              <span className="sr-only">Toggle theme</span>
-            </Button>
+        {/* Bottom Section */}
+        <div className="mt-auto pt-6 border-t border-sidebar-border">
+          <div className="flex flex-col items-center justify-between space-y-4">
+            <ThemeToggle />
             
-            <Button
-              variant="ghost"
-              className="w-full justify-start text-destructive hover:text-destructive mt-2"
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-destructive transition-colors group/btn w-full mt-4"
             >
-              <LogOut className="mr-2 h-5 w-5" />
-              <span>Logout</span>
-            </Button>
+              <LogOut className="w-5 h-5 group-hover/btn:text-destructive" />
+              <span className="opacity-0 group-hover:opacity-100 md:opacity-100 transition-opacity duration-300 group-hover/btn:text-destructive">
+                Logout
+              </span>
+            </motion.button>
           </div>
-        </SidebarFooter>
-      </ShadcnSidebar>
-    </SidebarProvider>
+        </div>
+      </aside>
+    </>
   );
 };
 
