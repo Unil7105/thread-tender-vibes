@@ -1,4 +1,3 @@
-
 export interface Category {
   id: string;
   name: string;
@@ -97,6 +96,30 @@ export const categories: Category[] = [
     threadCount: 175,
     gradient: 'bg-gradient-to-br from-cyan-50 to-sky-100 dark:from-slate-800 dark:to-sky-950/30',
   },
+  {
+    id: '7',
+    name: 'Travel & Adventure',
+    description: 'Share travel experiences, tips, and incredible journey stories',
+    icon: '✈️',
+    threadCount: 198,
+    gradient: 'bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-slate-800 dark:to-blue-950/30',
+  },
+  {
+    id: '8',
+    name: 'Music & Concerts',
+    description: 'Discuss music genres, artists, upcoming concerts, and album reviews',
+    icon: '🎵',
+    threadCount: 223,
+    gradient: 'bg-gradient-to-br from-pink-50 to-rose-100 dark:from-slate-800 dark:to-rose-950/30',
+  },
+  {
+    id: '9',
+    name: 'Gaming',
+    description: 'Video game discussions, reviews, esports, and gaming strategies',
+    icon: '🎮',
+    threadCount: 265,
+    gradient: 'bg-gradient-to-br from-indigo-50 to-violet-100 dark:from-slate-800 dark:to-violet-950/30',
+  }
 ];
 
 export const threads: Thread[] = [
@@ -212,4 +235,64 @@ export const threads: Thread[] = [
     replyCount: 15,
     tags: ['remote work', 'mental health', 'productivity'],
   },
+  {
+    id: '4',
+    title: 'Best Travel Destinations for Solo Backpackers in 2025',
+    content: 'I\'m planning a solo backpacking trip this year and looking for recommendations. What are some must-visit destinations that are safe, budget-friendly, and offer unique experiences?',
+    author: {
+      id: 'user7',
+      name: 'Alex Rivera',
+      avatar: 'https://ui-avatars.com/api/?name=Alex+Rivera&background=random',
+    },
+    category: {
+      id: '7',
+      name: 'Travel & Adventure',
+    },
+    createdAt: '2025-04-12T14:30:00Z',
+    updatedAt: '2025-04-12T14:30:00Z',
+    upvotes: 42,
+    downvotes: 1,
+    replyCount: 9,
+    tags: ['travel', 'backpacking', 'solo travel'],
+  },
+  {
+    id: '5',
+    title: 'Indie Game Developers: Challenges and Success Stories',
+    content: 'For those who have ventured into independent game development, what were the biggest challenges you faced? How did you overcome them, and what advice would you give to aspiring indie developers?',
+    author: {
+      id: 'user8',
+      name: 'Jordan Kim',
+      avatar: 'https://ui-avatars.com/api/?name=Jordan+Kim&background=random',
+    },
+    category: {
+      id: '9',
+      name: 'Gaming',
+    },
+    createdAt: '2025-04-11T11:15:00Z',
+    updatedAt: '2025-04-11T11:15:00Z',
+    upvotes: 56,
+    downvotes: 2,
+    replyCount: 14,
+    tags: ['game development', 'indie games', 'programming'],
+  },
+  {
+    id: '6',
+    title: 'Exploring Emerging Music Genres and Subcultures',
+    content: 'What are some fascinating emerging music genres or subcultures that are gaining traction? Share your insights and discoveries about underground music scenes.',
+    author: {
+      id: 'user9',
+      name: 'Taylor Morgan',
+      avatar: 'https://ui-avatars.com/api/?name=Taylor+Morgan&background=random',
+    },
+    category: {
+      id: '8',
+      name: 'Music & Concerts',
+    },
+    createdAt: '2025-04-10T16:45:00Z',
+    updatedAt: '2025-04-10T16:45:00Z',
+    upvotes: 33,
+    downvotes: 1,
+    replyCount: 7,
+    tags: ['music', 'genres', 'culture'],
+  }
 ];
