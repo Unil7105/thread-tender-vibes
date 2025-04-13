@@ -32,13 +32,18 @@ const ThemeToggle = () => {
       variant="outline" 
       size="icon" 
       onClick={toggleTheme}
-      className="rounded-full w-10 h-10 transition-all duration-300"
+      className="rounded-full w-10 h-10 transition-all duration-500 overflow-hidden relative shadow-md border border-sidebar-border"
     >
-      {isDarkMode ? (
-        <Moon className="h-5 w-5 text-yellow-300 animate-pulse-soft" />
-      ) : (
-        <Sun className="h-5 w-5 text-yellow-500 animate-pulse-soft" />
-      )}
+      <div className={`absolute inset-0 transition-all duration-500 ${isDarkMode ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-indigo-700 to-purple-900 opacity-50"></div>
+        <Moon className="h-5 w-5 text-yellow-300 relative z-10" />
+      </div>
+      
+      <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${isDarkMode ? 'opacity-0' : 'opacity-100'}`}>
+        <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-orange-300 to-yellow-200 opacity-50"></div>
+        <Sun className="h-5 w-5 text-yellow-600 relative z-10" />
+      </div>
+      
       <span className="sr-only">Toggle theme</span>
     </Button>
   );

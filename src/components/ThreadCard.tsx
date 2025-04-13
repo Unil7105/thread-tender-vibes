@@ -10,20 +10,20 @@ interface ThreadCardProps {
 
 const ThreadCard = ({ thread }: ThreadCardProps) => {
   return (
-    <Link to={`/thread/${thread.id}`} className="block">
+    <Link to={`/thread/${thread.id}`} className="block transform transition-all duration-300 hover:-translate-y-1">
       <div className="thread-card group">
         <div className="flex items-start space-x-3">
           <img
             src={thread.author.avatar}
             alt={thread.author.name}
-            className="w-10 h-10 rounded-full border-2 border-forum-lavender/30"
+            className="w-10 h-10 rounded-full border-2 border-forum-lavender/30 shadow-md"
           />
           <div className="flex-1 min-w-0">
             <h3 className="font-bold text-lg group-hover:text-forum-lavender transition-colors line-clamp-2">
               {thread.title}
             </h3>
             <div className="flex items-center space-x-3 mt-1 text-sm text-muted-foreground">
-              <span>{thread.author.name}</span>
+              <span className="font-medium text-forum-lavender/80">{thread.author.name}</span>
               <span>•</span>
               <span className="flex items-center">
                 <CalendarClock className="w-3.5 h-3.5 mr-1" />
@@ -38,8 +38,8 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
         
         <div className="flex items-center mt-4 pt-3 border-t">
           <div className="flex items-center mr-4">
-            <button className="upvote-button">
-              <ChevronUp className="w-4 h-4" />
+            <button className="upvote-button group/upvote">
+              <ChevronUp className="w-4 h-4 group-hover/upvote:text-forum-lavender transition-colors" />
               <span>{thread.upvotes}</span>
             </button>
           </div>
@@ -53,7 +53,7 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
             {thread.tags.map((tag) => (
               <span 
                 key={tag} 
-                className="thread-tag bg-forum-lavender/10 text-forum-lavender dark:bg-forum-lavender/20"
+                className="thread-tag bg-gradient-to-r from-forum-lavender/20 to-forum-lavender/10 text-forum-lavender dark:from-forum-lavender/30 dark:to-forum-lavender/20 backdrop-blur-sm"
               >
                 #{tag}
               </span>
