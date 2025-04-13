@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 const Sidebar = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   
   // Close mobile menu when route changes
   useEffect(() => {
@@ -28,6 +29,15 @@ const Sidebar = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isMobileMenuOpen]);
+
+  // Toggle sidebar collapsed state
+  const toggleSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+      sidebar.classList.toggle('sidebar-collapsed');
+    }
+  };
 
   const navItems = [
     { path: '/', icon: Home, label: 'Home' },
@@ -54,10 +64,10 @@ const Sidebar = () => {
       {/* Desktop Toggle Button */}
       <button
         className="fixed bottom-4 left-4 z-50 hidden md:flex items-center justify-center p-2 rounded-full bg-primary text-primary-foreground shadow-md hover:bg-primary/90 transition-all duration-300"
-        onClick={() => document.getElementById('sidebar')?.classList.toggle('sidebar-collapsed')}
+        onClick={toggleSidebar}
         aria-label="Toggle sidebar"
       >
-        {document.getElementById('sidebar')?.classList.contains('sidebar-collapsed') 
+        {isCollapsed 
           ? <Menu className="w-5 h-5" /> 
           : <X className="w-5 h-5" />}
       </button>
@@ -73,26 +83,26 @@ const Sidebar = () => {
       {/* Sidebar */}
       <aside 
         id="sidebar"
-        className={`fixed top-0 left-0 h-full z-40 md:sticky md:z-auto bg-sidebar border-r border-sidebar-border transform transition-transform duration-300 ease-in-out w-60
+        className={`fixed top-0 left-0 h-full z-40 md:sticky md:z-auto bg-sidebar border-r border-sidebar-border transition-all duration-300 ease-in-out w-60
                  ${isMobileMenuOpen ? 'translate-x-0 shadow-xl' : '-translate-x-full'} 
-                 md:translate-x-0 md:w-16 md:sidebar-collapsed:w-16 md:hover:w-60 md:w-60 group overflow-y-auto overflow-x-hidden`}
+                 md:translate-x-0 ${isCollapsed ? 'md:w-16' : 'md:w-60'} overflow-y-auto overflow-x-hidden`}
       >
         <div className="flex flex-col h-full p-4">
           {/* Logo Section */}
           <div className="flex justify-center md:justify-start items-center h-16">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="hidden md:group-hover:block text-xl font-bold text-forum-lavender whitespace-nowrap"
+              animate={{ opacity: isCollapsed ? 0 : 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+              className={`text-xl font-bold text-forum-lavender whitespace-nowrap ${isCollapsed ? 'hidden' : 'block'}`}
             >
               TextForum
             </motion.span>
             <motion.span 
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="md:group-hover:hidden text-xl font-bold text-forum-lavender"
+              transition={{ duration: 0.3 }}
+              className={`text-xl font-bold text-forum-lavender ${!isCollapsed ? 'hidden md:hidden' : 'block'}`}
             >
               Tf
             </motion.span>
@@ -110,13 +120,13 @@ const Sidebar = () => {
                 >
                   <Link
                     to={item.path}
-                    className={`flex items-center px-2 py-3 rounded-lg text-sidebar-foreground group/link transition-colors
+                    className={`flex items-center px-2 py-3 rounded-lg text-sidebar-foreground transition-colors
                       ${location.pathname === item.path 
                         ? 'bg-sidebar-primary text-sidebar-primary-foreground' 
                         : 'hover:bg-sidebar-accent hover:text-sidebar-primary'}`}
                   >
                     <item.icon className="w-5 h-5 min-w-5" />
-                    <span className="ml-3 opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    <span className={`ml-3 transition-all duration-300 whitespace-nowrap ${isCollapsed ? 'opacity-0' : 'opacity-100'}`}>
                       {item.label}
                     </span>
                   </Link>
@@ -129,19 +139,19 @@ const Sidebar = () => {
           <div className="mt-auto pt-4 border-t border-sidebar-border">
             <div className="flex flex-col items-center space-y-4">
               {/* Theme Toggle */}
-              <div className="w-full flex items-center px-2 py-2 rounded-lg text-sidebar-foreground group/theme">
+              <div className="w-full flex items-center px-2 py-2 rounded-lg text-sidebar-foreground">
                 <ThemeToggle />
-                <span className="ml-3 text-sm text-sidebar-foreground opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                <span className={`ml-3 text-sm text-sidebar-foreground transition-all duration-300 whitespace-nowrap ${isCollapsed ? 'opacity-0' : 'opacity-100'}`}>
                   Toggle theme
                 </span>
               </div>
               
               {/* Logout Button */}
               <button
-                className="w-full flex items-center px-2 py-3 rounded-lg text-sidebar-foreground hover:text-destructive transition-colors group/btn"
+                className="w-full flex items-center px-2 py-3 rounded-lg text-sidebar-foreground hover:text-destructive transition-colors"
               >
                 <LogOut className="w-5 h-5 min-w-5" />
-                <span className="ml-3 opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                <span className={`ml-3 transition-all duration-300 whitespace-nowrap ${isCollapsed ? 'opacity-0' : 'opacity-100'}`}>
                   Logout
                 </span>
               </button>

@@ -173,6 +173,15 @@
   .sidebar-collapsed:hover {
     @apply w-60 !important;
   }
+  
+  /* Sidebar animations */
+  .sidebar-open {
+    @apply animate-slide-in-right;
+  }
+  
+  .sidebar-close {
+    @apply animate-slide-out-right;
+  }
 }
 
 @layer utilities {
@@ -205,5 +214,36 @@
   
   .safe-right {
     padding-right: env(safe-area-inset-right, 0);
+  }
+  
+  /* Sidebar animation utilities */
+  .sidebar-enter {
+    animation: slideIn 0.3s ease-out forwards;
+  }
+  
+  .sidebar-exit {
+    animation: slideOut 0.3s ease-out forwards;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
   }
 }
