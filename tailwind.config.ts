@@ -63,23 +63,23 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         forum: {
-          electric: "#1E90FF",     // Primary - Electric Blue
-          orange: "#FF4500",       // Secondary - Vivid Orange
-          neon: "#39FF14",         // Accent - Neon Green
-          black: "#000000",        // Background - Jet Black
-          yellow: "#FFFF00",       // CTA Highlight - Bright Yellow
+          electric: "#7E69AB",     // Primary - Secondary Purple
+          orange: "#9b87f5",       // Secondary - Primary Purple
+          neon: "#D946EF",         // Accent - Magenta Pink
+          black: "#1A1F2C",        // Background - Dark Purple
+          yellow: "#0EA5E9",       // CTA Highlight - Ocean Blue
           
-          lavender: "#1E90FF",     // Updated to Electric Blue
-          indigo: "#FF4500",       // Updated to Vivid Orange
-          skyblue: "#39FF14",      // Updated to Neon Green
-          navy: "#000000",         // Updated to Jet Black
-          coral: "#FFFF00",        // Updated to Bright Yellow
-          mint: "#1E90FF",         // Electric Blue for consistency
-          amber: "#FF4500",        // Vivid Orange for consistency
-          light: "#FFFFFF",        // Pure white for contrast with dark background
-          dark: "#000000",         // Jet Black
-          magenta: "#FF4500",      // Vivid Orange
-          cyan: "#39FF14",         // Neon Green
+          lavender: "#7E69AB",
+          indigo: "#9b87f5",
+          skyblue: "#D946EF",
+          navy: "#1A1F2C",
+          coral: "#0EA5E9",
+          mint: "#7E69AB",
+          amber: "#9b87f5",
+          light: "#FFFFFF",
+          dark: "#1A1F2C",
+          magenta: "#D946EF",
+          cyan: "#0EA5E9",
         },
       },
       borderRadius: {
