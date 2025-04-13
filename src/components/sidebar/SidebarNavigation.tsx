@@ -27,7 +27,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
   };
 
   return (
-    <nav className="space-y-1 px-1">
+    <nav className="space-y-2 px-1">
       {navItems.map((item, index) => {
         const isActive = location.pathname === item.path;
         
@@ -45,7 +45,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
                 ${isCollapsed ? 'justify-center w-10 h-10 mx-auto' : 'w-full px-3 h-10'} 
                 rounded-lg transition-all duration-200
                 ${isActive 
-                  ? 'bg-[#9b87f5] text-white' 
+                  ? 'bg-[#9b87f5] text-white shadow-sm' 
                   : 'hover:bg-[#9b87f5]/10 text-gray-700 dark:text-gray-300'}
               `}
               onClick={handleMobileMenuItemClick}

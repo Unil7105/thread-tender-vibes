@@ -13,12 +13,14 @@ interface SidebarMobileToggleProps {
   isMobileMenuOpen: boolean;
   isCollapsed: boolean;
   setIsMobileMenuOpen: (value: boolean) => void;
+  toggleSidebar: () => void;
 }
 
 const SidebarMobileToggle: React.FC<SidebarMobileToggleProps> = ({ 
   isMobileMenuOpen, 
   isCollapsed,
-  setIsMobileMenuOpen 
+  setIsMobileMenuOpen,
+  toggleSidebar
 }) => {
   return (
     <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -34,12 +36,13 @@ const SidebarMobileToggle: React.FC<SidebarMobileToggleProps> = ({
       </SheetTrigger>
       <SheetContent 
         side="left" 
-        className="p-0 w-[75vw] max-w-[300px] border-r border-sidebar-border bg-[#f1effe] h-full overflow-y-auto"
+        className="p-0 w-[75vw] max-w-[300px] border-r border-sidebar-border bg-[#f1effe] dark:bg-[#252332] h-full overflow-y-auto"
       >
         <SidebarContent 
           isMobileMenuOpen={true}
           isCollapsed={false}
           setIsMobileMenuOpen={setIsMobileMenuOpen}
+          toggleSidebar={toggleSidebar}
         />
       </SheetContent>
     </Sheet>

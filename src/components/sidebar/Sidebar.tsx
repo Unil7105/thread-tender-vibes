@@ -40,6 +40,7 @@ const Sidebar = () => {
         isMobileMenuOpen={isMobileMenuOpen} 
         isCollapsed={isCollapsed}
         setIsMobileMenuOpen={setIsMobileMenuOpen} 
+        toggleSidebar={toggleSidebar}
       />
 
       {/* Desktop Sidebar */}
