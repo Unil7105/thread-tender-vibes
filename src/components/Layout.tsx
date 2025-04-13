@@ -1,3 +1,4 @@
+
 import { ReactNode } from 'react';
 import Sidebar from './sidebar';
 
@@ -7,7 +8,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="flex min-h-screen bg-background">
+    <div className="flex min-h-screen bg-background dark:bg-gray-900">
       <Sidebar />
       <main className="flex-1 p-4 pt-16 md:pt-4 md:p-6 lg:p-8 overflow-y-auto w-full transition-all duration-300">
         <div className="max-w-6xl mx-auto animate-fade-in relative">

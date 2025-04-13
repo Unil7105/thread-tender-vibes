@@ -9,7 +9,7 @@ import SidebarContent from './SidebarContent';
 const Sidebar = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true); // Default to collapsed
   
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -40,10 +40,6 @@ const Sidebar = () => {
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
-    const sidebar = document.getElementById('sidebar');
-    if (sidebar) {
-      sidebar.classList.toggle('sidebar-collapsed');
-    }
   };
 
   const handleMobileMenuToggle = (e) => {
@@ -58,10 +54,12 @@ const Sidebar = () => {
         handleMobileMenuToggle={handleMobileMenuToggle} 
       />
 
-      <SidebarCollapseButton 
-        isCollapsed={isCollapsed} 
-        toggleSidebar={toggleSidebar} 
-      />
+      {!isCollapsed && (
+        <SidebarCollapseButton 
+          isCollapsed={isCollapsed} 
+          toggleSidebar={toggleSidebar} 
+        />
+      )}
 
       {isMobileMenuOpen && (
         <SidebarOverlay onClick={() => setIsMobileMenuOpen(false)} />
@@ -71,6 +69,7 @@ const Sidebar = () => {
         isMobileMenuOpen={isMobileMenuOpen}
         isCollapsed={isCollapsed}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
+        toggleSidebar={toggleSidebar}
       />
     </>
   );
