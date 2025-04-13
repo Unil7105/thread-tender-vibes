@@ -41,10 +41,6 @@ const Sidebar: React.FC<SidebarProps> = ({
           ${isCollapsed ? 'w-[72px]' : 'w-[240px]'}
           hidden md:block shadow-sm
         `}
-        style={{ 
-          transform: 'translateX(0)',
-          willChange: 'width, transform'
-        }}
       >
         <SidebarContent 
           isMobileMenuOpen={false}

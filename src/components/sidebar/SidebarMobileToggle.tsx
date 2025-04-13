@@ -6,6 +6,7 @@ import {
   SheetTrigger
 } from "@/components/ui/sheet";
 import SidebarContent from './SidebarContent';
+import SidebarOverlay from './SidebarOverlay';
 
 interface SidebarMobileToggleProps {
   isMobileMenuOpen: boolean;
