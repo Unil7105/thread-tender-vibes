@@ -35,8 +35,8 @@ const Layout = ({ children }: LayoutProps) => {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-background overflow-hidden">
-      {/* Sidebar container - fixed position */}
+    <div className="flex min-h-screen bg-background">
+      {/* Sidebar container */}
       <div className="flex-shrink-0">
         <Sidebar />
       </div>
@@ -44,7 +44,7 @@ const Layout = ({ children }: LayoutProps) => {
       {/* Main content area - flexible width with transition */}
       <main 
         className={`flex-grow overflow-y-auto transition-all duration-300 ease-in-out
-                   ${isCollapsed ? 'ml-16 md:ml-16' : 'ml-16 md:ml-64'}`}
+                  ${isCollapsed ? 'md:ml-16' : 'md:ml-64'}`}
       >
         <div className="max-w-5xl mx-auto py-6 px-4 md:px-6 relative">
           <div className="relative z-10">
