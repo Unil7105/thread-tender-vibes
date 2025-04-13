@@ -1,13 +1,20 @@
 
-import React, { useEffect, useState } from 'react';
-import { ChevronRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import SidebarMobileToggle from './SidebarMobileToggle';
 import SidebarContent from './SidebarContent';
+import { ChevronRight } from 'lucide-react';
 
 const Sidebar = () => {
+  const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
   
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   // Load sidebar state from localStorage on component mount
   useEffect(() => {
     try {
@@ -39,13 +46,12 @@ const Sidebar = () => {
       {/* Desktop Sidebar Expand/Collapse Button */}
       <button 
         onClick={toggleSidebar}
-        className="
+        className={`
           fixed bottom-4 left-4 z-50 hidden md:flex 
           items-center justify-center w-12 h-12 
           bg-[#9b87f5] text-white rounded-full 
           shadow-lg transition-all duration-300
-        "
-        aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+        `}
       >
         <ChevronRight 
           className={`w-6 h-6 transform transition-transform ${isCollapsed ? 'rotate-0' : 'rotate-180'}`} 
@@ -56,7 +62,8 @@ const Sidebar = () => {
       <aside 
         id="sidebar"
         className={`
-          h-full bg-[#f1effe] border-r border-sidebar-border 
+          fixed top-0 left-0 h-full z-40
+          bg-[#f1effe] border-r border-sidebar-border 
           transition-all duration-300 ease-in-out
           ${isCollapsed ? 'w-16' : 'w-64'}
           hidden md:block
