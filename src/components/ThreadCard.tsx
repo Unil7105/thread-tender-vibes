@@ -22,7 +22,7 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
             <img
               src={thread.author.avatar}
               alt={thread.author.name}
-              className="w-10 h-10 rounded-full border-2 border-forum-lavender/30 shadow-md flex-shrink-0 
+              className="w-10 h-10 rounded-full border-2 border-forum-lavender/30 shadow-md flex-shrink-0 object-cover
                 dark:border-forum-magenta/40 dark:shadow-glass-highlight group-hover:animate-pulse-soft"
             />
             {thread.upvotes > 10 && (

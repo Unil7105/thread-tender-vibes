@@ -10,7 +10,7 @@ const Profile = () => {
   // Mock profile data
   const profile = {
     name: 'Alexandra Chen',
-    avatar: 'https://ui-avatars.com/api/?name=Alexandra+Chen&background=random',
+    avatar: 'https://i.pravatar.cc/300?img=47',
     email: 'alexandra@example.com',
     joinDate: 'April 2023',
     bio: 'Tech enthusiast and avid reader. I love discussing new technologies and finding great book recommendations!',
@@ -28,7 +28,7 @@ const Profile = () => {
           <img
             src={profile.avatar}
             alt={profile.name}
-            className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-forum-lavender"
+            className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-forum-lavender object-cover shadow-lg"
           />
           
           <div className="flex-1 text-center md:text-left">

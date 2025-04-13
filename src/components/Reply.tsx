@@ -34,7 +34,7 @@ const Reply = ({ reply, level = 0 }: ReplyProps) => {
           <img
             src={reply.author.avatar}
             alt={reply.author.name}
-            className="w-8 h-8 rounded-full border-2 border-forum-lavender/30 dark:border-forum-magenta/30 dark:shadow-glass-highlight"
+            className="w-8 h-8 rounded-full border-2 border-forum-lavender/30 dark:border-forum-magenta/30 dark:shadow-glass-highlight object-cover"
           />
           <div className="flex-1">
             <div className="flex items-center">

@@ -1,3 +1,4 @@
+
 export interface Category {
   id: string;
   name: string;
@@ -130,7 +131,7 @@ export const threads: Thread[] = [
     author: {
       id: 'user1',
       name: 'Alexandra Chen',
-      avatar: 'https://ui-avatars.com/api/?name=Alexandra+Chen&background=random',
+      avatar: 'https://i.pravatar.cc/300?img=47',
     },
     category: {
       id: '1',
@@ -149,7 +150,7 @@ export const threads: Thread[] = [
         author: {
           id: 'user2',
           name: 'Mark Johnson',
-          avatar: 'https://ui-avatars.com/api/?name=Mark+Johnson&background=random',
+          avatar: 'https://i.pravatar.cc/300?img=12',
         },
         createdAt: '2025-04-10T11:15:00Z',
         upvotes: 12,
@@ -165,7 +166,7 @@ export const threads: Thread[] = [
         author: {
           id: 'user3',
           name: 'Sophia Williams',
-          avatar: 'https://ui-avatars.com/api/?name=Sophia+Williams&background=random',
+          avatar: 'https://i.pravatar.cc/300?img=29',
         },
         createdAt: '2025-04-10T12:05:00Z',
         upvotes: 15,
@@ -181,7 +182,7 @@ export const threads: Thread[] = [
             author: {
               id: 'user4',
               name: 'Jamie Rodriguez',
-              avatar: 'https://ui-avatars.com/api/?name=Jamie+Rodriguez&background=random',
+              avatar: 'https://i.pravatar.cc/300?img=20',
             },
             createdAt: '2025-04-10T13:30:00Z',
             upvotes: 8,
@@ -202,7 +203,7 @@ export const threads: Thread[] = [
     author: {
       id: 'user5',
       name: 'Raj Patel',
-      avatar: 'https://ui-avatars.com/api/?name=Raj+Patel&background=random',
+      avatar: 'https://i.pravatar.cc/300?img=68',
     },
     category: {
       id: '3',
@@ -222,7 +223,7 @@ export const threads: Thread[] = [
     author: {
       id: 'user6',
       name: 'Emma Thompson',
-      avatar: 'https://ui-avatars.com/api/?name=Emma+Thompson&background=random',
+      avatar: 'https://i.pravatar.cc/300?img=23',
     },
     category: {
       id: '4',
@@ -242,7 +243,7 @@ export const threads: Thread[] = [
     author: {
       id: 'user7',
       name: 'Alex Rivera',
-      avatar: 'https://ui-avatars.com/api/?name=Alex+Rivera&background=random',
+      avatar: 'https://i.pravatar.cc/300?img=58',
     },
     category: {
       id: '7',
@@ -262,7 +263,7 @@ export const threads: Thread[] = [
     author: {
       id: 'user8',
       name: 'Jordan Kim',
-      avatar: 'https://ui-avatars.com/api/?name=Jordan+Kim&background=random',
+      avatar: 'https://i.pravatar.cc/300?img=33',
     },
     category: {
       id: '9',
@@ -282,7 +283,7 @@ export const threads: Thread[] = [
     author: {
       id: 'user9',
       name: 'Taylor Morgan',
-      avatar: 'https://ui-avatars.com/api/?name=Taylor+Morgan&background=random',
+      avatar: 'https://i.pravatar.cc/300?img=15',
     },
     category: {
       id: '8',

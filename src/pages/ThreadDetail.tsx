@@ -87,7 +87,7 @@ const ThreadDetail = () => {
           <img
             src={thread.author.avatar}
             alt={thread.author.name}
-            className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-forum-lavender/30"
+            className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-forum-lavender/30 object-cover shadow-md"
           />
           <div className="ml-3">
             <div className="font-medium text-sm md:text-base">{thread.author.name}</div>
