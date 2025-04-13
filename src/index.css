@@ -164,6 +164,15 @@
   .mobile-menu-toggle {
     @apply md:hidden fixed top-4 left-4 z-50 flex flex-col justify-center items-center w-10 h-10 bg-background border border-border rounded-md shadow-md;
   }
+
+  /* Sidebar specific classes */
+  .sidebar-collapsed {
+    @apply w-16 !important;
+  }
+  
+  .sidebar-collapsed:hover {
+    @apply w-60 !important;
+  }
 }
 
 @layer utilities {

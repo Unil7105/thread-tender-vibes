@@ -1,5 +1,5 @@
 
-import { Home, Compass, MessageSquare, User, LogOut } from 'lucide-react';
+import { Home, Compass, MessageSquare, User, LogOut, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { motion } from 'framer-motion';
@@ -51,6 +51,17 @@ const Sidebar = () => {
         </div>
       </button>
 
+      {/* Desktop Toggle Button */}
+      <button
+        className="fixed bottom-4 left-4 z-50 hidden md:flex items-center justify-center p-2 rounded-full bg-primary text-primary-foreground shadow-md hover:bg-primary/90 transition-all duration-300"
+        onClick={() => document.getElementById('sidebar')?.classList.toggle('sidebar-collapsed')}
+        aria-label="Toggle sidebar"
+      >
+        {document.getElementById('sidebar')?.classList.contains('sidebar-collapsed') 
+          ? <Menu className="w-5 h-5" /> 
+          : <X className="w-5 h-5" />}
+      </button>
+
       {/* Mobile Sidebar Background Overlay */}
       {isMobileMenuOpen && (
         <div 
@@ -64,7 +75,7 @@ const Sidebar = () => {
         id="sidebar"
         className={`fixed top-0 left-0 h-full z-40 md:sticky md:z-auto bg-sidebar border-r border-sidebar-border transform transition-transform duration-300 ease-in-out w-60
                  ${isMobileMenuOpen ? 'translate-x-0 shadow-xl' : '-translate-x-full'} 
-                 md:translate-x-0 md:w-16 md:hover:w-60 group overflow-y-auto overflow-x-hidden`}
+                 md:translate-x-0 md:w-16 md:sidebar-collapsed:w-16 md:hover:w-60 md:w-60 group overflow-y-auto overflow-x-hidden`}
       >
         <div className="flex flex-col h-full p-4">
           {/* Logo Section */}
