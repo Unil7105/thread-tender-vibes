@@ -109,7 +109,7 @@ const Explore = () => {
             <Button 
               variant="ghost" 
               size="icon" 
-              className="absolute left-0 z-10 bg-forum-navy/80 hover:bg-forum-navy text-white rounded-full shadow-md dark:bg-forum-navy/90 dark:hover:bg-forum-navy/70"
+              className="absolute left-0 z-10 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-full shadow-md"
               onClick={() => handleScroll('left')}
             >
               <ChevronLeft className="h-5 w-5" />
@@ -118,7 +118,7 @@ const Explore = () => {
           
           <div 
             ref={scrollContainerRef}
-            className="flex items-center overflow-x-auto scroll-smooth py-4 px-10 max-w-full scrollbar-hide bg-forum-navy/90 dark:bg-forum-navy/70 rounded-full shadow-inner mx-auto"
+            className="flex items-center overflow-x-auto scroll-smooth py-4 px-10 max-w-full scrollbar-hide bg-gray-100 dark:bg-forum-navy/70 rounded-full shadow-inner mx-auto"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <ToggleGroup 
@@ -135,7 +135,7 @@ const Explore = () => {
                   className={`rounded-full px-8 py-3 text-sm font-medium transition-all mx-1 whitespace-nowrap ${
                     activeFilter === category.id 
                       ? "bg-forum-lavender text-white shadow-md" 
-                      : "bg-forum-navy/70 text-white/80 hover:text-white hover:bg-forum-navy/50"
+                      : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 hover:border-forum-lavender"
                   }`}
                 >
                   {category.label}
@@ -148,7 +148,7 @@ const Explore = () => {
             <Button 
               variant="ghost" 
               size="icon" 
-              className="absolute right-0 z-10 bg-forum-navy/80 hover:bg-forum-navy text-white rounded-full shadow-md dark:bg-forum-navy/90 dark:hover:bg-forum-navy/70"
+              className="absolute right-0 z-10 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-full shadow-md"
               onClick={() => handleScroll('right')}
             >
               <ChevronRight className="h-5 w-5" />
