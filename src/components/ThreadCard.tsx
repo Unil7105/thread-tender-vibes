@@ -8,6 +8,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/t
 import { Badge } from './ui/badge';
 import { motion, Variants } from 'framer-motion';
 import { useState } from 'react';
+import { Button } from './ui/button';
 
 interface ThreadCardProps {
   thread: Thread;
@@ -33,7 +34,7 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
       transition: { 
         duration: 0.2, 
         repeat: 1, 
-        repeatType: "reverse" as const
+        repeatType: "reverse" 
       } 
     }
   };
@@ -51,7 +52,7 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
         variants={cardVariants}
         className="transition-all duration-300 ease-in-out"
       >
-        <Card className="thread-card overflow-hidden rounded-2xl border border-[#dbeafe] bg-white p-6
+        <Card className="thread-card overflow-hidden rounded-xl border border-[#dbeafe] bg-white p-6
           transition-all duration-300 ease-in-out min-h-[180px]
           dark:bg-[#1e1e2f] dark:border-[#374151]/30 dark:hover:border-forum-lavender/30">
           
@@ -155,35 +156,46 @@ const ThreadCard = ({ thread }: ThreadCardProps) => {
           <div className="flex items-center justify-between pt-3 border-t border-[#f1f5f9] dark:border-white/5">
             <div className="flex items-center space-x-4">
               {/* Upvotes */}
-              <motion.div 
-                className="flex items-center gap-1.5 bg-[#f9f9fb] dark:bg-[#111827]/30 px-2.5 py-1.5 rounded-lg"
-                whileTap={{ scale: 0.95 }}
-                variants={upvoteVariants}
-                initial="initial"
-                whileHover="hover"
-              >
-                <ChevronUp className="w-4 h-4 text-[#8B5CF6]" /> {/* Updated upvote icon color */}
-                <span className="text-sm font-medium text-[#4b5563] dark:text-gray-300">
-                  {thread.upvotes}
-                </span>
-              </motion.div>
-              
-              {/* Replies */}
-              <motion.div 
-                className="flex items-center gap-1.5 bg-[#f9f9fb] dark:bg-[#111827]/30 px-2.5 py-1.5 rounded-lg"
-                whileTap={{ scale: 0.95 }}
+              <Button 
+                variant="ghost" 
+                size="sm"
+                className="flex items-center gap-1.5 bg-[#f9f9fb] dark:bg-[#111827]/30 px-2.5 py-1.5 rounded-lg h-auto"
+                asChild
               >
                 <motion.div
-                  initial={{ rotate: 0 }}
-                  whileHover={{ rotate: [0, -5, 5, -3, 3, 0] }}
-                  transition={{ duration: 0.5 }}
+                  variants={upvoteVariants}
+                  initial="initial"
+                  whileHover="hover"
                 >
-                  <MessageSquare className="w-4 h-4 text-[#0FA0CE]" /> {/* Updated reply icon color */}
+                  <ChevronUp className="w-4 h-4 text-[#8B5CF6]" />
+                  <span className="text-sm font-medium text-[#4b5563] dark:text-gray-300">
+                    {thread.upvotes}
+                  </span>
                 </motion.div>
-                <span className="text-sm font-medium text-[#4b5563] dark:text-gray-300">
-                  {thread.replyCount}
-                </span>
-              </motion.div>
+              </Button>
+              
+              {/* Replies */}
+              <Button 
+                variant="ghost" 
+                size="sm"
+                className="flex items-center gap-1.5 bg-[#f9f9fb] dark:bg-[#111827]/30 px-2.5 py-1.5 rounded-lg h-auto"
+                asChild
+              >
+                <motion.div
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.div
+                    initial={{ rotate: 0 }}
+                    whileHover={{ rotate: [0, -5, 5, -3, 3, 0] }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <MessageSquare className="w-4 h-4 text-[#0FA0CE]" />
+                  </motion.div>
+                  <span className="text-sm font-medium text-[#4b5563] dark:text-gray-300">
+                    {thread.replyCount}
+                  </span>
+                </motion.div>
+              </Button>
             </div>
             
             {/* Reading time */}
