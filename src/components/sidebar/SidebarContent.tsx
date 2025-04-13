@@ -20,15 +20,24 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
   toggleSidebar
 }) => {
   return (
-    <div className="flex flex-col h-full py-5 px-3 relative">
-      {/* Logo Section */}
-      <SidebarLogo isCollapsed={isCollapsed} />
+    <div className="flex flex-col h-full py-6 relative">
+      {/* Logo Section with consistent spacing */}
+      <div className="mb-4">
+        <SidebarLogo isCollapsed={isCollapsed} />
+      </div>
       
       {/* Profile Section with Separator */}
-      <div className="mt-2">
+      <div className="mb-4">
         <SidebarProfile isCollapsed={isCollapsed} />
-        <Separator className={`my-4 bg-[#e0d8ff] dark:bg-[#3a3351] opacity-70 ${isCollapsed ? 'w-8 mx-auto' : 'w-full'}`} />
       </div>
+      
+      {/* Consistent separator with proper spacing */}
+      <Separator 
+        className={`
+          my-4 bg-[#e0d8ff] dark:bg-[#3a3351] opacity-70 
+          ${isCollapsed ? 'w-8 mx-auto' : 'w-full'}
+        `} 
+      />
       
       {/* Navigation Section */}
       <div className="mt-2 flex-grow overflow-y-auto scrollbar-hide">
@@ -40,7 +49,12 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
       
       {/* Footer with Separator */}
       <div className="mt-auto">
-        <Separator className={`mb-4 bg-[#e0d8ff] dark:bg-[#3a3351] opacity-70 ${isCollapsed ? 'w-8 mx-auto' : 'w-full'}`} />
+        <Separator 
+          className={`
+            mb-4 bg-[#e0d8ff] dark:bg-[#3a3351] opacity-70 
+            ${isCollapsed ? 'w-8 mx-auto' : 'w-full'}
+          `} 
+        />
         <SidebarFooter 
           isCollapsed={isCollapsed} 
           toggleSidebar={toggleSidebar}
