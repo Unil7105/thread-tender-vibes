@@ -94,7 +94,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-poppins;
+    @apply bg-background text-foreground font-poppins overscroll-none;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-poppins font-bold;
@@ -142,7 +142,7 @@
   }
   
   .thread-card {
-    @apply relative p-3 sm:p-5 rounded-xl border bg-card/70 backdrop-blur-sm 
+    @apply relative p-4 rounded-xl border bg-card/70 backdrop-blur-sm 
       hover:bg-secondary/50 transition-all duration-300 shadow-soft hover:shadow-hover
       dark:bg-gradient-to-br dark:from-[#1A1F2C]/80 dark:to-[#1A1F2C]/60
       dark:hover:bg-gradient-to-br dark:hover:from-[#1A1F2C] dark:hover:to-[#2A2F3C]
@@ -225,4 +225,40 @@
   }
 }
 
-/* ... keep existing code (utility layer and animations) */
+/* Added animations for mobile experience */
+@layer utilities {
+  .scroll-smooth-mobile {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease forwards;
+  }
+  
+  .animate-fade-slide-up {
+    animation: fadeSlideUp 0.4s ease forwards;
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeSlideUp {
+    from {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}

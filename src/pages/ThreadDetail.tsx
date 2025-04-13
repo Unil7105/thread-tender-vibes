@@ -26,8 +26,8 @@ const ThreadDetail = () => {
   }
   
   return (
-    <Layout>
-      <div className="mb-8 px-2 sm:px-0 max-w-full">
+    <Layout pageTitle={thread.title}>
+      <div className="mb-6 px-0 sm:px-0 max-w-full">
         <div className="mb-2 flex flex-wrap items-center gap-2">
           <span className="thread-tag bg-forum-lavender text-white">
             {thread.category.name}
@@ -41,8 +41,6 @@ const ThreadDetail = () => {
             </span>
           ))}
         </div>
-        
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 break-words">{thread.title}</h1>
         
         <div className="flex items-center mb-6">
           <img
@@ -75,7 +73,7 @@ const ThreadDetail = () => {
         </div>
       </div>
       
-      <div className="border-t pt-6 px-2 sm:px-0">
+      <div className="border-t pt-6 px-0 sm:px-0">
         <h2 className="text-lg md:text-xl font-bold mb-6">Replies</h2>
         
         {thread.replies && thread.replies.length > 0 ? (

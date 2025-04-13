@@ -25,22 +25,22 @@ const Index = () => {
   
   return (
     <Layout>
-      <div className="mb-10">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2">Welcome to TextForum</h1>
+      <div className="mb-8">
+        <h1 className="text-2xl md:text-4xl font-bold mb-2">Welcome to TextForum</h1>
         <p className="text-muted-foreground">A cozy digital space for deep conversations</p>
       </div>
       
-      <section className="mb-12">
-        <div className="flex items-baseline justify-between mb-6">
-          <h2 className="text-2xl font-bold">Categories</h2>
+      <section className="mb-8">
+        <div className="flex items-baseline justify-between mb-5">
+          <h2 className="text-xl font-bold">Categories</h2>
           <a href="#" className="text-forum-lavender hover:underline text-sm">View all</a>
         </div>
         <CategoriesGrid />
       </section>
       
       <section>
-        <div className="flex items-baseline justify-between mb-6">
-          <h2 className="text-2xl font-bold">Recent Threads</h2>
+        <div className="flex items-baseline justify-between mb-5">
+          <h2 className="text-xl font-bold">Recent Threads</h2>
           <a href="#" className="text-forum-lavender hover:underline text-sm">View all</a>
         </div>
         <ThreadsList threads={threads} />

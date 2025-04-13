@@ -4,10 +4,12 @@ import { Sidebar } from './sidebar';
 
 interface LayoutProps {
   children: ReactNode;
+  pageTitle?: string;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, pageTitle }: LayoutProps) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Listen for sidebar state changes
   useEffect(() => {
@@ -34,8 +36,19 @@ const Layout = ({ children }: LayoutProps) => {
     return () => observer.disconnect();
   }, []);
 
+  // Listen for scroll to create sticky header effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 60);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="flex min-h-screen bg-background">
+    <div className="flex min-h-screen bg-gradient-to-b from-background to-background/95 dark:from-[#0D1321] dark:to-[#161b29]">
       {/* Sidebar container */}
       <div className="flex-shrink-0">
         <Sidebar />
@@ -46,7 +59,18 @@ const Layout = ({ children }: LayoutProps) => {
         className={`flex-grow overflow-x-hidden transition-all duration-300 ease-in-out
                    ${isCollapsed ? 'ml-16 md:ml-16' : 'ml-16 md:ml-64'}`}
       >
-        <div className="max-w-5xl mx-auto py-6 px-4 md:px-6 relative">
+        {/* Sticky header that appears on scroll */}
+        {pageTitle && (
+          <div 
+            className={`sticky top-0 z-30 px-4 py-3 bg-background/80 backdrop-blur-md transition-all duration-300 
+                      dark:bg-[#0D1321]/80 dark:border-b dark:border-white/5
+                      ${isScrolled ? 'shadow-md dark:shadow-neon-glow/10' : ''}`}
+          >
+            <h2 className="text-xl font-bold">{pageTitle}</h2>
+          </div>
+        )}
+
+        <div className="max-w-5xl mx-auto py-6 px-4 sm:px-5 relative">
           <div className="relative z-10">
             {children}
           </div>
