@@ -1,4 +1,3 @@
-
 export interface Category {
   id: string;
   name: string;
@@ -123,10 +122,24 @@ export const categories: Category[] = [
   }
 ];
 
-// Users for the dummy threads
+// Expand user profiles with more details
 const users = [
-  { id: 'user1', name: 'Alexandra Chen', avatar: 'https://i.pravatar.cc/300?img=47' },
-  { id: 'user2', name: 'Mark Johnson', avatar: 'https://i.pravatar.cc/300?img=12' },
+  { 
+    id: 'user1', 
+    name: 'Alexandra Chen', 
+    avatar: 'https://i.pravatar.cc/300?img=47',
+    bio: 'Software engineer passionate about AI and open-source',
+    location: 'San Francisco, CA',
+    expertise: ['React', 'Machine Learning', 'Design Systems']
+  },
+  { 
+    id: 'user2', 
+    name: 'Mark Johnson', 
+    avatar: 'https://i.pravatar.cc/300?img=12',
+    bio: 'Digital nomad, travel blogger, and tech enthusiast',
+    location: 'Bali, Indonesia',
+    expertise: ['Content Creation', 'SEO', 'Digital Marketing']
+  },
   { id: 'user3', name: 'Sophia Williams', avatar: 'https://i.pravatar.cc/300?img=29' },
   { id: 'user4', name: 'Jamie Rodriguez', avatar: 'https://i.pravatar.cc/300?img=20' },
   { id: 'user5', name: 'Raj Patel', avatar: 'https://i.pravatar.cc/300?img=68' },
@@ -136,11 +149,17 @@ const users = [
   { id: 'user9', name: 'Taylor Morgan', avatar: 'https://i.pravatar.cc/300?img=15' },
   { id: 'user10', name: 'Michael Zhang', avatar: 'https://i.pravatar.cc/300?img=8' },
   { id: 'user11', name: 'Olivia Clark', avatar: 'https://i.pravatar.cc/300?img=5' },
-  { id: 'user12', name: 'Ethan Wright', avatar: 'https://i.pravatar.cc/300?img=3' }
+  {
+    id: 'user12', 
+    name: 'Ethan Wright', 
+    avatar: 'https://i.pravatar.cc/300?img=3',
+    bio: 'Environmental scientist and sustainability advocate',
+    location: 'Melbourne, Australia',
+    expertise: ['Climate Research', 'Data Visualization', 'Science Communication']
+  }
 ];
 
 export const threads: Thread[] = [
-  // Technology threads (id: 1)
   {
     id: '1',
     title: 'What programming language should I learn first?',
@@ -484,5 +503,91 @@ export const threads: Thread[] = [
     downvotes: 5,
     replyCount: 17,
     tags: ['narrative games', 'competitive gaming', 'game design'],
+  },
+  {
+    id: 'climate_tech_innovation',
+    title: 'Innovative Climate Technologies Reshaping Our Future',
+    content: 'As global warming continues to be a pressing issue, what breakthrough technologies do you believe have the most potential to mitigate climate change? From carbon capture to renewable energy solutions, let\'s discuss the innovations that could make a real difference.',
+    author: users[11],
+    category: {
+      id: '6',
+      name: 'Science',
+    },
+    createdAt: '2025-04-15T10:30:00Z',
+    updatedAt: '2025-04-15T10:30:00Z',
+    upvotes: 65,
+    downvotes: 3,
+    replyCount: 22,
+    tags: ['climate-tech', 'sustainability', 'innovation', 'renewable-energy', 'carbon-capture'],
+    replies: [
+      {
+        id: 'reply_climate_1',
+        content: 'Direct Air Capture (DAC) technologies are promising. Companies like Climeworks are already deploying scalable carbon removal solutions that could be game-changers.',
+        author: users[0],
+        createdAt: '2025-04-15T11:45:00Z',
+        upvotes: 18,
+        downvotes: 1,
+        reactions: {
+          '🌍': 12,
+          '💡': 6
+        }
+      },
+      {
+        id: 'reply_climate_2',
+        content: 'I\'m particularly excited about advances in fusion energy. While still experimental, technologies like those being developed at ITER could provide virtually unlimited, clean energy.',
+        author: users[2],
+        createdAt: '2025-04-15T12:15:00Z',
+        upvotes: 22,
+        downvotes: 0,
+        reactions: {
+          '⚛️': 15,
+          '🚀': 7
+        },
+        replies: [
+          {
+            id: 'reply_climate_2_1',
+            content: 'Fusion is promising, but we also need to invest heavily in current renewable technologies like solar and wind to bridge the gap.',
+            author: users[9],
+            createdAt: '2025-04-15T13:30:00Z',
+            upvotes: 10,
+            downvotes: 0,
+            reactions: {
+              '👍': 8
+            },
+            parentId: 'reply_climate_2'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'future_of_remote_work',
+    title: 'The Evolution of Remote Work: Challenges and Opportunities',
+    content: 'As we move further into 2025, remote work continues to transform. What are the most significant challenges and opportunities you see in distributed teams? How are companies adapting their strategies?',
+    author: users[5],
+    category: {
+      id: '4',
+      name: 'Health & Wellness',
+    },
+    createdAt: '2025-04-14T14:20:00Z',
+    updatedAt: '2025-04-14T14:20:00Z',
+    upvotes: 52,
+    downvotes: 2,
+    replyCount: 18,
+    tags: ['remote-work', 'digital-nomads', 'work-life-balance', 'technology', 'future-of-work'],
+    replies: [
+      {
+        id: 'reply_remote_1',
+        content: 'Asynchronous communication and strong documentation have been key to our team\'s success. Tools like Notion and Slack have been game-changers.',
+        author: users[1],
+        createdAt: '2025-04-14T15:10:00Z',
+        upvotes: 15,
+        downvotes: 0,
+        reactions: {
+          '💻': 10,
+          '🌐': 5
+        }
+      }
+    ]
   }
 ];
