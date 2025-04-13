@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import SidebarMobileToggle from './SidebarMobileToggle';
-import SidebarCollapseButton from './SidebarCollapseButton';
 import SidebarContent from './SidebarContent';
 import { ChevronRight } from 'lucide-react';
 
@@ -11,12 +10,29 @@ const Sidebar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
   
+  // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  // Load sidebar state from localStorage on component mount
+  useEffect(() => {
+    try {
+      const savedState = localStorage.getItem('sidebarCollapsed');
+      if (savedState !== null) {
+        setIsCollapsed(JSON.parse(savedState));
+      }
+    } catch (error) {
+      console.error('Error retrieving sidebar state from localStorage:', error);
+    }
+  }, []);
+
   const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
+    const newState = !isCollapsed;
+    setIsCollapsed(newState);
+    
+    // Save preference to localStorage
+    localStorage.setItem('sidebarCollapsed', JSON.stringify(newState));
   };
 
   return (
