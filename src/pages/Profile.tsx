@@ -32,51 +32,61 @@ const Profile = () => {
           />
           
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-2xl md:text-3xl font-medium mb-3 dark:text-foreground">{profile.name}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight text-foreground">
+              {profile.name}
+            </h1>
             
-            <div className="flex flex-col md:flex-row gap-3 md:gap-6 mb-5 text-sm text-muted-foreground dark:text-muted-foreground">
+            <div className="flex flex-col md:flex-row gap-3 md:gap-6 mb-5 text-sm font-medium text-foreground">
               <div className="flex items-center justify-center md:justify-start">
-                <Mail className="w-4 h-4 mr-1.5 opacity-70" />
+                <Mail className="w-4 h-4 mr-1.5 text-forum-lavender" />
                 {profile.email}
               </div>
               <div className="flex items-center justify-center md:justify-start">
-                <Calendar className="w-4 h-4 mr-1.5 opacity-70" />
+                <Calendar className="w-4 h-4 mr-1.5 text-forum-lavender" />
                 Joined {profile.joinDate}
               </div>
             </div>
             
-            <p className="max-w-2xl text-foreground/90 dark:text-foreground/80 leading-relaxed">{profile.bio}</p>
+            <p className="max-w-2xl text-base text-foreground leading-relaxed">
+              {profile.bio}
+            </p>
             
             <div className="flex flex-wrap justify-center md:justify-start gap-8 mt-6">
               <div className="text-center">
-                <div className="text-xl font-medium text-forum-lavender">{profile.stats.threads}</div>
-                <div className="text-xs text-muted-foreground dark:text-muted-foreground mt-1">Threads</div>
+                <div className="text-xl font-semibold text-forum-lavender">{profile.stats.threads}</div>
+                <div className="text-sm font-medium text-forum-indigo mt-1">Threads</div>
               </div>
               <div className="text-center">
-                <div className="text-xl font-medium text-forum-lavender">{profile.stats.replies}</div>
-                <div className="text-xs text-muted-foreground dark:text-muted-foreground mt-1">Replies</div>
+                <div className="text-xl font-semibold text-forum-lavender">{profile.stats.replies}</div>
+                <div className="text-sm font-medium text-forum-indigo mt-1">Replies</div>
               </div>
               <div className="text-center">
-                <div className="text-xl font-medium text-forum-lavender">{profile.stats.likes}</div>
-                <div className="text-xs text-muted-foreground dark:text-muted-foreground mt-1">Likes</div>
+                <div className="text-xl font-semibold text-forum-lavender">{profile.stats.likes}</div>
+                <div className="text-sm font-medium text-forum-indigo mt-1">Likes</div>
               </div>
             </div>
           </div>
           
-          <Button variant="outline" className="md:self-start dark:border-border/50 dark:text-foreground/80 dark:hover:bg-secondary/30">
-            <Edit className="w-4 h-4 mr-2 opacity-70" />
+          <Button variant="outline" className="md:self-start border-forum-lavender/30 text-forum-lavender hover:bg-forum-lavender/10 hover:text-forum-lavender">
+            <Edit className="w-4 h-4 mr-2" />
             Edit Profile
           </Button>
         </div>
       </div>
       
       <Tabs defaultValue="threads" className="mb-8">
-        <TabsList className="dark:bg-secondary/20 dark:border dark:border-border/30">
-          <TabsTrigger value="threads" className="flex items-center dark:data-[state=active]:bg-forum-lavender/20 dark:data-[state=active]:text-foreground">
+        <TabsList className="bg-background border border-border/30">
+          <TabsTrigger 
+            value="threads" 
+            className="flex items-center text-base font-medium data-[state=active]:bg-forum-lavender/20 data-[state=active]:text-foreground"
+          >
             <MessageSquare className="w-4 h-4 mr-2 opacity-80" />
             Threads
           </TabsTrigger>
-          <TabsTrigger value="likes" className="flex items-center dark:data-[state=active]:bg-forum-lavender/20 dark:data-[state=active]:text-foreground">
+          <TabsTrigger 
+            value="likes" 
+            className="flex items-center text-base font-medium data-[state=active]:bg-forum-lavender/20 data-[state=active]:text-foreground"
+          >
             <Heart className="w-4 h-4 mr-2 opacity-80" />
             Likes
           </TabsTrigger>
