@@ -65,18 +65,21 @@ const Layout = ({ children, pageTitle }: LayoutProps) => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-b from-background to-background/95 dark:from-[#0D1321] dark:to-[#161b29]">
+    <div className="flex min-h-screen bg-gradient-to-b from-background to-background/95 dark:from-[#0D1321] dark:to-[#161b29] overflow-x-hidden">
       {/* Sidebar */}
       <Sidebar 
         isMobileMenuOpen={isMobileMenuOpen} 
         setIsMobileMenuOpen={setIsMobileMenuOpen} 
       />
       
-      {/* Main content area - flexible width with transition */}
+      {/* Main content area - with proper margin to avoid overlap */}
       <main 
         className={cn(
-          "flex-grow overflow-x-hidden transition-all duration-300 ease-in-out",
-          isCollapsed ? "md:pl-[72px]" : "md:pl-[240px]",
+          "flex-grow transition-all duration-300 ease-in-out",
+          // Apply margin based on sidebar collapsed state
+          isCollapsed ? "md:ml-[72px]" : "md:ml-[240px]",
+          // No margin on mobile
+          "ml-0"
         )}
       >
         {/* Sticky header */}
