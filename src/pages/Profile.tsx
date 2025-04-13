@@ -23,16 +23,16 @@ const Profile = () => {
   
   return (
     <Layout>
-      <div className="mb-10">
+      <div className="mb-8">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
           <img
             src={profile.avatar}
             alt={profile.name}
-            className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-forum-lavender object-cover shadow-lg dark:shadow-neon-glow/20"
+            className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-forum-lavender object-cover"
           />
           
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 dark:text-[#F9FAFB]">{profile.name}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-2 dark:text-[#F9FAFB]">{profile.name}</h1>
             
             <div className="flex flex-col md:flex-row gap-3 md:gap-6 mb-4 text-sm text-muted-foreground dark:text-[#94A3B8]">
               <div className="flex items-center justify-center md:justify-start">

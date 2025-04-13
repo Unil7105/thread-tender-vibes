@@ -18,27 +18,25 @@ const Reply = ({ reply, level = 0 }: ReplyProps) => {
   
   const borderColor = 'border-forum-lavender dark:border-forum-magenta';
   
-  // Generate reaction emoji buttons
+  // Simplified reactions with fewer emojis
   const reactionEmojis = [
     { emoji: '❤️', count: reply.reactions['❤️'] || 0, id: 'heart' },
     { emoji: '👍', count: reply.reactions['👍'] || 0, id: 'thumbs-up' },
-    { emoji: '🔥', count: reply.reactions['🔥'] || 0, id: 'fire' },
     { emoji: '💡', count: reply.reactions['💡'] || 0, id: 'idea' },
-    { emoji: '🙌', count: reply.reactions['🙌'] || 0, id: 'praise' },
   ];
   
   return (
     <div className={`mb-4 ${currentLevel > 0 ? 'pl-3 md:pl-6 border-l-2 ' + borderColor : ''}`}>
-      <div className="reply-card border-l-forum-lavender dark:border-l-forum-lavender dark:backdrop-blur-md">
+      <div className="reply-card border-l-forum-lavender dark:border-l-forum-lavender">
         <div className="flex items-start space-x-3">
           <img
             src={reply.author.avatar}
             alt={reply.author.name}
-            className="w-8 h-8 rounded-full border-2 border-forum-lavender/30 dark:border-forum-lavender/30 dark:shadow-glass-highlight object-cover"
+            className="w-8 h-8 rounded-full border border-forum-lavender/30 dark:border-forum-lavender/30 object-cover"
           />
           <div className="flex-1">
             <div className="flex items-center">
-              <span className="font-medium dark:text-[#F9FAFB] dark:shadow-text-shadow">{reply.author.name}</span>
+              <span className="font-medium dark:text-[#F9FAFB]">{reply.author.name}</span>
               <span className="ml-2 text-xs text-muted-foreground dark:text-[#94A3B8]">
                 {formatDistanceToNow(new Date(reply.createdAt), { addSuffix: true })}
               </span>
@@ -65,7 +63,7 @@ const Reply = ({ reply, level = 0 }: ReplyProps) => {
                 {reactionEmojis.map((reaction) => (
                   <button 
                     key={reaction.id}
-                    className="emoji-reaction dark:hover:shadow-glass-highlight dark:border dark:border-[#334155]/30"
+                    className="emoji-reaction dark:border dark:border-[#334155]/30"
                   >
                     <span>{reaction.emoji}</span>
                     {reaction.count > 0 && (

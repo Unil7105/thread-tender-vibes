@@ -18,17 +18,17 @@ const CategoryCard = ({
   description,
   icon,
   threadCount,
-  gradient = 'bg-gradient-to-br from-white to-secondary/50 dark:from-[#2B2D42] dark:to-[#3A0CA3]/40',
+  gradient = 'bg-white dark:bg-[#1E293B]',
 }: CategoryCardProps) => {
   return (
-    <Link to={`/category/${id}`} className="block group">
-      <div className={`category-card group-hover:scale-[1.02] ${gradient}`}>
+    <Link to={`/category/${id}`} className="block">
+      <div className={`category-card ${gradient}`}>
         <div className="flex items-start">
-          <div className="flex-shrink-0 p-3 bg-accent rounded-xl text-2xl shadow-sm group-hover:shadow-md transition-all dark:bg-gradient-to-br dark:from-forum-magenta/30 dark:to-forum-lavender/30 dark:backdrop-blur-sm dark:border dark:border-white/5">
+          <div className="flex-shrink-0 p-3 bg-accent rounded-lg text-2xl">
             {icon}
           </div>
           <div className="ml-4 flex-1">
-            <h3 className="font-bold text-lg group-hover:text-forum-lavender transition-colors dark:text-white dark:group-hover:text-forum-cyan dark:shadow-text-shadow">
+            <h3 className="font-bold text-lg hover:text-forum-lavender transition-colors dark:text-white">
               {name}
             </h3>
             <p className="text-muted-foreground text-sm mt-1 line-clamp-2 dark:text-gray-300">

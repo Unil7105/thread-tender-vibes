@@ -39,7 +39,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           bg-[#f7f5ff] dark:bg-[#1C1F2A] border-r border-[#e0d8ff] dark:border-[#334155]
           transition-all duration-300 ease-in-out
           ${isCollapsed ? 'w-[72px]' : 'w-[240px]'}
-          hidden md:block shadow-sm
+          hidden md:block
         `}
         style={{
           width: isCollapsed ? '72px' : '240px',
