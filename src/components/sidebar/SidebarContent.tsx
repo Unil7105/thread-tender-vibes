@@ -3,7 +3,6 @@ import React from 'react';
 import SidebarLogo from './SidebarLogo';
 import SidebarNavigation from './SidebarNavigation';
 import SidebarFooter from './SidebarFooter';
-import SidebarProfile from './SidebarProfile';
 
 interface SidebarContentProps {
   isMobileMenuOpen: boolean;
@@ -17,11 +16,8 @@ const SidebarContent: React.FC<SidebarContentProps> = ({
   setIsMobileMenuOpen
 }) => {
   return (
-    <div className="flex flex-col h-full py-6 px-3 relative">
-      {/* Removed close button for mobile view */}
-      
+    <div className="flex flex-col h-full py-6 px-2 relative">
       <SidebarLogo isCollapsed={isCollapsed} />
-      <SidebarProfile isCollapsed={isCollapsed} />
       <SidebarNavigation 
         isCollapsed={isCollapsed} 
         setIsMobileMenuOpen={setIsMobileMenuOpen} 
