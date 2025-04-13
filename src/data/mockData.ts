@@ -123,16 +123,29 @@ export const categories: Category[] = [
   }
 ];
 
+// Users for the dummy threads
+const users = [
+  { id: 'user1', name: 'Alexandra Chen', avatar: 'https://i.pravatar.cc/300?img=47' },
+  { id: 'user2', name: 'Mark Johnson', avatar: 'https://i.pravatar.cc/300?img=12' },
+  { id: 'user3', name: 'Sophia Williams', avatar: 'https://i.pravatar.cc/300?img=29' },
+  { id: 'user4', name: 'Jamie Rodriguez', avatar: 'https://i.pravatar.cc/300?img=20' },
+  { id: 'user5', name: 'Raj Patel', avatar: 'https://i.pravatar.cc/300?img=68' },
+  { id: 'user6', name: 'Emma Thompson', avatar: 'https://i.pravatar.cc/300?img=23' },
+  { id: 'user7', name: 'Alex Rivera', avatar: 'https://i.pravatar.cc/300?img=58' },
+  { id: 'user8', name: 'Jordan Kim', avatar: 'https://i.pravatar.cc/300?img=33' },
+  { id: 'user9', name: 'Taylor Morgan', avatar: 'https://i.pravatar.cc/300?img=15' },
+  { id: 'user10', name: 'Michael Zhang', avatar: 'https://i.pravatar.cc/300?img=8' },
+  { id: 'user11', name: 'Olivia Clark', avatar: 'https://i.pravatar.cc/300?img=5' },
+  { id: 'user12', name: 'Ethan Wright', avatar: 'https://i.pravatar.cc/300?img=3' }
+];
+
 export const threads: Thread[] = [
+  // Technology threads (id: 1)
   {
     id: '1',
     title: 'What programming language should I learn first?',
     content: 'I\'m new to programming and wondering which language would be best to start with. I\'m interested in web development but also curious about mobile apps.',
-    author: {
-      id: 'user1',
-      name: 'Alexandra Chen',
-      avatar: 'https://i.pravatar.cc/300?img=47',
-    },
+    author: users[0],
     category: {
       id: '1',
       name: 'Technology',
@@ -147,11 +160,7 @@ export const threads: Thread[] = [
       {
         id: 'reply1',
         content: 'I would recommend JavaScript since it\'s versatile for both web and mobile development through frameworks like React and React Native.',
-        author: {
-          id: 'user2',
-          name: 'Mark Johnson',
-          avatar: 'https://i.pravatar.cc/300?img=12',
-        },
+        author: users[1],
         createdAt: '2025-04-10T11:15:00Z',
         upvotes: 12,
         downvotes: 0,
@@ -163,11 +172,7 @@ export const threads: Thread[] = [
       {
         id: 'reply2',
         content: 'Python is great for beginners because of its readable syntax and vast applications from web dev (Django, Flask) to data science and AI.',
-        author: {
-          id: 'user3',
-          name: 'Sophia Williams',
-          avatar: 'https://i.pravatar.cc/300?img=29',
-        },
+        author: users[2],
         createdAt: '2025-04-10T12:05:00Z',
         upvotes: 15,
         downvotes: 1,
@@ -179,11 +184,7 @@ export const threads: Thread[] = [
           {
             id: 'reply2-1',
             content: 'I second Python! I started with it six months ago and now I\'m building simple web apps with Flask.',
-            author: {
-              id: 'user4',
-              name: 'Jamie Rodriguez',
-              avatar: 'https://i.pravatar.cc/300?img=20',
-            },
+            author: users[3],
             createdAt: '2025-04-10T13:30:00Z',
             upvotes: 8,
             downvotes: 0,
@@ -197,14 +198,62 @@ export const threads: Thread[] = [
     ],
   },
   {
+    id: 't2',
+    title: 'Future of AI in Software Development',
+    content: 'How do you think AI will change the landscape of software development in the next 5-10 years? Will it replace developers or augment their capabilities?',
+    author: users[10],
+    category: {
+      id: '1',
+      name: 'Technology',
+    },
+    createdAt: '2025-04-09T14:22:00Z',
+    updatedAt: '2025-04-09T14:22:00Z',
+    upvotes: 31,
+    downvotes: 2,
+    replyCount: 5,
+    tags: ['AI', 'career', 'future'],
+  },
+  
+  // Arts & Creativity threads (id: 2)
+  {
+    id: 'a1',
+    title: 'Digital vs Traditional Art: Pros and Cons',
+    content: 'I\'ve been a traditional artist for years but thinking about getting into digital art. What are the main pros and cons of each medium?',
+    author: users[8],
+    category: {
+      id: '2',
+      name: 'Arts & Creativity',
+    },
+    createdAt: '2025-04-11T09:15:00Z',
+    updatedAt: '2025-04-11T09:15:00Z',
+    upvotes: 18,
+    downvotes: 1,
+    replyCount: 6,
+    tags: ['digital art', 'traditional art', 'comparison'],
+  },
+  {
+    id: 'a2',
+    title: 'What inspires your creative process?',
+    content: 'I\'m curious to hear about different sources of inspiration. Do you have specific routines, places, or practices that help spark your creativity?',
+    author: users[5],
+    category: {
+      id: '2',
+      name: 'Arts & Creativity',
+    },
+    createdAt: '2025-04-08T16:40:00Z',
+    updatedAt: '2025-04-08T16:40:00Z',
+    upvotes: 27,
+    downvotes: 0,
+    replyCount: 12,
+    tags: ['inspiration', 'creative process', 'routines'],
+  },
+  
+  // Books & Literature threads (id: 3)
+  {
     id: '2',
     title: 'Book recommendations for someone who loves magical realism?',
     content: 'I\'ve just finished "One Hundred Years of Solitude" by Gabriel García Márquez and I\'m looking for similar books that blend reality with magical elements.',
-    author: {
-      id: 'user5',
-      name: 'Raj Patel',
-      avatar: 'https://i.pravatar.cc/300?img=68',
-    },
+    author: users[4],
     category: {
       id: '3',
       name: 'Books & Literature',
@@ -217,14 +266,28 @@ export const threads: Thread[] = [
     tags: ['books', 'magical realism', 'literature'],
   },
   {
+    id: 'b2',
+    title: 'Do physical books still matter in the digital age?',
+    content: 'With e-readers and audiobooks becoming increasingly popular, I\'m wondering about the future of physical books. Do you still prefer them, and why?',
+    author: users[11],
+    category: {
+      id: '3',
+      name: 'Books & Literature',
+    },
+    createdAt: '2025-04-07T11:35:00Z',
+    updatedAt: '2025-04-07T11:35:00Z',
+    upvotes: 42,
+    downvotes: 3,
+    replyCount: 16,
+    tags: ['ebooks', 'physical books', 'reading habits'],
+  },
+  
+  // Health & Wellness threads (id: 4)
+  {
     id: '3',
     title: 'Does anyone else struggle with work-life balance as a remote worker?',
     content: 'Since I started working remotely full-time, I\'ve found it increasingly difficult to separate my work hours from personal time. Looking for strategies that have worked for others.',
-    author: {
-      id: 'user6',
-      name: 'Emma Thompson',
-      avatar: 'https://i.pravatar.cc/300?img=23',
-    },
+    author: users[5],
     category: {
       id: '4',
       name: 'Health & Wellness',
@@ -237,14 +300,96 @@ export const threads: Thread[] = [
     tags: ['remote work', 'mental health', 'productivity'],
   },
   {
+    id: 'h2',
+    title: 'Meditation techniques for beginners with busy schedules',
+    content: 'I\'ve been trying to start a meditation practice but finding it hard to fit into my busy day. Any recommendations for short but effective techniques?',
+    author: users[6],
+    category: {
+      id: '4',
+      name: 'Health & Wellness',
+    },
+    createdAt: '2025-04-06T08:30:00Z',
+    updatedAt: '2025-04-06T08:30:00Z',
+    upvotes: 33,
+    downvotes: 0,
+    replyCount: 9,
+    tags: ['meditation', 'beginners', 'busy lifestyle'],
+  },
+  
+  // Food & Cooking threads (id: 5)
+  {
+    id: 'f1',
+    title: 'Easy but impressive dinner party recipes?',
+    content: 'I\'m hosting a dinner party for 6 people this weekend and want to make something that seems fancy but isn\'t too complicated. Any suggestions?',
+    author: users[7],
+    category: {
+      id: '5',
+      name: 'Food & Cooking',
+    },
+    createdAt: '2025-04-10T17:20:00Z',
+    updatedAt: '2025-04-10T17:20:00Z',
+    upvotes: 21,
+    downvotes: 0,
+    replyCount: 8,
+    tags: ['recipes', 'dinner party', 'cooking'],
+  },
+  {
+    id: 'f2',
+    title: 'Favorite international cuisines to cook at home?',
+    content: 'I\'ve been exploring different cuisines in my home cooking and would love to hear which international foods others enjoy making. What cuisines do you find approachable for home cooking?',
+    author: users[2],
+    category: {
+      id: '5',
+      name: 'Food & Cooking',
+    },
+    createdAt: '2025-04-08T13:40:00Z',
+    updatedAt: '2025-04-08T13:40:00Z',
+    upvotes: 29,
+    downvotes: 1,
+    replyCount: 11,
+    tags: ['international cuisine', 'home cooking', 'recipes'],
+  },
+  
+  // Science threads (id: 6)
+  {
+    id: 's1',
+    title: 'Recent scientific discoveries that blew your mind',
+    content: 'What are some recent scientific breakthroughs or discoveries that you found particularly fascinating or surprising?',
+    author: users[9],
+    category: {
+      id: '6',
+      name: 'Science',
+    },
+    createdAt: '2025-04-09T10:15:00Z',
+    updatedAt: '2025-04-09T10:15:00Z',
+    upvotes: 36,
+    downvotes: 0,
+    replyCount: 7,
+    tags: ['discoveries', 'breakthrough', 'research'],
+  },
+  {
+    id: 's2',
+    title: 'How to explain complex scientific concepts to children?',
+    content: 'My 8-year-old is very curious about science, especially astronomy and physics. Any tips on how to explain complex concepts in a way that\'s accurate but understandable?',
+    author: users[3],
+    category: {
+      id: '6',
+      name: 'Science',
+    },
+    createdAt: '2025-04-07T16:25:00Z',
+    updatedAt: '2025-04-07T16:25:00Z',
+    upvotes: 24,
+    downvotes: 1,
+    replyCount: 9,
+    tags: ['education', 'children', 'science communication'],
+  },
+  
+  // Travel & Adventure threads (id: 7)
+  {
     id: '4',
     title: 'Best Travel Destinations for Solo Backpackers in 2025',
     content: 'I\'m planning a solo backpacking trip this year and looking for recommendations. What are some must-visit destinations that are safe, budget-friendly, and offer unique experiences?',
-    author: {
-      id: 'user7',
-      name: 'Alex Rivera',
-      avatar: 'https://i.pravatar.cc/300?img=58',
-    },
+    author: users[6],
     category: {
       id: '7',
       name: 'Travel & Adventure',
@@ -257,14 +402,62 @@ export const threads: Thread[] = [
     tags: ['travel', 'backpacking', 'solo travel'],
   },
   {
+    id: 'tr2',
+    title: 'Sustainable travel practices: How do you reduce your environmental impact?',
+    content: 'I love traveling but am increasingly concerned about the environmental impact. What practices have you adopted to make your travels more sustainable?',
+    author: users[0],
+    category: {
+      id: '7',
+      name: 'Travel & Adventure',
+    },
+    createdAt: '2025-04-05T09:50:00Z',
+    updatedAt: '2025-04-05T09:50:00Z',
+    upvotes: 31,
+    downvotes: 2,
+    replyCount: 14,
+    tags: ['sustainable travel', 'eco-friendly', 'environment'],
+  },
+  
+  // Music & Concerts threads (id: 8)
+  {
+    id: '6',
+    title: 'Exploring Emerging Music Genres and Subcultures',
+    content: 'What are some fascinating emerging music genres or subcultures that are gaining traction? Share your insights and discoveries about underground music scenes.',
+    author: users[8],
+    category: {
+      id: '8',
+      name: 'Music & Concerts',
+    },
+    createdAt: '2025-04-10T16:45:00Z',
+    updatedAt: '2025-04-10T16:45:00Z',
+    upvotes: 33,
+    downvotes: 1,
+    replyCount: 7,
+    tags: ['music', 'genres', 'culture'],
+  },
+  {
+    id: 'm2',
+    title: 'How has streaming changed your music listening habits?',
+    content: 'With streaming platforms dominating music consumption, I\'m curious how it\'s changed the way people discover and listen to music. Has it broadened your horizons or created echo chambers?',
+    author: users[4],
+    category: {
+      id: '8',
+      name: 'Music & Concerts',
+    },
+    createdAt: '2025-04-06T12:30:00Z',
+    updatedAt: '2025-04-06T12:30:00Z',
+    upvotes: 26,
+    downvotes: 1,
+    replyCount: 11,
+    tags: ['streaming', 'music consumption', 'discovery'],
+  },
+  
+  // Gaming threads (id: 9)
+  {
     id: '5',
     title: 'Indie Game Developers: Challenges and Success Stories',
     content: 'For those who have ventured into independent game development, what were the biggest challenges you faced? How did you overcome them, and what advice would you give to aspiring indie developers?',
-    author: {
-      id: 'user8',
-      name: 'Jordan Kim',
-      avatar: 'https://i.pravatar.cc/300?img=33',
-    },
+    author: users[7],
     category: {
       id: '9',
       name: 'Gaming',
@@ -277,23 +470,19 @@ export const threads: Thread[] = [
     tags: ['game development', 'indie games', 'programming'],
   },
   {
-    id: '6',
-    title: 'Exploring Emerging Music Genres and Subcultures',
-    content: 'What are some fascinating emerging music genres or subcultures that are gaining traction? Share your insights and discoveries about underground music scenes.',
-    author: {
-      id: 'user9',
-      name: 'Taylor Morgan',
-      avatar: 'https://i.pravatar.cc/300?img=15',
-    },
+    id: 'g2',
+    title: 'Do narrative-driven games provide more meaningful experiences than competitive ones?',
+    content: 'I\'ve always preferred story-rich single-player games over competitive multiplayer. I\'m curious about others\' perspectives on which type of gaming experience feels more meaningful or rewarding.',
+    author: users[1],
     category: {
-      id: '8',
-      name: 'Music & Concerts',
+      id: '9',
+      name: 'Gaming',
     },
-    createdAt: '2025-04-10T16:45:00Z',
-    updatedAt: '2025-04-10T16:45:00Z',
-    upvotes: 33,
-    downvotes: 1,
-    replyCount: 7,
-    tags: ['music', 'genres', 'culture'],
+    createdAt: '2025-04-07T19:15:00Z',
+    updatedAt: '2025-04-07T19:15:00Z',
+    upvotes: 39,
+    downvotes: 5,
+    replyCount: 17,
+    tags: ['narrative games', 'competitive gaming', 'game design'],
   }
 ];

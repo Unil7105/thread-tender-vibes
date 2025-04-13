@@ -55,11 +55,11 @@ const Reply = ({ reply, level = 0, isOriginalPoster = false }: ReplyProps) => {
                 <span>{formatDistanceToNow(new Date(reply.createdAt), { addSuffix: true })}</span>
               </div>
               
-              {reply.replyTo && (
+              {reply.parentId && (
                 <div className="flex items-center text-xs text-[#8e8e93] dark:text-muted-foreground">
                   <span className="mx-1">·</span>
                   <CornerDownRight className="w-3 h-3 mr-1" />
-                  <span>Replied to <span className="text-forum-lavender dark:text-forum-lavender">{reply.replyTo}</span></span>
+                  <span>Replied to <span className="text-forum-lavender dark:text-forum-lavender">{reply.parentId}</span></span>
                 </div>
               )}
             </div>
