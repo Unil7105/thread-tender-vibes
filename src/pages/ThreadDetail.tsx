@@ -6,11 +6,52 @@ import Reply from '@/components/Reply';
 import FloatingActionButton from '@/components/FloatingActionButton';
 import { threads } from '@/data/mockData';
 import { formatDistanceToNow } from 'date-fns';
+import { useState, useEffect } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const ThreadDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    // Simulate loading delay for demonstration
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, [id]);
   
   const thread = threads.find((t) => t.id === id);
+  
+  if (isLoading) {
+    return (
+      <Layout>
+        <div className="mb-6 px-0 sm:px-0 max-w-full">
+          <div className="mb-4 flex flex-wrap gap-2">
+            <Skeleton className="h-6 w-24" />
+            <Skeleton className="h-6 w-16" />
+            <Skeleton className="h-6 w-20" />
+          </div>
+          
+          <div className="flex items-center mb-6">
+            <Skeleton className="w-10 h-10 rounded-full" />
+            <div className="ml-3 space-y-2">
+              <Skeleton className="h-5 w-32" />
+              <Skeleton className="h-4 w-24" />
+            </div>
+          </div>
+          
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-[90%]" />
+            <Skeleton className="h-4 w-[80%]" />
+          </div>
+        </div>
+      </Layout>
+    );
+  }
   
   if (!thread) {
     return (
