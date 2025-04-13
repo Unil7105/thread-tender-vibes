@@ -23,7 +23,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <>
-      {/* Mobile sidebar with SheetContent component */}
+      {/* Mobile sidebar toggle */}
       <SidebarMobileToggle 
         isMobileMenuOpen={isMobileMenuOpen} 
         isCollapsed={isCollapsed}
@@ -31,12 +31,13 @@ const Sidebar: React.FC<SidebarProps> = ({
         toggleSidebar={toggleSidebar}
       />
 
-      {/* Desktop sidebar - fixed positioning with proper z-index */}
+      {/* Desktop sidebar */}
       <aside 
         id="sidebar"
         className={`
           fixed top-0 left-0 h-full z-40
-          bg-[#f7f5ff] dark:bg-[#1C1F2A] border-r border-[#e0d8ff] dark:border-[#334155]
+          bg-sidebar/95 dark:bg-sidebar backdrop-blur-sm 
+          border-r border-border/50 dark:border-border/30
           transition-all duration-300 ease-in-out
           ${isCollapsed ? 'w-[72px]' : 'w-[240px]'}
           hidden md:block
@@ -53,7 +54,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         />
       </aside>
 
-      {/* Add spacing div to push content when sidebar is visible on desktop */}
+      {/* Add spacing div to push content */}
       <div 
         className={`
           hidden md:block shrink-0 transition-all duration-300 ease-in-out
@@ -61,7 +62,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         `}
       />
 
-      {/* Mobile overlay when sidebar is open */}
+      {/* Mobile overlay */}
       {isMobileMenuOpen && (
         <SidebarOverlay 
           onClick={() => setIsMobileMenuOpen(false)} 

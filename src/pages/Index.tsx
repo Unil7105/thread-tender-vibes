@@ -35,23 +35,23 @@ const Index = () => {
   
   return (
     <Layout pageTitle="Welcome to TextForum">
-      <div className="mb-8 mt-4">
-        <p className="text-muted-foreground">A cozy digital space for deep conversations</p>
+      <div className="mb-12 mt-4">
+        <p className="text-muted-foreground">A thoughtfully designed space for meaningful conversations</p>
       </div>
       
-      <div className="flex flex-col lg:flex-row gap-8 mt-16">
+      <div className="flex flex-col lg:flex-row gap-12 mt-16">
         <section className="w-full lg:w-4/12 mb-8 lg:mb-0">
-          <div className="flex items-baseline justify-between mb-5">
-            <h2 className="text-xl font-bold">Categories</h2>
-            <a href="#" className="text-forum-lavender hover:underline text-sm">View all</a>
+          <div className="flex items-baseline justify-between mb-6">
+            <h2 className="text-xl font-medium">Categories</h2>
+            <a href="#" className="text-forum-lavender hover:text-forum-lavender/80 text-sm transition-colors duration-200">View all</a>
           </div>
           <CategoriesGrid />
         </section>
         
         <section className="w-full lg:w-8/12">
-          <div className="flex items-baseline justify-between mb-5">
-            <h2 className="text-xl font-bold">Recent Threads</h2>
-            <a href="#" className="text-forum-lavender hover:underline text-sm">View all</a>
+          <div className="flex items-baseline justify-between mb-6">
+            <h2 className="text-xl font-medium">Recent Threads</h2>
+            <a href="#" className="text-forum-lavender hover:text-forum-lavender/80 text-sm transition-colors duration-200">View all</a>
           </div>
           <ThreadsList threads={threads} isLoading={isLoading} />
         </section>

@@ -1,4 +1,6 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,83 +8,83 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    --background: 30 30% 98%;
+    --foreground: 220 10% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 220 10% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 220 10% 20%;
 
-    --primary: 275 100% 25%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 260 45% 65%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 30 20% 96%;
+    --secondary-foreground: 220 10% 20%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 262 60% 75%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 25 30% 80%;
+    --accent-foreground: 220 10% 20%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 65%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 262 60% 75%;
+    --border: 220 20% 92%;
+    --input: 220 20% 92%;
+    --ring: 260 45% 65%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    --sidebar-background: 255 30% 98%;
-    --sidebar-foreground: 250 10% 15%;
-    --sidebar-primary: 262 60% 75%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 10% 20%;
+    --sidebar-primary: 260 45% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 250 30% 95%;
-    --sidebar-accent-foreground: 250 10% 15%;
-    --sidebar-border: 250 20% 92%;
-    --sidebar-ring: 262 60% 75%;
+    --sidebar-accent: 30 20% 96%;
+    --sidebar-accent-foreground: 220 10% 20%;
+    --sidebar-border: 220 20% 92%;
+    --sidebar-ring: 260 45% 65%;
   }
 
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
+    --background: 220 15% 15%;
+    --foreground: 30 20% 90%;
 
-    --card: 217 33% 17%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 15% 18%;
+    --card-foreground: 30 20% 90%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 15% 15%;
+    --popover-foreground: 30 20% 90%;
 
-    --primary: 262 83% 66%;
+    --primary: 260 35% 70%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 30 20% 90%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 30 10% 70%;
 
-    --accent: 280 90% 76%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 25 20% 40%;
+    --accent-foreground: 30 20% 90%;
 
-    --destructive: 350 89% 71%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 60% 65%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 26%;
-    --input: 220 13% 26%;
-    --ring: 262 83% 66%;
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 260 35% 70%;
 
-    --sidebar-background: 225 19% 14%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 262 83% 66%;
+    --sidebar-background: 220 15% 14%;
+    --sidebar-foreground: 30 20% 90%;
+    --sidebar-primary: 260 35% 70%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 264 66% 27%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 264 20% 20%;
-    --sidebar-ring: 262 83% 66%;
+    --sidebar-accent: 220 10% 20%;
+    --sidebar-accent-foreground: 30 20% 90%;
+    --sidebar-border: 220 15% 22%;
+    --sidebar-ring: 260 35% 70%;
   }
 }
 
@@ -91,30 +93,33 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-poppins overscroll-none;
+    @apply bg-background text-foreground font-inter overscroll-none;
+    letter-spacing: -0.01em;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-poppins font-bold;
+    @apply font-poppins font-medium tracking-tight;
   }
   h1 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
+    @apply text-2xl md:text-3xl;
+    letter-spacing: -0.02em;
   }
   h2 {
-    @apply text-xl md:text-2xl lg:text-3xl;
+    @apply text-xl md:text-2xl;
+    letter-spacing: -0.01em;
   }
   h3 {
-    @apply text-lg md:text-xl lg:text-2xl;
+    @apply text-lg md:text-xl;
   }
 }
 
 @layer components {
-  /* Simplified card gradients */
+  /* Card styles */
   .card-gradient {
-    @apply bg-white dark:bg-[#1E293B];
+    @apply bg-white dark:bg-card;
   }
   
   .primary-gradient {
-    @apply bg-forum-lavender hover:bg-forum-lavender/90
+    @apply bg-forum-lavender hover:bg-forum-lavender/90 
       dark:bg-forum-lavender dark:hover:bg-forum-lavender/90;
   }
   
@@ -122,63 +127,64 @@
     @apply bg-forum-coral;
   }
   
-  .mint-gradient {
-    @apply bg-forum-mint;
-  }
-  
   .thread-tag {
-    @apply inline-flex px-2 py-0.5 rounded-full text-xs font-medium
-      dark:bg-[#334155] dark:hover:bg-[#475569] dark:text-[#F1F5F9];
+    @apply inline-flex px-2 py-0.5 rounded-md text-xs font-medium
+      bg-secondary dark:bg-secondary text-muted-foreground
+      transition-colors duration-200;
   }
   
   .category-card {
-    @apply relative p-3 sm:p-5 rounded-xl border bg-card 
-      hover:bg-secondary/50 duration-200 
-      dark:bg-[#1E293B] dark:border-[#334155] dark:hover:border-[#475569];
+    @apply relative p-5 sm:p-6 rounded-lg border border-border/60 bg-card 
+      hover:bg-secondary/50 duration-300 shadow-soft
+      dark:bg-card dark:border-border/40 dark:hover:border-border/60;
   }
   
   .thread-card {
-    @apply relative p-4 rounded-lg border bg-card/70 
-      hover:bg-secondary/50 duration-200
-      dark:bg-[#1E293B] dark:border-[#334155] dark:hover:border-[#475569];
+    @apply relative p-5 rounded-lg border border-border/60 bg-card/70
+      hover:bg-secondary/50 duration-300 shadow-soft
+      dark:bg-card dark:border-border/40 dark:hover:border-border/60;
   }
   
   .reply-card {
-    @apply relative p-3 sm:p-4 rounded-lg bg-secondary/70
-      dark:bg-[#1E293B]/70 mt-3 ml-3 sm:ml-8 border-l-2;
+    @apply relative p-4 sm:p-5 rounded-lg bg-secondary/70
+      dark:bg-secondary/30 mt-4 ml-3 sm:ml-6 border-l 
+      border-l-forum-lavender/30 dark:border-l-forum-lavender/40;
   }
   
   .upvote-button {
     @apply flex items-center space-x-1 text-sm font-medium text-muted-foreground 
-      hover:text-forum-lavender transition-colors
-      dark:hover:text-forum-coral;
+      hover:text-forum-lavender transition-colors duration-200
+      dark:hover:text-forum-lavender;
   }
   
   .floating-action-button {
-    @apply fixed bottom-6 right-6 p-3 sm:p-4 rounded-full primary-gradient 
-      text-white shadow-md transition-all duration-200;
+    @apply fixed bottom-8 right-8 p-3 sm:p-3.5 rounded-full 
+      bg-forum-lavender/90 hover:bg-forum-lavender
+      text-white shadow-soft hover:shadow-hover 
+      transition-all duration-300 scale-100 hover:scale-105;
   }
   
   .nav-item {
-    @apply flex items-center space-x-3 p-3 rounded-lg text-sidebar-foreground 
+    @apply flex items-center space-x-3 p-3 rounded-md text-sidebar-foreground
       hover:bg-sidebar-accent hover:text-sidebar-primary transition-all duration-200;
   }
   
   .nav-item.active {
-    @apply bg-sidebar-primary text-sidebar-primary-foreground
-      dark:bg-forum-lavender;
+    @apply bg-sidebar-primary/10 text-sidebar-primary
+      dark:bg-sidebar-primary/20 dark:text-sidebar-primary;
   }
   
   .emoji-reaction {
-    @apply inline-flex items-center px-2 py-1 rounded-full bg-secondary 
-      hover:bg-primary/10 text-sm transition-all cursor-pointer
-      dark:bg-[#334155] dark:hover:bg-[#475569];
+    @apply inline-flex items-center px-2 py-1 rounded-md bg-secondary 
+      hover:bg-secondary/80 text-sm transition-all duration-200 cursor-pointer
+      dark:bg-secondary dark:hover:bg-secondary/90;
   }
 
   /* Mobile optimizations */
   .mobile-menu-toggle {
     @apply md:hidden fixed top-4 left-4 z-50 flex flex-col justify-center items-center 
-      w-10 h-10 bg-background border border-border rounded-md;
+      w-10 h-10 bg-background/90 backdrop-blur-sm border border-border/60 rounded-md 
+      shadow-soft;
   }
 
   /* Sidebar specific classes */
@@ -191,7 +197,7 @@
   }
 }
 
-/* Simplified animations for better performance */
+/* Subtle animations */
 @layer utilities {
   .scroll-smooth-mobile {
     -webkit-overflow-scrolling: touch;
@@ -199,7 +205,7 @@
   }
   
   .animate-scale-in {
-    animation: scaleIn 0.2s ease forwards;
+    animation: scaleIn 0.3s ease forwards;
   }
   
   @keyframes scaleIn {

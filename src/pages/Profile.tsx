@@ -23,68 +23,68 @@ const Profile = () => {
   
   return (
     <Layout>
-      <div className="mb-8">
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+      <div className="mb-12">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
           <img
             src={profile.avatar}
             alt={profile.name}
-            className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-forum-lavender object-cover"
+            className="w-24 h-24 md:w-28 md:h-28 rounded-full border-2 border-accent/30 object-cover shadow-soft"
           />
           
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-2xl md:text-3xl font-bold mb-2 dark:text-[#F9FAFB]">{profile.name}</h1>
+            <h1 className="text-2xl md:text-3xl font-medium mb-3 dark:text-foreground">{profile.name}</h1>
             
-            <div className="flex flex-col md:flex-row gap-3 md:gap-6 mb-4 text-sm text-muted-foreground dark:text-[#94A3B8]">
+            <div className="flex flex-col md:flex-row gap-3 md:gap-6 mb-5 text-sm text-muted-foreground dark:text-muted-foreground">
               <div className="flex items-center justify-center md:justify-start">
-                <Mail className="w-4 h-4 mr-1" />
+                <Mail className="w-4 h-4 mr-1.5 opacity-70" />
                 {profile.email}
               </div>
               <div className="flex items-center justify-center md:justify-start">
-                <Calendar className="w-4 h-4 mr-1" />
+                <Calendar className="w-4 h-4 mr-1.5 opacity-70" />
                 Joined {profile.joinDate}
               </div>
             </div>
             
-            <p className="max-w-2xl dark:text-[#CBD5E1]">{profile.bio}</p>
+            <p className="max-w-2xl text-foreground/90 dark:text-foreground/80 leading-relaxed">{profile.bio}</p>
             
-            <div className="flex flex-wrap justify-center md:justify-start gap-6 mt-4">
+            <div className="flex flex-wrap justify-center md:justify-start gap-8 mt-6">
               <div className="text-center">
-                <div className="text-xl font-bold text-forum-lavender">{profile.stats.threads}</div>
-                <div className="text-xs text-muted-foreground dark:text-[#94A3B8]">Threads</div>
+                <div className="text-xl font-medium text-forum-lavender">{profile.stats.threads}</div>
+                <div className="text-xs text-muted-foreground dark:text-muted-foreground mt-1">Threads</div>
               </div>
               <div className="text-center">
-                <div className="text-xl font-bold text-forum-lavender">{profile.stats.replies}</div>
-                <div className="text-xs text-muted-foreground dark:text-[#94A3B8]">Replies</div>
+                <div className="text-xl font-medium text-forum-lavender">{profile.stats.replies}</div>
+                <div className="text-xs text-muted-foreground dark:text-muted-foreground mt-1">Replies</div>
               </div>
               <div className="text-center">
-                <div className="text-xl font-bold text-forum-lavender">{profile.stats.likes}</div>
-                <div className="text-xs text-muted-foreground dark:text-[#94A3B8]">Likes</div>
+                <div className="text-xl font-medium text-forum-lavender">{profile.stats.likes}</div>
+                <div className="text-xs text-muted-foreground dark:text-muted-foreground mt-1">Likes</div>
               </div>
             </div>
           </div>
           
-          <Button variant="outline" className="md:self-start dark:border-[#334155] dark:text-[#CBD5E1] dark:hover:bg-[#334155]/50">
-            <Edit className="w-4 h-4 mr-2" />
+          <Button variant="outline" className="md:self-start dark:border-border/50 dark:text-foreground/80 dark:hover:bg-secondary/30">
+            <Edit className="w-4 h-4 mr-2 opacity-70" />
             Edit Profile
           </Button>
         </div>
       </div>
       
       <Tabs defaultValue="threads" className="mb-8">
-        <TabsList className="dark:bg-[#1E293B] dark:border dark:border-[#334155]">
-          <TabsTrigger value="threads" className="flex items-center dark:data-[state=active]:bg-forum-lavender dark:data-[state=active]:text-white">
-            <MessageSquare className="w-4 h-4 mr-2" />
+        <TabsList className="dark:bg-secondary/20 dark:border dark:border-border/30">
+          <TabsTrigger value="threads" className="flex items-center dark:data-[state=active]:bg-forum-lavender/20 dark:data-[state=active]:text-foreground">
+            <MessageSquare className="w-4 h-4 mr-2 opacity-80" />
             Threads
           </TabsTrigger>
-          <TabsTrigger value="likes" className="flex items-center dark:data-[state=active]:bg-forum-lavender dark:data-[state=active]:text-white">
-            <Heart className="w-4 h-4 mr-2" />
+          <TabsTrigger value="likes" className="flex items-center dark:data-[state=active]:bg-forum-lavender/20 dark:data-[state=active]:text-foreground">
+            <Heart className="w-4 h-4 mr-2 opacity-80" />
             Likes
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="threads" className="pt-6">
+        <TabsContent value="threads" className="pt-8">
           <ThreadsList threads={threads.slice(0, 2)} />
         </TabsContent>
-        <TabsContent value="likes" className="pt-6">
+        <TabsContent value="likes" className="pt-8">
           <ThreadsList threads={threads.slice(1, 3)} />
         </TabsContent>
       </Tabs>

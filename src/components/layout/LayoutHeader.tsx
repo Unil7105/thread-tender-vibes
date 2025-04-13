@@ -19,26 +19,28 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = ({
 }) => {
   return (
     <div 
-      className={`sticky top-0 z-30 w-full px-4 py-3 bg-background/80 backdrop-blur-md transition-all duration-300 
+      className={`sticky top-0 z-30 w-full px-4 py-4 
+                bg-background/90 backdrop-blur-md transition-all duration-300 
                 flex items-center justify-between
-                dark:bg-[#0D1321]/80 dark:border-b dark:border-white/5
-                ${isScrolled ? 'shadow-md dark:shadow-neon-glow/10' : ''}`}
+                dark:bg-background/90 dark:border-b dark:border-border/20
+                ${isScrolled ? 'shadow-soft dark:shadow-none' : ''}`}
     >
       <div className="flex items-center gap-3">
-        {/* Mobile menu button with improved styling */}
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden h-9 w-9 rounded-md bg-gradient-to-br from-[#EDE9FE] to-[#E5DEFF] dark:from-[#2D2B42] dark:to-[#252340] hover:scale-105 transition-all duration-200 shadow-sm"
+          className="md:hidden h-9 w-9 rounded-md bg-secondary/70 
+                    hover:bg-secondary dark:bg-secondary/20 dark:hover:bg-secondary/30 
+                    transition-colors duration-200"
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-sidebar"
         >
-          <Menu className="h-5 w-5 text-[#7C3AED] dark:text-[#9b87f5]" />
+          <Menu className="h-5 w-5 text-foreground opacity-80" />
         </Button>
         
-        <h2 className="text-xl font-bold">{pageTitle || 'TextForum'}</h2>
+        <h2 className="text-xl font-medium tracking-tight">{pageTitle || 'TextForum'}</h2>
       </div>
     </div>
   );
