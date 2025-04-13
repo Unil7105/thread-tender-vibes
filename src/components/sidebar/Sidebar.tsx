@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import SidebarMobileToggle from './SidebarMobileToggle';
@@ -15,16 +14,13 @@ const Sidebar = ({ isMobileMenuOpen: propsMobileMenuOpen, setIsMobileMenuOpen: p
   const [internalMobileMenuOpen, setInternalMobileMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
   
-  // Use props values if provided, otherwise use internal state
   const isMobileMenuOpen = propsMobileMenuOpen !== undefined ? propsMobileMenuOpen : internalMobileMenuOpen;
   const setIsMobileMenuOpen = propsSetMobileMenuOpen || setInternalMobileMenuOpen;
   
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname, setIsMobileMenuOpen]);
 
-  // Close mobile menu when scrolling past threshold on mobile
   useEffect(() => {
     const handleScroll = () => {
       if (window.innerWidth < 768 && window.scrollY > 300 && isMobileMenuOpen) {
@@ -36,7 +32,6 @@ const Sidebar = ({ isMobileMenuOpen: propsMobileMenuOpen, setIsMobileMenuOpen: p
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMobileMenuOpen, setIsMobileMenuOpen]);
 
-  // Load sidebar state from localStorage on component mount
   useEffect(() => {
     try {
       const savedState = localStorage.getItem('sidebarCollapsed');
@@ -48,7 +43,6 @@ const Sidebar = ({ isMobileMenuOpen: propsMobileMenuOpen, setIsMobileMenuOpen: p
     }
   }, []);
 
-  // Keyboard shortcut to toggle sidebar
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 's' && (e.ctrlKey || e.metaKey)) {
@@ -65,13 +59,11 @@ const Sidebar = ({ isMobileMenuOpen: propsMobileMenuOpen, setIsMobileMenuOpen: p
     const newState = !isCollapsed;
     setIsCollapsed(newState);
     
-    // Save preference to localStorage
     localStorage.setItem('sidebarCollapsed', JSON.stringify(newState));
   };
 
   return (
     <>
-      {/* Mobile Sidebar Toggle Component */}
       <SidebarMobileToggle 
         isMobileMenuOpen={isMobileMenuOpen} 
         isCollapsed={isCollapsed}
@@ -79,7 +71,6 @@ const Sidebar = ({ isMobileMenuOpen: propsMobileMenuOpen, setIsMobileMenuOpen: p
         toggleSidebar={toggleSidebar}
       />
 
-      {/* Desktop Sidebar */}
       <aside 
         id="sidebar"
         className={`
@@ -98,7 +89,6 @@ const Sidebar = ({ isMobileMenuOpen: propsMobileMenuOpen, setIsMobileMenuOpen: p
         />
       </aside>
 
-      {/* Mobile Sidebar (slide-in drawer) */}
       <aside 
         id="mobile-sidebar"
         className={`
@@ -117,7 +107,6 @@ const Sidebar = ({ isMobileMenuOpen: propsMobileMenuOpen, setIsMobileMenuOpen: p
         />
       </aside>
 
-      {/* Mobile overlay/backdrop with blur effect */}
       {isMobileMenuOpen && (
         <SidebarOverlay 
           onClick={() => setIsMobileMenuOpen(false)} 
